@@ -1,0 +1,90 @@
+name: Planable Plans and Pricing
+description: Pricing plans for Planable, a social media collaboration platform for agencies, freelancers, and marketing teams.
+url: https://planable.io/pricing/
+plans:
+
+  - name: Free
+    description: Limited free tier with 50 total posts for individuals getting started.
+    price: $0
+    currency: USD
+    period: lifetime
+    features:
+      - 50 total posts (lifetime cap)
+      - 4 social pages per workspace
+      - Unlimited users
+      - Unlimited workspaces
+      - Feed and Calendar views
+      - No credit card required
+
+  - name: Basic
+    description: Entry-level paid plan for small teams managing a single workspace.
+    price: $33
+    currency: USD
+    period: per workspace per month
+    annualDiscount: ~17%
+    features:
+      - 60 posts per workspace per month
+      - 4 social pages per workspace
+      - Unlimited users
+      - 2 approval types (None, Optional)
+      - Feed and Calendar views
+      - 3 campaigns
+    addOns:
+      - name: Analytics
+        price: $12
+        period: per workspace per month
+        description: Cross-channel performance reporting, page-level insights, post metrics, audience analysis, optimal posting time recommendations
+      - name: Social Inbox
+        price: $9
+        period: per workspace per month
+        description: Unified comment and DM management with AI-generated reply suggestions and sentiment filtering
+
+  - name: Pro
+    description: Most popular plan for growing teams needing advanced approval workflows.
+    price: $49
+    currency: USD
+    period: per workspace per month
+    annualDiscount: ~17%
+    features:
+      - 150 posts per workspace per month
+      - 10 social pages per workspace
+      - Unlimited users
+      - 3 approval types (None, Optional, Required)
+      - Feed, Calendar, and Grid views
+      - 10 campaigns
+      - Bulk approval requests from calendar view
+    addOns:
+      - name: Analytics
+        price: $12
+        period: per workspace per month
+        description: Cross-channel performance reporting, page-level insights, post metrics, audience analysis, optimal posting time recommendations
+      - name: Social Inbox
+        price: $9
+        period: per workspace per month
+        description: Unified comment and DM management with AI-generated reply suggestions and sentiment filtering
+
+  - name: Enterprise
+    description: Custom plan for large organizations with complex workflows and compliance needs.
+    price: custom
+    currency: USD
+    period: custom
+    features:
+      - Unlimited posts
+      - Unlimited social pages per workspace
+      - Unlimited users
+      - Multi-level approval workflows
+      - All views (Feed, Calendar, Grid, List)
+      - Unlimited campaigns
+      - SSO integration
+      - Dedicated account manager
+      - 24-month published posts storage
+      - Bank/wire transfer payment option
+      - Analytics included
+      - Social Inbox included
+
+notes:
+  - Pricing is per workspace, not per user
+  - A workspace is defined as a group of social media channels and collaborators
+  - Supports 9 platforms: Facebook, Instagram, LinkedIn, X (Twitter), YouTube, TikTok, Pinterest, Google Business Profile, Threads
+  - Annual billing saves approximately 17% versus monthly billing
+  - API access available to owners and administrators on all paid plans

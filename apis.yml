@@ -1,0 +1,63 @@
+aid: planable
+name: Planable
+description: Planable is a social media collaboration platform trusted by agencies, freelancers, and marketing teams to plan, create, collaborate, approve, and publish content across multiple social media channels. It provides a REST API for managing workspaces, pages, posts, feedback, approval workflows, and publishing to Facebook, Instagram, LinkedIn, X (Twitter), YouTube, TikTok, Pinterest, Google Business Profile, and Threads.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/planable/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Social Media
+  - Content Collaboration
+  - Approval Workflows
+  - Social Media Management
+  - Content Publishing
+  - Marketing
+apis:
+  - aid: planable:planable-api
+    name: Planable Public API
+    description: The Planable Public API enables programmatic management of workspace data, including drafting and scheduling posts from a CMS, syncing media libraries from external asset tools, pulling analytics into custom dashboards, and keeping workspace structure in sync with team organization. Authentication uses scoped bearer tokens (read or read/write) restricted to specific workspaces.
+    humanURL: https://planable.io/
+    baseURL: https://app.planable.io/api
+    tags:
+      - Social Media
+      - Posts
+      - Workspaces
+      - Pages
+      - Approval Workflows
+      - Publishing
+    properties:
+      - type: Documentation
+        url: https://help.planable.io/hc/en-us/
+      - type: Changelog
+        url: https://changelog.planable.io/
+      - type: StatusPage
+        url: https://status.planable.io/public-api
+common:
+  - type: Website
+    url: https://planable.io/
+  - type: Documentation
+    url: https://help.planable.io/hc/en-us/
+  - type: GitHubOrg
+    url: https://github.com/Planable
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/planableapp/about/
+  - type: Blog
+    url: https://planable.io/blog/
+  - type: Pricing
+    url: https://planable.io/pricing/
+  - type: StatusPage
+    url: https://status.planable.io/
+  - type: X
+    url: https://x.com/planableapp
+  - type: Plans
+    url: plans/planable-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/planable-rate-limits.yml
+  - type: FinOps
+    url: finops/planable-finops.yml
+  - type: Changelog
+    url: https://changelog.planable.io/
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

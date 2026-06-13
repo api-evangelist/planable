@@ -1,0 +1,65 @@
+name: Planable FinOps
+description: Financial operations guidance for managing costs when using Planable's platform and API.
+url: https://planable.io/pricing/
+
+costModel:
+  type: per-workspace
+  description: Planable charges per workspace per month, not per user or per API call. All users within a workspace are included at no additional per-seat cost.
+
+costDrivers:
+  - name: Workspace count
+    description: Each workspace is billed independently. Cost scales linearly with the number of workspaces managed.
+    impact: high
+
+  - name: Post volume per workspace
+    description: Basic plan caps at 60 posts/workspace/month; Pro caps at 150. Exceeding limits requires upgrading the workspace plan.
+    impact: medium
+
+  - name: Social pages per workspace
+    description: Basic allows 4 pages; Pro allows 10. High page counts may require Pro or Enterprise tier per workspace.
+    impact: medium
+
+  - name: Approval workflow complexity
+    description: Multi-level and required approvals are only available on Pro and Enterprise plans.
+    impact: low
+
+  - name: Add-on services
+    description: Analytics ($12/workspace/month) and Social Inbox ($9/workspace/month) are purchased separately and add to per-workspace cost.
+    impact: medium
+
+optimization:
+  - tip: Annual billing saves approximately 17% compared to monthly billing across all paid plans.
+  - tip: Consolidate social channels into fewer workspaces where team structure allows to reduce workspace count.
+  - tip: Audit workspace usage monthly; unused workspaces can be removed to reduce costs.
+  - tip: Only purchase the Analytics add-on for workspaces that actively require performance reporting to avoid unnecessary spend.
+  - tip: Only purchase the Social Inbox add-on for workspaces with active engagement workflows.
+  - tip: Use the Free plan (50 total posts) for testing and onboarding before committing to a paid workspace.
+
+estimatedCosts:
+  - scenario: Single agency workspace, Pro plan with Analytics
+    monthlyUSD: 61
+    calculation: $49 (Pro) + $12 (Analytics add-on)
+
+  - scenario: 5 client workspaces on Basic plan, no add-ons
+    monthlyUSD: 165
+    calculation: 5 x $33
+
+  - scenario: 10 client workspaces on Pro plan with Analytics
+    monthlyUSD: 610
+    calculation: 10 x ($49 + $12)
+
+  - scenario: Enterprise plan (single workspace estimate)
+    monthlyUSD: 200+
+    calculation: Custom pricing; contact Planable sales
+
+billing:
+  cycles:
+    - monthly
+    - annual
+  annualDiscount: ~17%
+  paymentMethods:
+    - Credit card (Basic, Pro)
+    - Bank/wire transfer (Enterprise only)
+  currency: USD
+
+pricingURL: https://planable.io/pricing/
