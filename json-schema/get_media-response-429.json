@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/get_media-response-429.json",
+  "title": "Get_Media Response 429",
+  "$ref": "#/components/schemas/ErrorResponse"
+}

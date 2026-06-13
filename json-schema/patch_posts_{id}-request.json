@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/patch_posts_{id}-request.json",
+  "title": "Patch_Posts_{Id} Request",
+  "type": "object",
+  "properties": {
+    "text": {
+      "type": "string",
+      "maxLength": 25000
+    },
+    "scheduledAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "maxItems": 20,
+      "description": "Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs."
+    },
+    "teamOnly": {
+      "type": "boolean"
+    },
+    "approved": {
+      "type": "boolean"
+    },
+    "approvedBy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "linkedinPdfTitle": {
+      "type": "string",
+      "maxLength": 150
+    },
+    "linkedinVideoTitle": {
+      "type": "string",
+      "maxLength": 150
+    },
+    "pinterest": {
+      "type": "object",
+      "properties": {
+        "boardId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "link": {
+          "type": "string",
+          "format": "uri"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 500
+        }
+      }
+    },
+    "publishAtScheduledDate": {
+      "type": "boolean"
+    },
+    "archived": {
+      "type": "boolean"
+    },
+    "campaignId": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  }
+}

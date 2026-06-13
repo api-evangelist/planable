@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/delete_posts_{id}-response-500.json",
+  "title": "Delete_Posts_{Id} Response 500",
+  "$ref": "#/components/schemas/ErrorResponse"
+}

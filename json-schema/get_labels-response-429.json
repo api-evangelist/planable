@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/get_labels-response-429.json",
+  "title": "Get_Labels Response 429",
+  "$ref": "#/components/schemas/ErrorResponse"
+}

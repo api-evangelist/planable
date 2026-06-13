@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/post_labels-request.json",
+  "title": "Post_Labels Request",
+  "type": "object",
+  "properties": {
+    "workspaceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "color": {
+      "type": "string",
+      "enum": [
+        "pattens-blue",
+        "feta",
+        "pink-lace",
+        "pippin",
+        "peach-cream",
+        "fog",
+        "half-and-half",
+        "lime-flurish",
+        "snowy-mint",
+        "blue-chalk",
+        "mabel",
+        "silver-sand"
+      ]
+    }
+  },
+  "required": [
+    "workspaceId",
+    "text",
+    "color"
+  ]
+}

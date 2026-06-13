@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/get_campaigns-response-200.json",
+  "title": "Get_Campaigns Response 200",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "workspaceId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "active",
+              "archived",
+              "paused",
+              "planned",
+              "completed"
+            ]
+          },
+          "icon": {
+            "type": "string",
+            "enum": [
+              "star",
+              "bulb",
+              "calendar",
+              "apple",
+              "gift",
+              "christmasTree",
+              "glass",
+              "eggCracked",
+              "archive",
+              "ghost",
+              "cross",
+              "candle",
+              "home",
+              "briefcase",
+              "school",
+              "camera",
+              "bike",
+              "bell",
+              "barbell",
+              "barrier",
+              "paint",
+              "bolt",
+              "heart",
+              "babyCarriage",
+              "trophy",
+              "award",
+              "paw",
+              "bone",
+              "creditCard",
+              "discount",
+              "shield",
+              "tag",
+              "thumbUp",
+              "thumbDown",
+              "umbrella",
+              "flag",
+              "sun",
+              "campfire",
+              "seeding",
+              "leaf",
+              "cherry",
+              "macro",
+              "clover",
+              "pumpkin",
+              "flame",
+              "cactus",
+              "globe",
+              "stack",
+              "basketball",
+              "baseball",
+              "ball",
+              "gasPump",
+              "car",
+              "balloon",
+              "mug",
+              "location",
+              "analyze",
+              "chartPie",
+              "chartDots",
+              "cards",
+              "mail",
+              "headphones",
+              "microphone",
+              "key"
+            ]
+          },
+          "color": {
+            "type": "string"
+          },
+          "startedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "endedAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "description": {
+            "type": "string"
+          },
+          "links": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "url",
+                "title"
+              ]
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "id",
+          "workspaceId",
+          "name",
+          "status",
+          "icon",
+          "color",
+          "startedAt",
+          "endedAt",
+          "links",
+          "createdAt"
+        ]
+      }
+    },
+    "pagination": {
+      "type": "object",
+      "properties": {
+        "offset": {
+          "type": "number"
+        },
+        "limit": {
+          "type": "number"
+        },
+        "hasMore": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "offset",
+        "limit",
+        "hasMore"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "pagination"
+  ]
+}

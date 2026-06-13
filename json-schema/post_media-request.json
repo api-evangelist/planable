@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/post_media-request.json",
+  "title": "Post_Media Request",
+  "type": "object",
+  "properties": {
+    "workspaceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mediaUrls": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "minItems": 1,
+      "maxItems": 20,
+      "description": "Array of 1 to 20 public image/video URLs to upload to the workspace media library. Each file max ~100MB."
+    }
+  },
+  "required": [
+    "workspaceId",
+    "mediaUrls"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/get_posts_{id}_metrics-response-200.json",
+  "title": "Get_Posts_{Id}_Metrics Response 200",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "postId": {
+          "type": "string"
+        },
+        "pageId": {
+          "type": "string"
+        },
+        "pageType": {
+          "type": "string"
+        },
+        "fetchedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "impressions": {
+          "type": "number"
+        },
+        "engagement": {
+          "type": "number"
+        },
+        "reactions": {
+          "type": "number"
+        },
+        "facebook": {
+          "type": "object",
+          "properties": {}
+        },
+        "instagram": {
+          "type": "object",
+          "properties": {}
+        },
+        "linkedin": {
+          "type": "object",
+          "properties": {}
+        },
+        "tiktok": {
+          "type": "object",
+          "properties": {}
+        },
+        "threads": {
+          "type": "object",
+          "properties": {}
+        },
+        "youtube": {
+          "type": "object",
+          "properties": {}
+        }
+      },
+      "required": [
+        "postId",
+        "pageId",
+        "pageType",
+        "fetchedAt",
+        "impressions",
+        "engagement",
+        "reactions"
+      ]
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/get_pages_{id}_sync-status-response-200.json",
+  "title": "Get_Pages_{Id}_Sync Status Response 200",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "pageId": {
+          "type": "string"
+        },
+        "syncInProgress": {
+          "type": "boolean"
+        },
+        "lastSyncedAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "pageId",
+        "syncInProgress",
+        "lastSyncedAt"
+      ]
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

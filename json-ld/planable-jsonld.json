@@ -1,0 +1,97 @@
+{
+  "@context": {
+    "@vocab": "https://planable.io/vocab/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "planable": "https://planable.io/vocab/",
+    "Workspace": "planable:Workspace",
+    "Page": "planable:Page",
+    "Post": "planable:Post",
+    "Campaign": "planable:Campaign",
+    "Label": "planable:Label",
+    "Media": "planable:Media",
+    "Story": "planable:Story",
+    "Comment": "planable:Comment",
+    "id": "@id",
+    "type": "@type",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updatedAt": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "scheduledAt": {
+      "@id": "planable:scheduledAt",
+      "@type": "xsd:dateTime"
+    },
+    "publishedAt": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:dateTime"
+    },
+    "status": "planable:status",
+    "content": "schema:text",
+    "tags": "schema:keywords",
+    "workspaceId": "planable:workspaceId",
+    "pageId": "planable:pageId",
+    "campaignId": "planable:campaignId",
+    "media": "schema:MediaObject",
+    "metrics": "schema:PropertyValue",
+    "approvalStatus": "planable:approvalStatus",
+    "timezone": "schema:timezone"
+  },
+  "@graph": [
+    {
+      "@id": "planable:Workspace",
+      "@type": "schema:Organization",
+      "schema:name": "Workspace",
+      "schema:description": "A Planable workspace containing pages, posts, and team members"
+    },
+    {
+      "@id": "planable:Page",
+      "@type": "schema:WebPage",
+      "schema:name": "Page",
+      "schema:description": "A connected social media page or channel in Planable"
+    },
+    {
+      "@id": "planable:Post",
+      "@type": "schema:SocialMediaPosting",
+      "schema:name": "Post",
+      "schema:description": "A social media post managed through Planable"
+    },
+    {
+      "@id": "planable:Campaign",
+      "@type": "schema:Thing",
+      "schema:name": "Campaign",
+      "schema:description": "A content campaign grouping related posts"
+    },
+    {
+      "@id": "planable:Label",
+      "@type": "schema:Thing",
+      "schema:name": "Label",
+      "schema:description": "A workspace label for organizing content"
+    },
+    {
+      "@id": "planable:Media",
+      "@type": "schema:MediaObject",
+      "schema:name": "Media",
+      "schema:description": "A media file uploaded to the Planable media library"
+    },
+    {
+      "@id": "planable:Story",
+      "@type": "schema:SocialMediaPosting",
+      "schema:name": "Story",
+      "schema:description": "An Instagram story managed through Planable"
+    },
+    {
+      "@id": "planable:Comment",
+      "@type": "schema:Comment",
+      "schema:name": "Comment",
+      "schema:description": "A feedback comment on a Planable post"
+    }
+  ]
+}

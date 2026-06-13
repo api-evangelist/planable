@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/post_posts_{id}_comments-request.json",
+  "title": "Post_Posts_{Id}_Comments Request",
+  "type": "object",
+  "properties": {
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "teamOnly": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "required": [
+    "text"
+  ]
+}

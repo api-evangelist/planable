@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/get_ping-response-401.json",
+  "title": "Get_Ping Response 401",
+  "$ref": "#/components/schemas/ErrorResponse"
+}

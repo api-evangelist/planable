@@ -1,0 +1,334 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Planable API Vocabulary",
+  "description": "Vocabulary terms extracted from the Planable Public API OpenAPI specification",
+  "terms": {
+    "workspaceId": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /posts",
+        "PATCH /posts/reorder",
+        "POST /campaigns",
+        "POST /labels",
+        "POST /media",
+        "POST /stories"
+      ]
+    },
+    "pageId": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /posts",
+        "POST /stories"
+      ]
+    },
+    "pageIds": {
+      "type": "Property",
+      "description": "",
+      "dataType": "array",
+      "usedIn": [
+        "POST /posts"
+      ]
+    },
+    "text": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /posts",
+        "PATCH /posts/{id}",
+        "POST /labels",
+        "POST /posts/{id}/comments"
+      ]
+    },
+    "gridPosition": {
+      "type": "Property",
+      "description": "",
+      "dataType": "integer",
+      "usedIn": [
+        "POST /posts"
+      ]
+    },
+    "scheduledAt": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /posts",
+        "PATCH /posts/{id}",
+        "POST /stories"
+      ]
+    },
+    "labels": {
+      "type": "Property",
+      "description": "",
+      "dataType": "array",
+      "usedIn": [
+        "POST /posts",
+        "PATCH /posts/{id}",
+        "POST /stories"
+      ]
+    },
+    "media": {
+      "type": "Property",
+      "description": "Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs.",
+      "dataType": "array",
+      "usedIn": [
+        "POST /posts",
+        "PATCH /posts/{id}",
+        "POST /stories"
+      ]
+    },
+    "teamOnly": {
+      "type": "Property",
+      "description": "",
+      "dataType": "boolean",
+      "usedIn": [
+        "POST /posts",
+        "PATCH /posts/{id}",
+        "POST /stories",
+        "POST /posts/{id}/comments"
+      ]
+    },
+    "approved": {
+      "type": "Property",
+      "description": "",
+      "dataType": "boolean",
+      "usedIn": [
+        "POST /posts",
+        "PATCH /posts/{id}",
+        "POST /stories"
+      ]
+    },
+    "approvedBy": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /posts",
+        "PATCH /posts/{id}",
+        "POST /stories"
+      ]
+    },
+    "publishAtScheduledDate": {
+      "type": "Property",
+      "description": "",
+      "dataType": "boolean",
+      "usedIn": [
+        "POST /posts",
+        "PATCH /posts/{id}",
+        "POST /stories"
+      ]
+    },
+    "firstComment": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /posts"
+      ]
+    },
+    "internalNote": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /posts",
+        "POST /stories"
+      ]
+    },
+    "youtubeTitle": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /posts"
+      ]
+    },
+    "linkedinPdfTitle": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /posts",
+        "PATCH /posts/{id}"
+      ]
+    },
+    "linkedinVideoTitle": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /posts",
+        "PATCH /posts/{id}"
+      ]
+    },
+    "notify": {
+      "type": "Property",
+      "description": "",
+      "dataType": "boolean",
+      "usedIn": [
+        "POST /posts",
+        "POST /stories"
+      ]
+    },
+    "pinterest": {
+      "type": "Property",
+      "description": "",
+      "dataType": "object",
+      "usedIn": [
+        "POST /posts",
+        "PATCH /posts/{id}"
+      ]
+    },
+    "campaignId": {
+      "type": "Property",
+      "description": "",
+      "dataType": "",
+      "usedIn": [
+        "POST /posts",
+        "PATCH /posts/{id}"
+      ]
+    },
+    "archived": {
+      "type": "Property",
+      "description": "",
+      "dataType": "boolean",
+      "usedIn": [
+        "PATCH /posts/{id}"
+      ]
+    },
+    "postIds": {
+      "type": "Property",
+      "description": "",
+      "dataType": "array",
+      "usedIn": [
+        "PATCH /posts/reorder"
+      ]
+    },
+    "name": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /campaigns",
+        "PATCH /campaigns/{id}",
+        "POST /workspaces"
+      ]
+    },
+    "status": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /campaigns",
+        "PATCH /campaigns/{id}"
+      ]
+    },
+    "icon": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /campaigns",
+        "PATCH /campaigns/{id}"
+      ]
+    },
+    "color": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /campaigns",
+        "PATCH /campaigns/{id}",
+        "POST /labels"
+      ]
+    },
+    "startedAt": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /campaigns",
+        "PATCH /campaigns/{id}"
+      ]
+    },
+    "endedAt": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /campaigns",
+        "PATCH /campaigns/{id}"
+      ]
+    },
+    "description": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /campaigns",
+        "PATCH /campaigns/{id}"
+      ]
+    },
+    "links": {
+      "type": "Property",
+      "description": "",
+      "dataType": "array",
+      "usedIn": [
+        "POST /campaigns",
+        "PATCH /campaigns/{id}"
+      ]
+    },
+    "mediaUrls": {
+      "type": "Property",
+      "description": "Array of 1 to 20 public image/video URLs to upload to the workspace media library. Each file max ~100MB.",
+      "dataType": "array",
+      "usedIn": [
+        "POST /media"
+      ]
+    },
+    "stickers": {
+      "type": "Property",
+      "description": "",
+      "dataType": "array",
+      "usedIn": [
+        "POST /stories"
+      ]
+    },
+    "timezone": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /workspaces"
+      ]
+    },
+    "approvalSettings": {
+      "type": "Property",
+      "description": "",
+      "dataType": "",
+      "usedIn": [
+        "POST /workspaces"
+      ]
+    },
+    "websiteUrl": {
+      "type": "Property",
+      "description": "",
+      "dataType": "string",
+      "usedIn": [
+        "POST /workspaces"
+      ]
+    },
+    "ErrorResponse": {
+      "type": "Schema",
+      "description": "",
+      "properties": [
+        "error"
+      ]
+    }
+  }
+}

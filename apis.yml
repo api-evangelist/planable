@@ -33,6 +33,8 @@ apis:
         url: https://changelog.planable.io/
       - type: StatusPage
         url: https://status.planable.io/public-api
+      - type: OpenAPI
+        url: openapi/planable-openapi.json
 common:
   - type: Website
     url: https://planable.io/

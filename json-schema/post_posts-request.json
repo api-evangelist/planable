@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/post_posts-request.json",
+  "title": "Post_Posts Request",
+  "type": "object",
+  "properties": {
+    "workspaceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pageId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pageIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "maxItems": 20
+    },
+    "text": {
+      "type": "string",
+      "maxLength": 25000,
+      "default": ""
+    },
+    "gridPosition": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "scheduledAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "maxItems": 20,
+      "default": [],
+      "description": "Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs."
+    },
+    "teamOnly": {
+      "type": "boolean"
+    },
+    "approved": {
+      "type": "boolean"
+    },
+    "approvedBy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "publishAtScheduledDate": {
+      "type": "boolean",
+      "default": false
+    },
+    "firstComment": {
+      "type": "string",
+      "maxLength": 8000
+    },
+    "internalNote": {
+      "type": "string",
+      "maxLength": 8000
+    },
+    "youtubeTitle": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "linkedinPdfTitle": {
+      "type": "string",
+      "maxLength": 150
+    },
+    "linkedinVideoTitle": {
+      "type": "string",
+      "maxLength": 150
+    },
+    "notify": {
+      "type": "boolean",
+      "default": true
+    },
+    "pinterest": {
+      "type": "object",
+      "properties": {
+        "boardId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 100
+        },
+        "link": {
+          "type": "string",
+          "format": "uri"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 500
+        }
+      },
+      "required": [
+        "boardId"
+      ]
+    },
+    "campaignId": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "workspaceId"
+  ]
+}

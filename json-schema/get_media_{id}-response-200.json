@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/get_media_{id}-response-200.json",
+  "title": "Get_Media_{Id} Response 200",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "workspaceId": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "image",
+            "video",
+            "gif"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "thumbnailUrl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "width": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "height": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "size": {
+          "type": "number"
+        },
+        "mimeType": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "uploading",
+            "processing",
+            "error",
+            "success"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "workspaceId",
+        "type",
+        "name",
+        "url",
+        "thumbnailUrl",
+        "width",
+        "height",
+        "size",
+        "mimeType",
+        "status",
+        "createdAt"
+      ]
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

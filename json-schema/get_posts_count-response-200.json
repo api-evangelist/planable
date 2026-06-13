@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/get_posts_count-response-200.json",
+  "title": "Get_Posts_Count Response 200",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "number"
+        },
+        "workspaces": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "workspaceId": {
+                "type": "string"
+              },
+              "count": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "workspaceId",
+              "count"
+            ]
+          }
+        }
+      },
+      "required": [
+        "total",
+        "workspaces"
+      ]
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

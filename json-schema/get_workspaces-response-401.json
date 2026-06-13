@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/get_workspaces-response-401.json",
+  "title": "Get_Workspaces Response 401",
+  "$ref": "#/components/schemas/ErrorResponse"
+}

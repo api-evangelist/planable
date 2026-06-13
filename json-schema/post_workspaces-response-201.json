@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/post_workspaces-response-201.json",
+  "title": "Post_Workspaces Response 201",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "companyId": {
+          "type": "string"
+        },
+        "websiteUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "approvalSettings": {
+          "anyOf": [
+            {
+              "allOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "autoSchedule": {
+                      "type": "boolean"
+                    },
+                    "autoLock": {
+                      "type": "boolean"
+                    },
+                    "sendReminders": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "autoSchedule",
+                    "autoLock"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "MULTIPLE"
+                      ]
+                    },
+                    "approvalLevels": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          },
+                          "approversIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "label",
+                          "approversIds"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ]
+                }
+              ]
+            },
+            {
+              "allOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "autoSchedule": {
+                      "type": "boolean"
+                    },
+                    "autoLock": {
+                      "type": "boolean"
+                    },
+                    "sendReminders": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "autoSchedule",
+                    "autoLock"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "NONE",
+                        "OPTIONAL",
+                        "REQUIRED"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "defaultTeamOnlyPosts": {
+          "type": "boolean"
+        },
+        "hideEmailsFromClients": {
+          "type": "boolean"
+        },
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "color": {
+                "type": "string"
+              },
+              "name": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "color",
+              "name"
+            ]
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "timezone",
+        "companyId",
+        "websiteUrl",
+        "approvalSettings",
+        "defaultTeamOnlyPosts",
+        "hideEmailsFromClients",
+        "labels",
+        "createdAt"
+      ]
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

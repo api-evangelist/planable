@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/post_posts_{id}_sync-response-401.json",
+  "title": "Post_Posts_{Id}_Sync Response 401",
+  "$ref": "#/components/schemas/ErrorResponse"
+}

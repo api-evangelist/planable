@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/post_pages_{id}_sync-response-200.json",
+  "title": "Post_Pages_{Id}_Sync Response 200",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "pageId": {
+          "type": "string"
+        },
+        "started": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pageId",
+        "started",
+        "message"
+      ]
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

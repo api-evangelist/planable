@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/post_posts_{id}_comments-response-403.json",
+  "title": "Post_Posts_{Id}_Comments Response 403",
+  "$ref": "#/components/schemas/ErrorResponse"
+}

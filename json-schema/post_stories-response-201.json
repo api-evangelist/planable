@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/post_stories-response-201.json",
+  "title": "Post_Stories Response 201",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "workspaceId": {
+          "type": "string"
+        },
+        "pageId": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "classification": {
+          "type": "string",
+          "enum": [
+            "story"
+          ]
+        },
+        "media": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "scheduledAt": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "scheduledSet": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "string"
+        },
+        "approved": {
+          "type": "boolean"
+        },
+        "approvedBy": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "userId": {
+                "type": "string"
+              },
+              "approvedAt": {
+                "type": "string",
+                "format": "date-time"
+              }
+            },
+            "required": [
+              "userId",
+              "approvedAt"
+            ]
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "workspaceId",
+        "pageId",
+        "type",
+        "classification",
+        "media",
+        "scheduledAt",
+        "scheduledSet",
+        "status",
+        "approved",
+        "createdAt"
+      ]
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

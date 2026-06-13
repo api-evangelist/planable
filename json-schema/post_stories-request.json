@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/post_stories-request.json",
+  "title": "Post_Stories Request",
+  "type": "object",
+  "properties": {
+    "workspaceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pageId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "media": {
+      "type": "string",
+      "format": "uri"
+    },
+    "stickers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "text",
+              "location",
+              "link",
+              "music",
+              "mention",
+              "hashtags",
+              "questions",
+              "notes",
+              "other"
+            ]
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "type",
+          "value"
+        ]
+      },
+      "default": []
+    },
+    "scheduledAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": []
+    },
+    "teamOnly": {
+      "type": "boolean"
+    },
+    "approved": {
+      "type": "boolean"
+    },
+    "approvedBy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "publishAtScheduledDate": {
+      "type": "boolean",
+      "default": false
+    },
+    "notify": {
+      "type": "boolean",
+      "default": true
+    },
+    "internalNote": {
+      "type": "string",
+      "maxLength": 8000
+    }
+  },
+  "required": [
+    "workspaceId",
+    "pageId",
+    "media"
+  ]
+}

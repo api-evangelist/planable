@@ -1,0 +1,511 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/get_pages_{id}_metrics-response-200.json",
+  "title": "Get_Pages_{Id}_Metrics Response 200",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "pageId": {
+            "type": "string"
+          },
+          "pageType": {
+            "type": "string"
+          },
+          "fetchedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "partial": {
+            "type": "boolean"
+          },
+          "facebook": {
+            "type": "object",
+            "properties": {
+              "followers": {
+                "type": "number"
+              },
+              "gainedFollowers": {
+                "type": "number"
+              },
+              "posts": {
+                "type": "number"
+              },
+              "engagement": {
+                "type": "number"
+              },
+              "reactions": {
+                "type": "number"
+              },
+              "pageViews": {
+                "type": "number"
+              },
+              "unFollows": {
+                "type": "number"
+              },
+              "views": {
+                "type": "number"
+              },
+              "totalFollowers": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "followers",
+              "gainedFollowers",
+              "posts",
+              "engagement",
+              "reactions",
+              "pageViews",
+              "unFollows",
+              "views"
+            ]
+          },
+          "instagram": {
+            "type": "object",
+            "properties": {
+              "gainedFollowers": {
+                "type": "number"
+              },
+              "unFollows": {
+                "type": "number"
+              },
+              "totalFollowers": {
+                "type": "number"
+              },
+              "followersIncomplete": {
+                "type": "boolean"
+              },
+              "impressions": {
+                "type": "number"
+              },
+              "views": {
+                "type": "number"
+              },
+              "reach": {
+                "type": "number"
+              },
+              "accountsReachBreakdown": {
+                "type": "object",
+                "properties": {
+                  "followers": {
+                    "type": "number"
+                  },
+                  "nonFollowers": {
+                    "type": "number"
+                  },
+                  "total": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "followers",
+                  "nonFollowers",
+                  "total"
+                ]
+              },
+              "profileViews": {
+                "type": "number"
+              },
+              "posts": {
+                "type": "number"
+              },
+              "engagement": {
+                "type": "number"
+              },
+              "engagementBreakdown": {
+                "type": "object",
+                "properties": {
+                  "post": {
+                    "type": "number"
+                  },
+                  "reel": {
+                    "type": "number"
+                  },
+                  "ad": {
+                    "type": "number"
+                  },
+                  "story": {
+                    "type": "number"
+                  },
+                  "carousel": {
+                    "type": "number"
+                  }
+                }
+              },
+              "reachBreakdown": {
+                "type": "object",
+                "properties": {
+                  "post": {
+                    "type": "object",
+                    "properties": {
+                      "total": {
+                        "type": "number"
+                      },
+                      "followers": {
+                        "type": "number"
+                      },
+                      "nonFollowers": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "total",
+                      "followers",
+                      "nonFollowers"
+                    ]
+                  },
+                  "reel": {
+                    "type": "object",
+                    "properties": {
+                      "total": {
+                        "type": "number"
+                      },
+                      "followers": {
+                        "type": "number"
+                      },
+                      "nonFollowers": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "total",
+                      "followers",
+                      "nonFollowers"
+                    ]
+                  },
+                  "story": {
+                    "type": "object",
+                    "properties": {
+                      "total": {
+                        "type": "number"
+                      },
+                      "followers": {
+                        "type": "number"
+                      },
+                      "nonFollowers": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "total",
+                      "followers",
+                      "nonFollowers"
+                    ]
+                  }
+                },
+                "required": [
+                  "post",
+                  "reel",
+                  "story"
+                ]
+              }
+            },
+            "required": [
+              "gainedFollowers",
+              "unFollows",
+              "reach",
+              "posts",
+              "engagement"
+            ]
+          },
+          "linkedin": {
+            "type": "object",
+            "properties": {
+              "followers": {
+                "type": "number"
+              },
+              "totalFollowers": {
+                "type": "number"
+              },
+              "impressions": {
+                "type": "number"
+              },
+              "engagement": {
+                "type": "number"
+              },
+              "pageInsights": {
+                "type": "number"
+              },
+              "pageViews": {
+                "type": "number"
+              },
+              "posts": {
+                "type": "number"
+              },
+              "reshares": {
+                "type": "number"
+              },
+              "reactions": {
+                "type": "number"
+              },
+              "comments": {
+                "type": "number"
+              },
+              "shareStats": {
+                "type": "object",
+                "properties": {
+                  "uniqueImpressionsCount": {
+                    "type": "number"
+                  },
+                  "clickCount": {
+                    "type": "number"
+                  },
+                  "engagement": {
+                    "type": "number"
+                  },
+                  "likeCount": {
+                    "type": "number"
+                  },
+                  "commentCount": {
+                    "type": "number"
+                  },
+                  "shareCount": {
+                    "type": "number"
+                  },
+                  "impressionCount": {
+                    "type": "number"
+                  },
+                  "commentMentionsCount": {
+                    "type": "number"
+                  },
+                  "shareMentionsCount": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "uniqueImpressionsCount",
+                  "clickCount",
+                  "engagement",
+                  "likeCount",
+                  "commentCount",
+                  "shareCount",
+                  "impressionCount"
+                ]
+              }
+            },
+            "required": [
+              "followers",
+              "impressions"
+            ]
+          },
+          "tiktok": {
+            "type": "object",
+            "properties": {
+              "profile_views": {
+                "type": "number"
+              },
+              "video_views": {
+                "type": "number"
+              },
+              "likes": {
+                "type": "number"
+              },
+              "comments": {
+                "type": "number"
+              },
+              "shares": {
+                "type": "number"
+              },
+              "followers_count": {
+                "type": "number"
+              },
+              "engagement": {
+                "type": "number"
+              },
+              "videos": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "profile_views",
+              "video_views",
+              "likes",
+              "comments",
+              "shares",
+              "followers_count",
+              "engagement",
+              "videos"
+            ]
+          },
+          "threads": {
+            "type": "object",
+            "properties": {
+              "views": {
+                "type": "number"
+              },
+              "likes": {
+                "type": "number"
+              },
+              "replies": {
+                "type": "number"
+              },
+              "reposts": {
+                "type": "number"
+              },
+              "quotes": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "views",
+              "likes",
+              "replies",
+              "reposts",
+              "quotes"
+            ]
+          },
+          "googleMyBusiness": {
+            "type": "object",
+            "properties": {
+              "posts": {
+                "type": "number"
+              },
+              "callClicks": {
+                "type": "number"
+              },
+              "websiteClicks": {
+                "type": "number"
+              },
+              "impressions": {
+                "type": "number"
+              },
+              "engagement": {
+                "type": "number"
+              },
+              "businessConversations": {
+                "type": "number"
+              },
+              "businessImpressionsMobileSearch": {
+                "type": "number"
+              },
+              "businessImpressionsDesktopMaps": {
+                "type": "number"
+              },
+              "businessImpressionsDesktopSearch": {
+                "type": "number"
+              },
+              "businessImpressionsMobileMaps": {
+                "type": "number"
+              },
+              "businessDirectionRequests": {
+                "type": "number"
+              },
+              "businessBookings": {
+                "type": "number"
+              },
+              "businessFoodOrders": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "posts",
+              "callClicks",
+              "websiteClicks",
+              "impressions",
+              "engagement",
+              "businessConversations",
+              "businessImpressionsMobileSearch",
+              "businessImpressionsDesktopMaps",
+              "businessImpressionsDesktopSearch",
+              "businessImpressionsMobileMaps",
+              "businessDirectionRequests",
+              "businessBookings",
+              "businessFoodOrders"
+            ]
+          },
+          "youtube": {
+            "type": "object",
+            "properties": {
+              "subscribers": {
+                "type": "number"
+              },
+              "totalSubscribers": {
+                "type": "number"
+              },
+              "subscribersGained": {
+                "type": "number"
+              },
+              "subscribersLost": {
+                "type": "number"
+              },
+              "videos": {
+                "type": "number"
+              },
+              "views": {
+                "type": "number"
+              },
+              "estimatedMinutesWatched": {
+                "type": "number"
+              },
+              "comments": {
+                "type": "number"
+              },
+              "likes": {
+                "type": "number"
+              },
+              "dislikes": {
+                "type": "number"
+              },
+              "shares": {
+                "type": "number"
+              },
+              "engagement": {
+                "type": "number"
+              },
+              "averageViewDuration": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "subscribers",
+              "subscribersGained",
+              "subscribersLost",
+              "videos",
+              "views",
+              "estimatedMinutesWatched",
+              "comments",
+              "likes",
+              "dislikes",
+              "shares",
+              "engagement",
+              "averageViewDuration"
+            ]
+          }
+        },
+        "required": [
+          "pageId",
+          "pageType",
+          "fetchedAt",
+          "partial"
+        ]
+      }
+    },
+    "pagination": {
+      "type": "object",
+      "properties": {
+        "offset": {
+          "type": "number"
+        },
+        "limit": {
+          "type": "number"
+        },
+        "hasMore": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "offset",
+        "limit",
+        "hasMore"
+      ]
+    }
+  },
+  "required": [
+    "data",
+    "pagination"
+  ]
+}

@@ -1,0 +1,309 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/post_posts-response-201.json",
+  "title": "Post_Posts Response 201",
+  "type": "object",
+  "properties": {
+    "posts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "workspaceId": {
+            "type": "string"
+          },
+          "pageId": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "classification": {
+            "type": "string"
+          },
+          "plainText": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "gridPosition": {
+            "type": "number"
+          },
+          "campaignId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "media": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uri"
+            },
+            "maxItems": 20,
+            "description": "Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs."
+          },
+          "scheduledAt": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string"
+          },
+          "approved": {
+            "type": "boolean"
+          },
+          "approvedBy": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string"
+                },
+                "approvedAt": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "levelId": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "userId",
+                "approvedAt"
+              ]
+            }
+          },
+          "approval": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "enum": [
+                  "NOT_APPLICABLE",
+                  "NEVER_SENT",
+                  "PENDING",
+                  "PARTIALLY_APPROVED",
+                  "FULLY_APPROVED"
+                ]
+              },
+              "approved": {
+                "type": "boolean"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "NONE",
+                  "OPTIONAL",
+                  "REQUIRED",
+                  "MULTIPLE"
+                ]
+              },
+              "completedLevels": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "totalLevels": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "currentLevelId": {
+                "type": "string"
+              },
+              "levels": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "approved": {
+                      "type": "boolean"
+                    },
+                    "approvedBy": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "userId": {
+                            "type": "string"
+                          },
+                          "approvedAt": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "levelId": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "userId",
+                          "approvedAt"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "approved",
+                    "approvedBy"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "status",
+              "approved",
+              "type",
+              "completedLevels",
+              "totalLevels",
+              "levels"
+            ]
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "scheduledSet": {
+            "type": "boolean"
+          },
+          "teamOnly": {
+            "type": "boolean"
+          },
+          "archived": {
+            "type": "boolean"
+          },
+          "modifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "mediaType": {
+            "type": "string"
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "uuid": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "color": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "uuid",
+                "text",
+                "color"
+              ]
+            }
+          },
+          "commentsCounter": {
+            "type": "number"
+          },
+          "notesCounter": {
+            "type": "number"
+          },
+          "publicShareLink": {
+            "type": "string",
+            "format": "uri"
+          },
+          "publishedPostLink": {
+            "type": "string",
+            "format": "uri"
+          },
+          "groupId": {
+            "type": "string"
+          },
+          "groupPageIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "groupSync": {
+            "type": "boolean"
+          },
+          "pinterest": {
+            "type": "object",
+            "properties": {
+              "boardId": {
+                "type": "string"
+              },
+              "boardName": {
+                "type": "string"
+              },
+              "title": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "link": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "description": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "boardId",
+              "boardName",
+              "title",
+              "link",
+              "description"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "workspaceId",
+          "pageId",
+          "type",
+          "classification",
+          "plainText",
+          "createdAt",
+          "campaignId",
+          "media",
+          "scheduledAt",
+          "status",
+          "approved",
+          "approval",
+          "published",
+          "scheduledSet",
+          "teamOnly",
+          "archived",
+          "commentsCounter",
+          "notesCounter"
+        ]
+      }
+    }
+  },
+  "required": [
+    "posts"
+  ]
+}

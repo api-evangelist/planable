@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/post_posts_{id}_comments-response-201.json",
+  "title": "Post_Posts_{Id}_Comments Response 201",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "postId": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "authorId": {
+          "type": "string"
+        },
+        "teamOnly": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "postId",
+        "text",
+        "authorId",
+        "teamOnly",
+        "createdAt"
+      ]
+    }
+  },
+  "required": [
+    "data"
+  ]
+}

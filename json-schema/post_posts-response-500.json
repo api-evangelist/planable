@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/post_posts-response-500.json",
+  "title": "Post_Posts Response 500",
+  "$ref": "#/components/schemas/ErrorResponse"
+}

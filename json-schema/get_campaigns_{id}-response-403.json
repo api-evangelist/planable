@@ -1,0 +1,6 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/get_campaigns_{id}-response-403.json",
+  "title": "Get_Campaigns_{Id} Response 403",
+  "$ref": "#/components/schemas/ErrorResponse"
+}

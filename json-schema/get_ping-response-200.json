@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/get_ping-response-200.json",
+  "title": "Get_Ping Response 200",
+  "type": "object",
+  "properties": {
+    "ok": {
+      "type": "boolean",
+      "enum": [
+        true
+      ]
+    },
+    "tokenId": {
+      "type": "string"
+    },
+    "companyId": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "ok",
+    "tokenId",
+    "companyId"
+  ]
+}

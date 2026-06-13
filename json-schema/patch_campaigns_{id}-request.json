@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://planable.io/schemas/patch_campaigns_{id}-request.json",
+  "title": "Patch_Campaigns_{Id} Request",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "archived",
+        "paused",
+        "planned",
+        "completed"
+      ]
+    },
+    "icon": {
+      "type": "string",
+      "enum": [
+        "star",
+        "bulb",
+        "calendar",
+        "apple",
+        "gift",
+        "christmasTree",
+        "glass",
+        "eggCracked",
+        "archive",
+        "ghost",
+        "cross",
+        "candle",
+        "home",
+        "briefcase",
+        "school",
+        "camera",
+        "bike",
+        "bell",
+        "barbell",
+        "barrier",
+        "paint",
+        "bolt",
+        "heart",
+        "babyCarriage",
+        "trophy",
+        "award",
+        "paw",
+        "bone",
+        "creditCard",
+        "discount",
+        "shield",
+        "tag",
+        "thumbUp",
+        "thumbDown",
+        "umbrella",
+        "flag",
+        "sun",
+        "campfire",
+        "seeding",
+        "leaf",
+        "cherry",
+        "macro",
+        "clover",
+        "pumpkin",
+        "flame",
+        "cactus",
+        "globe",
+        "stack",
+        "basketball",
+        "baseball",
+        "ball",
+        "gasPump",
+        "car",
+        "balloon",
+        "mug",
+        "location",
+        "analyze",
+        "chartPie",
+        "chartDots",
+        "cards",
+        "mail",
+        "headphones",
+        "microphone",
+        "key"
+      ]
+    },
+    "color": {
+      "type": "string"
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "endedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "description": {
+      "type": "string"
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    }
+  }
+}
