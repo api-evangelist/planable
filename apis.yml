@@ -1,7 +1,7 @@
 aid: planable
 name: Planable
 description: Planable is a social media collaboration platform trusted by agencies, freelancers, and marketing teams to plan, create, collaborate, approve, and publish content across multiple social media channels. It provides a REST API for managing workspaces, pages, posts, feedback, approval workflows, and publishing to Facebook, Instagram, LinkedIn, X (Twitter), YouTube, TikTok, Pinterest, Google Business Profile, and Threads.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/planable/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
