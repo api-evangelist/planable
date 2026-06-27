@@ -29,7 +29,7 @@ apis:
     properties:
       - type: Documentation
         url: https://help.planable.io/hc/en-us/
-      - type: Changelog
+      - type: ChangeLog
         url: https://changelog.planable.io/
       - type: StatusPage
         url: https://status.planable.io/public-api
@@ -58,7 +58,7 @@ common:
     url: rate-limits/planable-rate-limits.yml
   - type: FinOps
     url: finops/planable-finops.yml
-  - type: Changelog
+  - type: ChangeLog
     url: https://changelog.planable.io/
 maintainers:
   - FN: Kin Lane
