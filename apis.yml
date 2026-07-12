@@ -36,6 +36,10 @@ apis:
       - type: OpenAPI
         url: openapi/planable-openapi.json
 common:
+  - type: DomainSecurity
+    url: security/planable-domain-security.yml
+  - type: Authentication
+    url: authentication/planable-authentication.yml
   - type: Website
     url: https://planable.io/
   - type: Documentation
