@@ -1,0 +1,374 @@
+openapi: 3.1.0
+info:
+  title: Planable Public Campaigns Media API
+  version: 1.0.0
+  description: REST API for managing Planable companies, workspaces, pages, posts and more.
+servers:
+- url: https://api.planable.io/api/v1
+security:
+- bearerAuth: []
+tags:
+- name: Media
+paths:
+  /media:
+    get:
+      tags:
+      - Media
+      summary: List media uploads
+      description: Returns media uploads for a workspace with pagination.
+      parameters:
+      - name: workspaceId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 20
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: List of media uploads with pagination
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        workspaceId:
+                          type: string
+                        type:
+                          type: string
+                          enum:
+                          - image
+                          - video
+                          - gif
+                        name:
+                          type: string
+                        url:
+                          type:
+                          - string
+                          - 'null'
+                          format: uri
+                        thumbnailUrl:
+                          type:
+                          - string
+                          - 'null'
+                          format: uri
+                        width:
+                          type:
+                          - number
+                          - 'null'
+                        height:
+                          type:
+                          - number
+                          - 'null'
+                        size:
+                          type: number
+                        mimeType:
+                          type: string
+                        status:
+                          type: string
+                          enum:
+                          - uploading
+                          - processing
+                          - error
+                          - success
+                        createdAt:
+                          type: string
+                          format: date-time
+                      required:
+                      - id
+                      - workspaceId
+                      - type
+                      - name
+                      - url
+                      - thumbnailUrl
+                      - width
+                      - height
+                      - size
+                      - mimeType
+                      - status
+                      - createdAt
+                  pagination:
+                    type: object
+                    properties:
+                      offset:
+                        type: number
+                      limit:
+                        type: number
+                      hasMore:
+                        type: boolean
+                    required:
+                    - offset
+                    - limit
+                    - hasMore
+                required:
+                - data
+                - pagination
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+      - Media
+      summary: Upload media from URLs
+      description: Accepts 1 to 20 public image or video URLs (each max 100MB) for async download and processing. Returns 202 immediately with processing status for each item.
+      security:
+      - bearerAuth:
+        - write
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                workspaceId:
+                  type: string
+                  minLength: 1
+                mediaUrls:
+                  type: array
+                  items:
+                    type: string
+                    format: uri
+                  minItems: 1
+                  maxItems: 20
+                  description: Array of 1 to 20 public image/video URLs to upload to the workspace media library. Each file max ~100MB.
+              required:
+              - workspaceId
+              - mediaUrls
+      responses:
+        '202':
+          description: Media upload accepted for processing
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        status:
+                          type: string
+                          enum:
+                          - processing
+                      required:
+                      - id
+                      - status
+                required:
+                - data
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /media/{id}:
+    get:
+      tags:
+      - Media
+      summary: Get media upload
+      description: Returns a single media upload by ID.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Media upload detail
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      workspaceId:
+                        type: string
+                      type:
+                        type: string
+                        enum:
+                        - image
+                        - video
+                        - gif
+                      name:
+                        type: string
+                      url:
+                        type:
+                        - string
+                        - 'null'
+                        format: uri
+                      thumbnailUrl:
+                        type:
+                        - string
+                        - 'null'
+                        format: uri
+                      width:
+                        type:
+                        - number
+                        - 'null'
+                      height:
+                        type:
+                        - number
+                        - 'null'
+                      size:
+                        type: number
+                      mimeType:
+                        type: string
+                      status:
+                        type: string
+                        enum:
+                        - uploading
+                        - processing
+                        - error
+                        - success
+                      createdAt:
+                        type: string
+                        format: date-time
+                    required:
+                    - id
+                    - workspaceId
+                    - type
+                    - name
+                    - url
+                    - thumbnailUrl
+                    - width
+                    - height
+                    - size
+                    - mimeType
+                    - status
+                    - createdAt
+                required:
+                - data
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Media not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              enum:
+              - VALIDATION_ERROR
+              - UNAUTHORIZED
+              - FORBIDDEN
+              - NOT_FOUND
+              - METHOD_NOT_ALLOWED
+              - RATE_LIMITED
+              - POST_ALREADY_PUBLISHED
+              - PUBLISHING_IN_PROGRESS
+              - WORKSPACE_LIMIT_REACHED
+              - INTERNAL
+            message:
+              type: string
+            requestId:
+              type: string
+          required:
+          - code
+          - message
+          - requestId
+      required:
+      - error
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: pln_*

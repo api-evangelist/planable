@@ -1,0 +1,1894 @@
+openapi: 3.1.0
+info:
+  title: Planable Public Campaigns Posts API
+  version: 1.0.0
+  description: REST API for managing Planable companies, workspaces, pages, posts and more.
+servers:
+- url: https://api.planable.io/api/v1
+security:
+- bearerAuth: []
+tags:
+- name: Posts
+paths:
+  /posts:
+    get:
+      tags:
+      - Posts
+      summary: List posts
+      description: Returns posts for a workspace with pagination. Each item includes the same post detail fields as GET /posts/{id}.
+      parameters:
+      - name: workspaceId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: pageId
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: campaignId
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by campaign ID, or `no-campaign` for posts not assigned to any campaign
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 20
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: List of post details with pagination
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        workspaceId:
+                          type: string
+                        pageId:
+                          type: string
+                        type:
+                          type: string
+                        classification:
+                          type: string
+                        plainText:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+                        gridPosition:
+                          type: number
+                        campaignId:
+                          type:
+                          - string
+                          - 'null'
+                        media:
+                          type: array
+                          items:
+                            type: string
+                            format: uri
+                          maxItems: 20
+                          description: Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs.
+                        scheduledAt:
+                          type:
+                          - string
+                          - 'null'
+                          format: date-time
+                        status:
+                          type: string
+                        approved:
+                          type: boolean
+                        approvedBy:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              userId:
+                                type: string
+                              approvedAt:
+                                type: string
+                                format: date-time
+                              levelId:
+                                type: string
+                            required:
+                            - userId
+                            - approvedAt
+                        approval:
+                          type: object
+                          properties:
+                            status:
+                              type: string
+                              enum:
+                              - NOT_APPLICABLE
+                              - NEVER_SENT
+                              - PENDING
+                              - PARTIALLY_APPROVED
+                              - FULLY_APPROVED
+                            approved:
+                              type: boolean
+                            type:
+                              type: string
+                              enum:
+                              - NONE
+                              - OPTIONAL
+                              - REQUIRED
+                              - MULTIPLE
+                            completedLevels:
+                              type: integer
+                              minimum: 0
+                            totalLevels:
+                              type: integer
+                              minimum: 0
+                            currentLevelId:
+                              type: string
+                            levels:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                  label:
+                                    type: string
+                                  approved:
+                                    type: boolean
+                                  approvedBy:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        userId:
+                                          type: string
+                                        approvedAt:
+                                          type: string
+                                          format: date-time
+                                        levelId:
+                                          type: string
+                                      required:
+                                      - userId
+                                      - approvedAt
+                                required:
+                                - id
+                                - label
+                                - approved
+                                - approvedBy
+                          required:
+                          - status
+                          - approved
+                          - type
+                          - completedLevels
+                          - totalLevels
+                          - levels
+                        published:
+                          type: boolean
+                        scheduledSet:
+                          type: boolean
+                        teamOnly:
+                          type: boolean
+                        archived:
+                          type: boolean
+                        modifiedAt:
+                          type: string
+                          format: date-time
+                        mediaType:
+                          type: string
+                        labels:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              uuid:
+                                type: string
+                              text:
+                                type: string
+                              color:
+                                type: string
+                            required:
+                            - uuid
+                            - text
+                            - color
+                        commentsCounter:
+                          type: number
+                        notesCounter:
+                          type: number
+                        publicShareLink:
+                          type: string
+                          format: uri
+                        publishedPostLink:
+                          type: string
+                          format: uri
+                        groupId:
+                          type: string
+                        groupPageIds:
+                          type: array
+                          items:
+                            type: string
+                        groupSync:
+                          type: boolean
+                        pinterest:
+                          type: object
+                          properties:
+                            boardId:
+                              type: string
+                            boardName:
+                              type: string
+                            title:
+                              type:
+                              - string
+                              - 'null'
+                            link:
+                              type:
+                              - string
+                              - 'null'
+                            description:
+                              type:
+                              - string
+                              - 'null'
+                          required:
+                          - boardId
+                          - boardName
+                          - title
+                          - link
+                          - description
+                      required:
+                      - id
+                      - workspaceId
+                      - pageId
+                      - type
+                      - classification
+                      - plainText
+                      - createdAt
+                      - campaignId
+                      - media
+                      - scheduledAt
+                      - status
+                      - approved
+                      - approval
+                      - published
+                      - scheduledSet
+                      - teamOnly
+                      - archived
+                      - commentsCounter
+                      - notesCounter
+                  pagination:
+                    type: object
+                    properties:
+                      offset:
+                        type: number
+                      limit:
+                        type: number
+                      hasMore:
+                        type: boolean
+                    required:
+                    - offset
+                    - limit
+                    - hasMore
+                required:
+                - data
+                - pagination
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+      - Posts
+      summary: Create a new post
+      description: 'Creates a post in the specified workspace and page. Use `pageId` for a single post or `pageIds` to create grouped cross-page posts. Set `notify` to `false` to suppress external notifications (email, in-app push) for this post creation; internal activity feed entries are always recorded. The `media` field: Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs.'
+      security:
+      - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                workspaceId:
+                  type: string
+                  minLength: 1
+                pageId:
+                  type: string
+                  minLength: 1
+                pageIds:
+                  type: array
+                  items:
+                    type: string
+                    minLength: 1
+                  minItems: 1
+                  maxItems: 20
+                text:
+                  type: string
+                  maxLength: 25000
+                  default: ''
+                gridPosition:
+                  type: integer
+                  minimum: 0
+                scheduledAt:
+                  type: string
+                  format: date-time
+                labels:
+                  type: array
+                  items:
+                    type: string
+                  default: []
+                media:
+                  type: array
+                  items:
+                    type: string
+                    format: uri
+                  maxItems: 20
+                  default: []
+                  description: Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs.
+                teamOnly:
+                  type: boolean
+                approved:
+                  type: boolean
+                approvedBy:
+                  type: string
+                  minLength: 1
+                publishAtScheduledDate:
+                  type: boolean
+                  default: false
+                firstComment:
+                  type: string
+                  maxLength: 8000
+                internalNote:
+                  type: string
+                  maxLength: 8000
+                youtubeTitle:
+                  type: string
+                  maxLength: 100
+                linkedinPdfTitle:
+                  type: string
+                  maxLength: 150
+                linkedinVideoTitle:
+                  type: string
+                  maxLength: 150
+                notify:
+                  type: boolean
+                  default: true
+                pinterest:
+                  type: object
+                  properties:
+                    boardId:
+                      type: string
+                      minLength: 1
+                    title:
+                      type: string
+                      maxLength: 100
+                    link:
+                      type: string
+                      format: uri
+                    description:
+                      type: string
+                      maxLength: 500
+                  required:
+                  - boardId
+                campaignId:
+                  anyOf:
+                  - type: string
+                    minLength: 1
+                  - type: 'null'
+                  - type: 'null'
+              required:
+              - workspaceId
+      responses:
+        '201':
+          description: Post created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  posts:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        workspaceId:
+                          type: string
+                        pageId:
+                          type: string
+                        type:
+                          type: string
+                        classification:
+                          type: string
+                        plainText:
+                          type: string
+                        createdAt:
+                          type: string
+                          format: date-time
+                        gridPosition:
+                          type: number
+                        campaignId:
+                          type:
+                          - string
+                          - 'null'
+                        media:
+                          type: array
+                          items:
+                            type: string
+                            format: uri
+                          maxItems: 20
+                          description: Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs.
+                        scheduledAt:
+                          type:
+                          - string
+                          - 'null'
+                          format: date-time
+                        status:
+                          type: string
+                        approved:
+                          type: boolean
+                        approvedBy:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              userId:
+                                type: string
+                              approvedAt:
+                                type: string
+                                format: date-time
+                              levelId:
+                                type: string
+                            required:
+                            - userId
+                            - approvedAt
+                        approval:
+                          type: object
+                          properties:
+                            status:
+                              type: string
+                              enum:
+                              - NOT_APPLICABLE
+                              - NEVER_SENT
+                              - PENDING
+                              - PARTIALLY_APPROVED
+                              - FULLY_APPROVED
+                            approved:
+                              type: boolean
+                            type:
+                              type: string
+                              enum:
+                              - NONE
+                              - OPTIONAL
+                              - REQUIRED
+                              - MULTIPLE
+                            completedLevels:
+                              type: integer
+                              minimum: 0
+                            totalLevels:
+                              type: integer
+                              minimum: 0
+                            currentLevelId:
+                              type: string
+                            levels:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  id:
+                                    type: string
+                                  label:
+                                    type: string
+                                  approved:
+                                    type: boolean
+                                  approvedBy:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        userId:
+                                          type: string
+                                        approvedAt:
+                                          type: string
+                                          format: date-time
+                                        levelId:
+                                          type: string
+                                      required:
+                                      - userId
+                                      - approvedAt
+                                required:
+                                - id
+                                - label
+                                - approved
+                                - approvedBy
+                          required:
+                          - status
+                          - approved
+                          - type
+                          - completedLevels
+                          - totalLevels
+                          - levels
+                        published:
+                          type: boolean
+                        scheduledSet:
+                          type: boolean
+                        teamOnly:
+                          type: boolean
+                        archived:
+                          type: boolean
+                        modifiedAt:
+                          type: string
+                          format: date-time
+                        mediaType:
+                          type: string
+                        labels:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              uuid:
+                                type: string
+                              text:
+                                type: string
+                              color:
+                                type: string
+                            required:
+                            - uuid
+                            - text
+                            - color
+                        commentsCounter:
+                          type: number
+                        notesCounter:
+                          type: number
+                        publicShareLink:
+                          type: string
+                          format: uri
+                        publishedPostLink:
+                          type: string
+                          format: uri
+                        groupId:
+                          type: string
+                        groupPageIds:
+                          type: array
+                          items:
+                            type: string
+                        groupSync:
+                          type: boolean
+                        pinterest:
+                          type: object
+                          properties:
+                            boardId:
+                              type: string
+                            boardName:
+                              type: string
+                            title:
+                              type:
+                              - string
+                              - 'null'
+                            link:
+                              type:
+                              - string
+                              - 'null'
+                            description:
+                              type:
+                              - string
+                              - 'null'
+                          required:
+                          - boardId
+                          - boardName
+                          - title
+                          - link
+                          - description
+                      required:
+                      - id
+                      - workspaceId
+                      - pageId
+                      - type
+                      - classification
+                      - plainText
+                      - createdAt
+                      - campaignId
+                      - media
+                      - scheduledAt
+                      - status
+                      - approved
+                      - approval
+                      - published
+                      - scheduledSet
+                      - teamOnly
+                      - archived
+                      - commentsCounter
+                      - notesCounter
+                required:
+                - posts
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Workspace or page not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /posts/{id}:
+    get:
+      tags:
+      - Posts
+      summary: Get post detail
+      description: Returns a single post by ID including media URLs.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Post detail with media
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      workspaceId:
+                        type: string
+                      pageId:
+                        type: string
+                      type:
+                        type: string
+                      classification:
+                        type: string
+                      plainText:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      gridPosition:
+                        type: number
+                      campaignId:
+                        type:
+                        - string
+                        - 'null'
+                      media:
+                        type: array
+                        items:
+                          type: string
+                          format: uri
+                        maxItems: 20
+                        description: Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs.
+                      scheduledAt:
+                        type:
+                        - string
+                        - 'null'
+                        format: date-time
+                      status:
+                        type: string
+                      approved:
+                        type: boolean
+                      approvedBy:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            userId:
+                              type: string
+                            approvedAt:
+                              type: string
+                              format: date-time
+                            levelId:
+                              type: string
+                          required:
+                          - userId
+                          - approvedAt
+                      approval:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                            - NOT_APPLICABLE
+                            - NEVER_SENT
+                            - PENDING
+                            - PARTIALLY_APPROVED
+                            - FULLY_APPROVED
+                          approved:
+                            type: boolean
+                          type:
+                            type: string
+                            enum:
+                            - NONE
+                            - OPTIONAL
+                            - REQUIRED
+                            - MULTIPLE
+                          completedLevels:
+                            type: integer
+                            minimum: 0
+                          totalLevels:
+                            type: integer
+                            minimum: 0
+                          currentLevelId:
+                            type: string
+                          levels:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                label:
+                                  type: string
+                                approved:
+                                  type: boolean
+                                approvedBy:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      userId:
+                                        type: string
+                                      approvedAt:
+                                        type: string
+                                        format: date-time
+                                      levelId:
+                                        type: string
+                                    required:
+                                    - userId
+                                    - approvedAt
+                              required:
+                              - id
+                              - label
+                              - approved
+                              - approvedBy
+                        required:
+                        - status
+                        - approved
+                        - type
+                        - completedLevels
+                        - totalLevels
+                        - levels
+                      published:
+                        type: boolean
+                      scheduledSet:
+                        type: boolean
+                      teamOnly:
+                        type: boolean
+                      archived:
+                        type: boolean
+                      modifiedAt:
+                        type: string
+                        format: date-time
+                      mediaType:
+                        type: string
+                      labels:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            uuid:
+                              type: string
+                            text:
+                              type: string
+                            color:
+                              type: string
+                          required:
+                          - uuid
+                          - text
+                          - color
+                      commentsCounter:
+                        type: number
+                      notesCounter:
+                        type: number
+                      publicShareLink:
+                        type: string
+                        format: uri
+                      publishedPostLink:
+                        type: string
+                        format: uri
+                      groupId:
+                        type: string
+                      groupPageIds:
+                        type: array
+                        items:
+                          type: string
+                      groupSync:
+                        type: boolean
+                      pinterest:
+                        type: object
+                        properties:
+                          boardId:
+                            type: string
+                          boardName:
+                            type: string
+                          title:
+                            type:
+                            - string
+                            - 'null'
+                          link:
+                            type:
+                            - string
+                            - 'null'
+                          description:
+                            type:
+                            - string
+                            - 'null'
+                        required:
+                        - boardId
+                        - boardName
+                        - title
+                        - link
+                        - description
+                    required:
+                    - id
+                    - workspaceId
+                    - pageId
+                    - type
+                    - classification
+                    - plainText
+                    - createdAt
+                    - campaignId
+                    - media
+                    - scheduledAt
+                    - status
+                    - approved
+                    - approval
+                    - published
+                    - scheduledSet
+                    - teamOnly
+                    - archived
+                    - commentsCounter
+                    - notesCounter
+                required:
+                - data
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Post not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+      - Posts
+      summary: Delete a post
+      description: Deletes a post in a workspace accessible to the calling token.
+      security:
+      - bearerAuth:
+        - write
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Post deleted
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+        '404':
+          description: Post not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      tags:
+      - Posts
+      summary: Update a post
+      description: 'Updates a post. Published posts are immutable and will return 400. The `media` field: Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs. Pass an empty array to clear media. Stories support a single, non-GIF media item; submitting multiple media URLs or a GIF for a story returns 400. Set `archived` to `true` to archive a post or `false` to restore it; archiving removes any active schedule.'
+      security:
+      - bearerAuth:
+        - write
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  maxLength: 25000
+                scheduledAt:
+                  type:
+                  - string
+                  - 'null'
+                  format: date-time
+                labels:
+                  type: array
+                  items:
+                    type: string
+                media:
+                  type: array
+                  items:
+                    type: string
+                    format: uri
+                  maxItems: 20
+                  description: Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs.
+                teamOnly:
+                  type: boolean
+                approved:
+                  type: boolean
+                approvedBy:
+                  type: string
+                  minLength: 1
+                linkedinPdfTitle:
+                  type: string
+                  maxLength: 150
+                linkedinVideoTitle:
+                  type: string
+                  maxLength: 150
+                pinterest:
+                  type: object
+                  properties:
+                    boardId:
+                      type: string
+                      minLength: 1
+                    title:
+                      type: string
+                      maxLength: 100
+                    link:
+                      type: string
+                      format: uri
+                    description:
+                      type: string
+                      maxLength: 500
+                publishAtScheduledDate:
+                  type: boolean
+                archived:
+                  type: boolean
+                campaignId:
+                  anyOf:
+                  - type: string
+                    minLength: 1
+                  - type: 'null'
+                  - type: 'null'
+      responses:
+        '200':
+          description: Updated post detail
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      workspaceId:
+                        type: string
+                      pageId:
+                        type: string
+                      type:
+                        type: string
+                      classification:
+                        type: string
+                      plainText:
+                        type: string
+                      createdAt:
+                        type: string
+                        format: date-time
+                      gridPosition:
+                        type: number
+                      campaignId:
+                        type:
+                        - string
+                        - 'null'
+                      media:
+                        type: array
+                        items:
+                          type: string
+                          format: uri
+                        maxItems: 20
+                        description: Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs.
+                      scheduledAt:
+                        type:
+                        - string
+                        - 'null'
+                        format: date-time
+                      status:
+                        type: string
+                      approved:
+                        type: boolean
+                      approvedBy:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            userId:
+                              type: string
+                            approvedAt:
+                              type: string
+                              format: date-time
+                            levelId:
+                              type: string
+                          required:
+                          - userId
+                          - approvedAt
+                      approval:
+                        type: object
+                        properties:
+                          status:
+                            type: string
+                            enum:
+                            - NOT_APPLICABLE
+                            - NEVER_SENT
+                            - PENDING
+                            - PARTIALLY_APPROVED
+                            - FULLY_APPROVED
+                          approved:
+                            type: boolean
+                          type:
+                            type: string
+                            enum:
+                            - NONE
+                            - OPTIONAL
+                            - REQUIRED
+                            - MULTIPLE
+                          completedLevels:
+                            type: integer
+                            minimum: 0
+                          totalLevels:
+                            type: integer
+                            minimum: 0
+                          currentLevelId:
+                            type: string
+                          levels:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                label:
+                                  type: string
+                                approved:
+                                  type: boolean
+                                approvedBy:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      userId:
+                                        type: string
+                                      approvedAt:
+                                        type: string
+                                        format: date-time
+                                      levelId:
+                                        type: string
+                                    required:
+                                    - userId
+                                    - approvedAt
+                              required:
+                              - id
+                              - label
+                              - approved
+                              - approvedBy
+                        required:
+                        - status
+                        - approved
+                        - type
+                        - completedLevels
+                        - totalLevels
+                        - levels
+                      published:
+                        type: boolean
+                      scheduledSet:
+                        type: boolean
+                      teamOnly:
+                        type: boolean
+                      archived:
+                        type: boolean
+                      modifiedAt:
+                        type: string
+                        format: date-time
+                      mediaType:
+                        type: string
+                      labels:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            uuid:
+                              type: string
+                            text:
+                              type: string
+                            color:
+                              type: string
+                          required:
+                          - uuid
+                          - text
+                          - color
+                      commentsCounter:
+                        type: number
+                      notesCounter:
+                        type: number
+                      publicShareLink:
+                        type: string
+                        format: uri
+                      publishedPostLink:
+                        type: string
+                        format: uri
+                      groupId:
+                        type: string
+                      groupPageIds:
+                        type: array
+                        items:
+                          type: string
+                      groupSync:
+                        type: boolean
+                      pinterest:
+                        type: object
+                        properties:
+                          boardId:
+                            type: string
+                          boardName:
+                            type: string
+                          title:
+                            type:
+                            - string
+                            - 'null'
+                          link:
+                            type:
+                            - string
+                            - 'null'
+                          description:
+                            type:
+                            - string
+                            - 'null'
+                        required:
+                        - boardId
+                        - boardName
+                        - title
+                        - link
+                        - description
+                    required:
+                    - id
+                    - workspaceId
+                    - pageId
+                    - type
+                    - classification
+                    - plainText
+                    - createdAt
+                    - campaignId
+                    - media
+                    - scheduledAt
+                    - status
+                    - approved
+                    - approval
+                    - published
+                    - scheduledSet
+                    - teamOnly
+                    - archived
+                    - commentsCounter
+                    - notesCounter
+                required:
+                - data
+        '400':
+          description: Validation error or post is already published
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Post not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /posts/{id}/metrics:
+    get:
+      tags:
+      - Posts
+      summary: Get post metrics
+      description: Returns the latest metrics snapshot for a published post.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Latest metrics snapshot for the post
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      postId:
+                        type: string
+                      pageId:
+                        type: string
+                      pageType:
+                        type: string
+                      fetchedAt:
+                        type: string
+                        format: date-time
+                      impressions:
+                        type: number
+                      engagement:
+                        type: number
+                      reactions:
+                        type: number
+                      facebook:
+                        type: object
+                        properties: {}
+                      instagram:
+                        type: object
+                        properties: {}
+                      linkedin:
+                        type: object
+                        properties: {}
+                      tiktok:
+                        type: object
+                        properties: {}
+                      threads:
+                        type: object
+                        properties: {}
+                      youtube:
+                        type: object
+                        properties: {}
+                    required:
+                    - postId
+                    - pageId
+                    - pageType
+                    - fetchedAt
+                    - impressions
+                    - engagement
+                    - reactions
+                required:
+                - data
+        '400':
+          description: Post is not published
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Post not found or metrics missing
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /posts/{id}/sync:
+    post:
+      tags:
+      - Posts
+      summary: Trigger post metrics sync
+      description: Triggers a fresh metrics sync for a published post.
+      security:
+      - bearerAuth:
+        - write
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Post metrics sync queued or deduplicated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      postId:
+                        type: string
+                      started:
+                        type: boolean
+                      message:
+                        type: string
+                    required:
+                    - postId
+                    - started
+                    - message
+                required:
+                - data
+        '400':
+          description: Post is not published
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+        '404':
+          description: Post not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /posts/{id}/sync-status:
+    get:
+      tags:
+      - Posts
+      summary: Get post metrics sync status
+      description: Returns whether a post metrics sync is in progress and when metrics last synced.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Post metrics sync status
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      postId:
+                        type: string
+                      syncInProgress:
+                        type: boolean
+                      lastSyncedAt:
+                        type:
+                        - string
+                        - 'null'
+                        format: date-time
+                    required:
+                    - postId
+                    - syncInProgress
+                    - lastSyncedAt
+                required:
+                - data
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+        '404':
+          description: Post not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /posts/reorder:
+    patch:
+      tags:
+      - Posts
+      summary: Reorder posts in the grid
+      description: 'Sets zero-based grid positions for posts using the order of `postIds`. The first ID receives `gridPosition: 0`, the second receives `gridPosition: 1`, and so on.'
+      security:
+      - bearerAuth:
+        - write
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                workspaceId:
+                  type: string
+                  minLength: 1
+                postIds:
+                  type: array
+                  items:
+                    type: string
+                    minLength: 1
+                  minItems: 1
+                  maxItems: 500
+              required:
+              - workspaceId
+              - postIds
+      responses:
+        '200':
+          description: Posts reordered
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      posts:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            gridPosition:
+                              type: number
+                          required:
+                          - id
+                          - gridPosition
+                    required:
+                    - posts
+                required:
+                - data
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Workspace or post not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /posts/count:
+    get:
+      tags:
+      - Posts
+      summary: Get total posts count
+      description: Returns the total number of posts across all workspaces the token has access to.
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Total posts count and per-workspace breakdown
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      total:
+                        type: number
+                      workspaces:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            workspaceId:
+                              type: string
+                            count:
+                              type: number
+                          required:
+                          - workspaceId
+                          - count
+                    required:
+                    - total
+                    - workspaces
+                required:
+                - data
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /posts/{id}/comments:
+    get:
+      tags:
+      - Posts
+      summary: List comments on a post
+      description: Returns comments for a post with pagination.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 20
+      - name: teamOnly
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: List of comments with pagination
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        postId:
+                          type: string
+                        text:
+                          type: string
+                        authorId:
+                          type: string
+                        teamOnly:
+                          type: boolean
+                        createdAt:
+                          type: string
+                          format: date-time
+                      required:
+                      - id
+                      - postId
+                      - text
+                      - authorId
+                      - teamOnly
+                      - createdAt
+                  pagination:
+                    type: object
+                    properties:
+                      offset:
+                        type: number
+                      limit:
+                        type: number
+                      hasMore:
+                        type: boolean
+                    required:
+                    - offset
+                    - limit
+                    - hasMore
+                required:
+                - data
+                - pagination
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Post not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+      - Posts
+      summary: Add a comment to a post
+      description: Creates a new comment on a post.
+      security:
+      - bearerAuth:
+        - write
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  minLength: 1
+                teamOnly:
+                  type: boolean
+                  default: false
+              required:
+              - text
+      responses:
+        '201':
+          description: Comment created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      postId:
+                        type: string
+                      text:
+                        type: string
+                      authorId:
+                        type: string
+                      teamOnly:
+                        type: boolean
+                      createdAt:
+                        type: string
+                        format: date-time
+                    required:
+                    - id
+                    - postId
+                    - text
+                    - authorId
+                    - teamOnly
+                    - createdAt
+                required:
+                - data
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Post not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              enum:
+              - VALIDATION_ERROR
+              - UNAUTHORIZED
+              - FORBIDDEN
+              - NOT_FOUND
+              - METHOD_NOT_ALLOWED
+              - RATE_LIMITED
+              - POST_ALREADY_PUBLISHED
+              - PUBLISHING_IN_PROGRESS
+              - WORKSPACE_LIMIT_REACHED
+              - INTERNAL
+            message:
+              type: string
+            requestId:
+              type: string
+          required:
+          - code
+          - message
+          - requestId
+      required:
+      - error
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: pln_*

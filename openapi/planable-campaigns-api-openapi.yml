@@ -1,0 +1,1039 @@
+openapi: 3.1.0
+info:
+  title: Planable Public Campaigns API
+  version: 1.0.0
+  description: REST API for managing Planable companies, workspaces, pages, posts and more.
+servers:
+- url: https://api.planable.io/api/v1
+security:
+- bearerAuth: []
+tags:
+- name: Campaigns
+paths:
+  /campaigns:
+    get:
+      tags:
+      - Campaigns
+      summary: List campaigns
+      description: Returns campaigns for a workspace with pagination, optionally filtered by status.
+      parameters:
+      - name: workspaceId
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - active
+          - archived
+          - paused
+          - planned
+          - completed
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: List of campaigns with pagination
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        workspaceId:
+                          type: string
+                        name:
+                          type: string
+                        status:
+                          type: string
+                          enum:
+                          - active
+                          - archived
+                          - paused
+                          - planned
+                          - completed
+                        icon:
+                          type: string
+                          enum:
+                          - star
+                          - bulb
+                          - calendar
+                          - apple
+                          - gift
+                          - christmasTree
+                          - glass
+                          - eggCracked
+                          - archive
+                          - ghost
+                          - cross
+                          - candle
+                          - home
+                          - briefcase
+                          - school
+                          - camera
+                          - bike
+                          - bell
+                          - barbell
+                          - barrier
+                          - paint
+                          - bolt
+                          - heart
+                          - babyCarriage
+                          - trophy
+                          - award
+                          - paw
+                          - bone
+                          - creditCard
+                          - discount
+                          - shield
+                          - tag
+                          - thumbUp
+                          - thumbDown
+                          - umbrella
+                          - flag
+                          - sun
+                          - campfire
+                          - seeding
+                          - leaf
+                          - cherry
+                          - macro
+                          - clover
+                          - pumpkin
+                          - flame
+                          - cactus
+                          - globe
+                          - stack
+                          - basketball
+                          - baseball
+                          - ball
+                          - gasPump
+                          - car
+                          - balloon
+                          - mug
+                          - location
+                          - analyze
+                          - chartPie
+                          - chartDots
+                          - cards
+                          - mail
+                          - headphones
+                          - microphone
+                          - key
+                        color:
+                          type: string
+                        startedAt:
+                          type:
+                          - string
+                          - 'null'
+                          format: date-time
+                        endedAt:
+                          type:
+                          - string
+                          - 'null'
+                          format: date-time
+                        description:
+                          type: string
+                        links:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              url:
+                                type: string
+                              title:
+                                type:
+                                - string
+                                - 'null'
+                            required:
+                            - url
+                            - title
+                        createdAt:
+                          type: string
+                          format: date-time
+                      required:
+                      - id
+                      - workspaceId
+                      - name
+                      - status
+                      - icon
+                      - color
+                      - startedAt
+                      - endedAt
+                      - links
+                      - createdAt
+                  pagination:
+                    type: object
+                    properties:
+                      offset:
+                        type: number
+                      limit:
+                        type: number
+                      hasMore:
+                        type: boolean
+                    required:
+                    - offset
+                    - limit
+                    - hasMore
+                required:
+                - data
+                - pagination
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+      - Campaigns
+      summary: Create a campaign
+      description: Creates a campaign in a workspace. `description` is supplied as plain text and stored as rich text. Subject to the workspace campaign plan limit.
+      security:
+      - bearerAuth:
+        - write
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                workspaceId:
+                  type: string
+                  minLength: 1
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 80
+                status:
+                  type: string
+                  enum:
+                  - active
+                  - archived
+                  - paused
+                  - planned
+                  - completed
+                  default: planned
+                icon:
+                  type: string
+                  enum:
+                  - star
+                  - bulb
+                  - calendar
+                  - apple
+                  - gift
+                  - christmasTree
+                  - glass
+                  - eggCracked
+                  - archive
+                  - ghost
+                  - cross
+                  - candle
+                  - home
+                  - briefcase
+                  - school
+                  - camera
+                  - bike
+                  - bell
+                  - barbell
+                  - barrier
+                  - paint
+                  - bolt
+                  - heart
+                  - babyCarriage
+                  - trophy
+                  - award
+                  - paw
+                  - bone
+                  - creditCard
+                  - discount
+                  - shield
+                  - tag
+                  - thumbUp
+                  - thumbDown
+                  - umbrella
+                  - flag
+                  - sun
+                  - campfire
+                  - seeding
+                  - leaf
+                  - cherry
+                  - macro
+                  - clover
+                  - pumpkin
+                  - flame
+                  - cactus
+                  - globe
+                  - stack
+                  - basketball
+                  - baseball
+                  - ball
+                  - gasPump
+                  - car
+                  - balloon
+                  - mug
+                  - location
+                  - analyze
+                  - chartPie
+                  - chartDots
+                  - cards
+                  - mail
+                  - headphones
+                  - microphone
+                  - key
+                color:
+                  type: string
+                startedAt:
+                  type: string
+                  format: date-time
+                endedAt:
+                  type: string
+                  format: date-time
+                description:
+                  type: string
+                links:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        minLength: 1
+                      title:
+                        type: string
+                    required:
+                    - url
+              required:
+              - workspaceId
+              - name
+      responses:
+        '201':
+          description: Campaign created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      workspaceId:
+                        type: string
+                      name:
+                        type: string
+                      status:
+                        type: string
+                        enum:
+                        - active
+                        - archived
+                        - paused
+                        - planned
+                        - completed
+                      icon:
+                        type: string
+                        enum:
+                        - star
+                        - bulb
+                        - calendar
+                        - apple
+                        - gift
+                        - christmasTree
+                        - glass
+                        - eggCracked
+                        - archive
+                        - ghost
+                        - cross
+                        - candle
+                        - home
+                        - briefcase
+                        - school
+                        - camera
+                        - bike
+                        - bell
+                        - barbell
+                        - barrier
+                        - paint
+                        - bolt
+                        - heart
+                        - babyCarriage
+                        - trophy
+                        - award
+                        - paw
+                        - bone
+                        - creditCard
+                        - discount
+                        - shield
+                        - tag
+                        - thumbUp
+                        - thumbDown
+                        - umbrella
+                        - flag
+                        - sun
+                        - campfire
+                        - seeding
+                        - leaf
+                        - cherry
+                        - macro
+                        - clover
+                        - pumpkin
+                        - flame
+                        - cactus
+                        - globe
+                        - stack
+                        - basketball
+                        - baseball
+                        - ball
+                        - gasPump
+                        - car
+                        - balloon
+                        - mug
+                        - location
+                        - analyze
+                        - chartPie
+                        - chartDots
+                        - cards
+                        - mail
+                        - headphones
+                        - microphone
+                        - key
+                      color:
+                        type: string
+                      startedAt:
+                        type:
+                        - string
+                        - 'null'
+                        format: date-time
+                      endedAt:
+                        type:
+                        - string
+                        - 'null'
+                        format: date-time
+                      description:
+                        type: string
+                      links:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                            title:
+                              type:
+                              - string
+                              - 'null'
+                          required:
+                          - url
+                          - title
+                      createdAt:
+                        type: string
+                        format: date-time
+                    required:
+                    - id
+                    - workspaceId
+                    - name
+                    - status
+                    - icon
+                    - color
+                    - startedAt
+                    - endedAt
+                    - links
+                    - createdAt
+                required:
+                - data
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Campaign limit reached or insufficient permissions
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /campaigns/{id}:
+    get:
+      tags:
+      - Campaigns
+      summary: Get campaign detail
+      description: Returns a single campaign by ID.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: Campaign detail
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      workspaceId:
+                        type: string
+                      name:
+                        type: string
+                      status:
+                        type: string
+                        enum:
+                        - active
+                        - archived
+                        - paused
+                        - planned
+                        - completed
+                      icon:
+                        type: string
+                        enum:
+                        - star
+                        - bulb
+                        - calendar
+                        - apple
+                        - gift
+                        - christmasTree
+                        - glass
+                        - eggCracked
+                        - archive
+                        - ghost
+                        - cross
+                        - candle
+                        - home
+                        - briefcase
+                        - school
+                        - camera
+                        - bike
+                        - bell
+                        - barbell
+                        - barrier
+                        - paint
+                        - bolt
+                        - heart
+                        - babyCarriage
+                        - trophy
+                        - award
+                        - paw
+                        - bone
+                        - creditCard
+                        - discount
+                        - shield
+                        - tag
+                        - thumbUp
+                        - thumbDown
+                        - umbrella
+                        - flag
+                        - sun
+                        - campfire
+                        - seeding
+                        - leaf
+                        - cherry
+                        - macro
+                        - clover
+                        - pumpkin
+                        - flame
+                        - cactus
+                        - globe
+                        - stack
+                        - basketball
+                        - baseball
+                        - ball
+                        - gasPump
+                        - car
+                        - balloon
+                        - mug
+                        - location
+                        - analyze
+                        - chartPie
+                        - chartDots
+                        - cards
+                        - mail
+                        - headphones
+                        - microphone
+                        - key
+                      color:
+                        type: string
+                      startedAt:
+                        type:
+                        - string
+                        - 'null'
+                        format: date-time
+                      endedAt:
+                        type:
+                        - string
+                        - 'null'
+                        format: date-time
+                      description:
+                        type: string
+                      links:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                            title:
+                              type:
+                              - string
+                              - 'null'
+                          required:
+                          - url
+                          - title
+                      createdAt:
+                        type: string
+                        format: date-time
+                    required:
+                    - id
+                    - workspaceId
+                    - name
+                    - status
+                    - icon
+                    - color
+                    - startedAt
+                    - endedAt
+                    - links
+                    - createdAt
+                required:
+                - data
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Campaign not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    patch:
+      tags:
+      - Campaigns
+      summary: Update a campaign
+      description: Partially updates a campaign. Any subset of the create fields may be provided.
+      security:
+      - bearerAuth:
+        - write
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 80
+                status:
+                  type: string
+                  enum:
+                  - active
+                  - archived
+                  - paused
+                  - planned
+                  - completed
+                icon:
+                  type: string
+                  enum:
+                  - star
+                  - bulb
+                  - calendar
+                  - apple
+                  - gift
+                  - christmasTree
+                  - glass
+                  - eggCracked
+                  - archive
+                  - ghost
+                  - cross
+                  - candle
+                  - home
+                  - briefcase
+                  - school
+                  - camera
+                  - bike
+                  - bell
+                  - barbell
+                  - barrier
+                  - paint
+                  - bolt
+                  - heart
+                  - babyCarriage
+                  - trophy
+                  - award
+                  - paw
+                  - bone
+                  - creditCard
+                  - discount
+                  - shield
+                  - tag
+                  - thumbUp
+                  - thumbDown
+                  - umbrella
+                  - flag
+                  - sun
+                  - campfire
+                  - seeding
+                  - leaf
+                  - cherry
+                  - macro
+                  - clover
+                  - pumpkin
+                  - flame
+                  - cactus
+                  - globe
+                  - stack
+                  - basketball
+                  - baseball
+                  - ball
+                  - gasPump
+                  - car
+                  - balloon
+                  - mug
+                  - location
+                  - analyze
+                  - chartPie
+                  - chartDots
+                  - cards
+                  - mail
+                  - headphones
+                  - microphone
+                  - key
+                color:
+                  type: string
+                startedAt:
+                  type: string
+                  format: date-time
+                endedAt:
+                  type: string
+                  format: date-time
+                description:
+                  type: string
+                links:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      url:
+                        type: string
+                        minLength: 1
+                      title:
+                        type: string
+                    required:
+                    - url
+      responses:
+        '200':
+          description: Campaign updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      workspaceId:
+                        type: string
+                      name:
+                        type: string
+                      status:
+                        type: string
+                        enum:
+                        - active
+                        - archived
+                        - paused
+                        - planned
+                        - completed
+                      icon:
+                        type: string
+                        enum:
+                        - star
+                        - bulb
+                        - calendar
+                        - apple
+                        - gift
+                        - christmasTree
+                        - glass
+                        - eggCracked
+                        - archive
+                        - ghost
+                        - cross
+                        - candle
+                        - home
+                        - briefcase
+                        - school
+                        - camera
+                        - bike
+                        - bell
+                        - barbell
+                        - barrier
+                        - paint
+                        - bolt
+                        - heart
+                        - babyCarriage
+                        - trophy
+                        - award
+                        - paw
+                        - bone
+                        - creditCard
+                        - discount
+                        - shield
+                        - tag
+                        - thumbUp
+                        - thumbDown
+                        - umbrella
+                        - flag
+                        - sun
+                        - campfire
+                        - seeding
+                        - leaf
+                        - cherry
+                        - macro
+                        - clover
+                        - pumpkin
+                        - flame
+                        - cactus
+                        - globe
+                        - stack
+                        - basketball
+                        - baseball
+                        - ball
+                        - gasPump
+                        - car
+                        - balloon
+                        - mug
+                        - location
+                        - analyze
+                        - chartPie
+                        - chartDots
+                        - cards
+                        - mail
+                        - headphones
+                        - microphone
+                        - key
+                      color:
+                        type: string
+                      startedAt:
+                        type:
+                        - string
+                        - 'null'
+                        format: date-time
+                      endedAt:
+                        type:
+                        - string
+                        - 'null'
+                        format: date-time
+                      description:
+                        type: string
+                      links:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                            title:
+                              type:
+                              - string
+                              - 'null'
+                          required:
+                          - url
+                          - title
+                      createdAt:
+                        type: string
+                        format: date-time
+                    required:
+                    - id
+                    - workspaceId
+                    - name
+                    - status
+                    - icon
+                    - color
+                    - startedAt
+                    - endedAt
+                    - links
+                    - createdAt
+                required:
+                - data
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+        '404':
+          description: Campaign not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+      - Campaigns
+      summary: Delete a campaign
+      description: Deletes a campaign and detaches it from its posts. Posts are kept; only the `campaignId` link is removed.
+      security:
+      - bearerAuth:
+        - write
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Campaign deleted
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+        '404':
+          description: Campaign not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              enum:
+              - VALIDATION_ERROR
+              - UNAUTHORIZED
+              - FORBIDDEN
+              - NOT_FOUND
+              - METHOD_NOT_ALLOWED
+              - RATE_LIMITED
+              - POST_ALREADY_PUBLISHED
+              - PUBLISHING_IN_PROGRESS
+              - WORKSPACE_LIMIT_REACHED
+              - INTERNAL
+            message:
+              type: string
+            requestId:
+              type: string
+          required:
+          - code
+          - message
+          - requestId
+      required:
+      - error
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: pln_*

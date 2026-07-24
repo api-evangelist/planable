@@ -1,0 +1,220 @@
+openapi: 3.1.0
+info:
+  title: Planable Public Campaigns Stories API
+  version: 1.0.0
+  description: REST API for managing Planable companies, workspaces, pages, posts and more.
+servers:
+- url: https://api.planable.io/api/v1
+security:
+- bearerAuth: []
+tags:
+- name: Stories
+paths:
+  /stories:
+    post:
+      tags:
+      - Stories
+      summary: Create an Instagram story
+      description: Creates a single-media Instagram story. GIFs and non-Instagram pages are not supported. Set `notify` to `false` to suppress external notifications; internal activity feed entries are always recorded.
+      security:
+      - bearerAuth:
+        - write
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                workspaceId:
+                  type: string
+                  minLength: 1
+                pageId:
+                  type: string
+                  minLength: 1
+                media:
+                  type: string
+                  format: uri
+                stickers:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                        - text
+                        - location
+                        - link
+                        - music
+                        - mention
+                        - hashtags
+                        - questions
+                        - notes
+                        - other
+                      value:
+                        type: string
+                    required:
+                    - type
+                    - value
+                  default: []
+                scheduledAt:
+                  type: string
+                  format: date-time
+                labels:
+                  type: array
+                  items:
+                    type: string
+                  default: []
+                teamOnly:
+                  type: boolean
+                approved:
+                  type: boolean
+                approvedBy:
+                  type: string
+                  minLength: 1
+                publishAtScheduledDate:
+                  type: boolean
+                  default: false
+                notify:
+                  type: boolean
+                  default: true
+                internalNote:
+                  type: string
+                  maxLength: 8000
+              required:
+              - workspaceId
+              - pageId
+              - media
+      responses:
+        '201':
+          description: Story created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      workspaceId:
+                        type: string
+                      pageId:
+                        type: string
+                      type:
+                        type: string
+                      classification:
+                        type: string
+                        enum:
+                        - story
+                      media:
+                        type:
+                        - string
+                        - 'null'
+                        format: uri
+                      scheduledAt:
+                        type:
+                        - string
+                        - 'null'
+                        format: date-time
+                      scheduledSet:
+                        type: boolean
+                      status:
+                        type: string
+                      approved:
+                        type: boolean
+                      approvedBy:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            userId:
+                              type: string
+                            approvedAt:
+                              type: string
+                              format: date-time
+                          required:
+                          - userId
+                          - approvedAt
+                      createdAt:
+                        type: string
+                        format: date-time
+                    required:
+                    - id
+                    - workspaceId
+                    - pageId
+                    - type
+                    - classification
+                    - media
+                    - scheduledAt
+                    - scheduledSet
+                    - status
+                    - approved
+                    - createdAt
+                required:
+                - data
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Workspace or page not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              enum:
+              - VALIDATION_ERROR
+              - UNAUTHORIZED
+              - FORBIDDEN
+              - NOT_FOUND
+              - METHOD_NOT_ALLOWED
+              - RATE_LIMITED
+              - POST_ALREADY_PUBLISHED
+              - PUBLISHING_IN_PROGRESS
+              - WORKSPACE_LIMIT_REACHED
+              - INTERNAL
+            message:
+              type: string
+            requestId:
+              type: string
+          required:
+          - code
+          - message
+          - requestId
+      required:
+      - error
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: pln_*

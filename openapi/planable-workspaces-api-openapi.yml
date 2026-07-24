@@ -1,0 +1,482 @@
+openapi: 3.1.0
+info:
+  title: Planable Public Campaigns Workspaces API
+  version: 1.0.0
+  description: REST API for managing Planable companies, workspaces, pages, posts and more.
+servers:
+- url: https://api.planable.io/api/v1
+security:
+- bearerAuth: []
+tags:
+- name: Workspaces
+paths:
+  /workspaces:
+    get:
+      tags:
+      - Workspaces
+      summary: List workspaces
+      description: Returns all workspaces the token has access to.
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: List of workspaces
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        name:
+                          type: string
+                        companyId:
+                          type: string
+                        timezone:
+                          type: string
+                        websiteUrl:
+                          type:
+                          - string
+                          - 'null'
+                        approvalSettings:
+                          anyOf:
+                          - allOf:
+                            - type: object
+                              properties:
+                                autoSchedule:
+                                  type: boolean
+                                autoLock:
+                                  type: boolean
+                                sendReminders:
+                                  type: boolean
+                              required:
+                              - autoSchedule
+                              - autoLock
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                  - MULTIPLE
+                                approvalLevels:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      id:
+                                        type: string
+                                      label:
+                                        type: string
+                                      approversIds:
+                                        type: array
+                                        items:
+                                          type: string
+                                    required:
+                                    - id
+                                    - label
+                                    - approversIds
+                              required:
+                              - type
+                          - allOf:
+                            - type: object
+                              properties:
+                                autoSchedule:
+                                  type: boolean
+                                autoLock:
+                                  type: boolean
+                                sendReminders:
+                                  type: boolean
+                              required:
+                              - autoSchedule
+                              - autoLock
+                            - type: object
+                              properties:
+                                type:
+                                  type: string
+                                  enum:
+                                  - NONE
+                                  - OPTIONAL
+                                  - REQUIRED
+                              required:
+                              - type
+                        defaultTeamOnlyPosts:
+                          type: boolean
+                        hideEmailsFromClients:
+                          type: boolean
+                        labels:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              color:
+                                type: string
+                              name:
+                                type:
+                                - string
+                                - 'null'
+                            required:
+                            - id
+                            - color
+                            - name
+                        createdAt:
+                          type: string
+                          format: date-time
+                        updatedAt:
+                          type: string
+                          format: date-time
+                      required:
+                      - id
+                      - name
+                      - companyId
+                      - timezone
+                      - websiteUrl
+                      - approvalSettings
+                      - defaultTeamOnlyPosts
+                      - hideEmailsFromClients
+                      - labels
+                      - createdAt
+                      - updatedAt
+                required:
+                - data
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+      - Workspaces
+      summary: Create a workspace
+      description: Creates a new workspace in the calling token's company.
+      security:
+      - bearerAuth:
+        - write
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  minLength: 2
+                  maxLength: 80
+                timezone:
+                  type: string
+                approvalSettings:
+                  anyOf:
+                  - allOf:
+                    - type: object
+                      properties:
+                        autoSchedule:
+                          type: boolean
+                        autoLock:
+                          type: boolean
+                        sendReminders:
+                          type: boolean
+                      required:
+                      - autoSchedule
+                      - autoLock
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - MULTIPLE
+                        approvalLevels:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: string
+                              label:
+                                type: string
+                              approversIds:
+                                type: array
+                                items:
+                                  type: string
+                            required:
+                            - id
+                            - label
+                            - approversIds
+                      required:
+                      - type
+                  - allOf:
+                    - type: object
+                      properties:
+                        autoSchedule:
+                          type: boolean
+                        autoLock:
+                          type: boolean
+                        sendReminders:
+                          type: boolean
+                      required:
+                      - autoSchedule
+                      - autoLock
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                          - NONE
+                          - OPTIONAL
+                          - REQUIRED
+                      required:
+                      - type
+                websiteUrl:
+                  type: string
+                  maxLength: 2048
+              required:
+              - name
+              - timezone
+              - approvalSettings
+      responses:
+        '201':
+          description: Workspace created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      name:
+                        type: string
+                      timezone:
+                        type: string
+                      companyId:
+                        type: string
+                      websiteUrl:
+                        type:
+                        - string
+                        - 'null'
+                      approvalSettings:
+                        anyOf:
+                        - allOf:
+                          - type: object
+                            properties:
+                              autoSchedule:
+                                type: boolean
+                              autoLock:
+                                type: boolean
+                              sendReminders:
+                                type: boolean
+                            required:
+                            - autoSchedule
+                            - autoLock
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                - MULTIPLE
+                              approvalLevels:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    id:
+                                      type: string
+                                    label:
+                                      type: string
+                                    approversIds:
+                                      type: array
+                                      items:
+                                        type: string
+                                  required:
+                                  - id
+                                  - label
+                                  - approversIds
+                            required:
+                            - type
+                        - allOf:
+                          - type: object
+                            properties:
+                              autoSchedule:
+                                type: boolean
+                              autoLock:
+                                type: boolean
+                              sendReminders:
+                                type: boolean
+                            required:
+                            - autoSchedule
+                            - autoLock
+                          - type: object
+                            properties:
+                              type:
+                                type: string
+                                enum:
+                                - NONE
+                                - OPTIONAL
+                                - REQUIRED
+                            required:
+                            - type
+                      defaultTeamOnlyPosts:
+                        type: boolean
+                      hideEmailsFromClients:
+                        type: boolean
+                      labels:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            color:
+                              type: string
+                            name:
+                              type:
+                              - string
+                              - 'null'
+                          required:
+                          - id
+                          - color
+                          - name
+                      createdAt:
+                        type: string
+                        format: date-time
+                    required:
+                    - id
+                    - name
+                    - timezone
+                    - companyId
+                    - websiteUrl
+                    - approvalSettings
+                    - defaultTeamOnlyPosts
+                    - hideEmailsFromClients
+                    - labels
+                    - createdAt
+                required:
+                - data
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Workspace limit reached or insufficient permissions
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /workspaces/{id}:
+    delete:
+      tags:
+      - Workspaces
+      summary: Delete a workspace
+      description: Deletes a workspace in the company associated with the calling token.
+      security:
+      - bearerAuth:
+        - write
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Workspace deleted
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+        '404':
+          description: Workspace not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              enum:
+              - VALIDATION_ERROR
+              - UNAUTHORIZED
+              - FORBIDDEN
+              - NOT_FOUND
+              - METHOD_NOT_ALLOWED
+              - RATE_LIMITED
+              - POST_ALREADY_PUBLISHED
+              - PUBLISHING_IN_PROGRESS
+              - WORKSPACE_LIMIT_REACHED
+              - INTERNAL
+            message:
+              type: string
+            requestId:
+              type: string
+          required:
+          - code
+          - message
+          - requestId
+      required:
+      - error
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: pln_*

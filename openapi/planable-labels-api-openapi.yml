@@ -1,0 +1,205 @@
+openapi: 3.1.0
+info:
+  title: Planable Public Campaigns Labels API
+  version: 1.0.0
+  description: REST API for managing Planable companies, workspaces, pages, posts and more.
+servers:
+- url: https://api.planable.io/api/v1
+security:
+- bearerAuth: []
+tags:
+- name: Labels
+paths:
+  /labels:
+    get:
+      tags:
+      - Labels
+      summary: List labels
+      description: Returns all labels for a workspace.
+      parameters:
+      - name: workspaceId
+        in: query
+        required: true
+        schema:
+          type: string
+      security:
+      - bearerAuth: []
+      responses:
+        '200':
+          description: List of labels
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        color:
+                          type: string
+                        name:
+                          type:
+                          - string
+                          - 'null'
+                      required:
+                      - id
+                      - color
+                      - name
+                required:
+                - data
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+      - Labels
+      summary: Create a label
+      description: Creates a new label in a workspace.
+      security:
+      - bearerAuth:
+        - write
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                workspaceId:
+                  type: string
+                  minLength: 1
+                text:
+                  type: string
+                  minLength: 1
+                color:
+                  type: string
+                  enum:
+                  - pattens-blue
+                  - feta
+                  - pink-lace
+                  - pippin
+                  - peach-cream
+                  - fog
+                  - half-and-half
+                  - lime-flurish
+                  - snowy-mint
+                  - blue-chalk
+                  - mabel
+                  - silver-sand
+              required:
+              - workspaceId
+              - text
+              - color
+      responses:
+        '201':
+          description: Label created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                      color:
+                        type: string
+                      name:
+                        type:
+                        - string
+                        - 'null'
+                    required:
+                    - id
+                    - color
+                    - name
+                required:
+                - data
+        '400':
+          description: Validation error
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              enum:
+              - VALIDATION_ERROR
+              - UNAUTHORIZED
+              - FORBIDDEN
+              - NOT_FOUND
+              - METHOD_NOT_ALLOWED
+              - RATE_LIMITED
+              - POST_ALREADY_PUBLISHED
+              - PUBLISHING_IN_PROGRESS
+              - WORKSPACE_LIMIT_REACHED
+              - INTERNAL
+            message:
+              type: string
+            requestId:
+              type: string
+          required:
+          - code
+          - message
+          - requestId
+      required:
+      - error
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: pln_*
