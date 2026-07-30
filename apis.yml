@@ -1,7 +1,20 @@
 aid: planable
 name: Planable
 description: Planable is a social media collaboration platform trusted by agencies, freelancers, and marketing teams to plan, create, collaborate, approve, and publish content across multiple social media channels. It provides a REST API for managing workspaces, pages, posts, feedback, approval workflows, and publishing to Facebook, Instagram, LinkedIn, X (Twitter), YouTube, TikTok, Pinterest, Google Business Profile, and Threads.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/planable.png
 url: https://raw.githubusercontent.com/api-evangelist/planable/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -14,27 +27,134 @@ tags:
   - Content Publishing
   - Marketing
 apis:
-  - aid: planable:planable-api
-    name: Planable Public API
-    description: The Planable Public API enables programmatic management of workspace data, including drafting and scheduling posts from a CMS, syncing media libraries from external asset tools, pulling analytics into custom dashboards, and keeping workspace structure in sync with team organization. Authentication uses scoped bearer tokens (read or read/write) restricted to specific workspaces.
-    humanURL: https://planable.io/
-    baseURL: https://app.planable.io/api
-    tags:
-      - Social Media
-      - Posts
-      - Workspaces
-      - Pages
-      - Approval Workflows
-      - Publishing
-    properties:
-      - type: Documentation
-        url: https://help.planable.io/hc/en-us/
-      - type: ChangeLog
-        url: https://changelog.planable.io/
-      - type: StatusPage
-        url: https://status.planable.io/public-api
-      - type: OpenAPI
-        url: openapi/planable-openapi.json
+- aid: planable:planable-campaigns-api
+  name: Planable Campaigns API
+  description: The Campaigns API from Planable — 2 operation(s) for campaigns.
+  humanURL: https://planable.io/
+  baseURL: https://app.planable.io/api
+  tags:
+  - Campaigns
+  properties:
+  - type: OpenAPI
+    url: openapi/planable-campaigns-api-openapi.yml
+  - type: Documentation
+    url: https://help.planable.io/hc/en-us/
+  - type: ChangeLog
+    url: https://changelog.planable.io/
+  - type: StatusPage
+    url: https://status.planable.io/public-api
+- aid: planable:planable-labels-api
+  name: Planable Labels API
+  description: The Labels API from Planable — 1 operation(s) for labels.
+  humanURL: https://planable.io/
+  baseURL: https://app.planable.io/api
+  tags:
+  - Labels
+  properties:
+  - type: OpenAPI
+    url: openapi/planable-labels-api-openapi.yml
+  - type: Documentation
+    url: https://help.planable.io/hc/en-us/
+  - type: ChangeLog
+    url: https://changelog.planable.io/
+  - type: StatusPage
+    url: https://status.planable.io/public-api
+- aid: planable:planable-media-api
+  name: Planable Media API
+  description: The Media API from Planable — 2 operation(s) for media.
+  humanURL: https://planable.io/
+  baseURL: https://app.planable.io/api
+  tags:
+  - Media
+  properties:
+  - type: OpenAPI
+    url: openapi/planable-media-api-openapi.yml
+  - type: Documentation
+    url: https://help.planable.io/hc/en-us/
+  - type: ChangeLog
+    url: https://changelog.planable.io/
+  - type: StatusPage
+    url: https://status.planable.io/public-api
+- aid: planable:planable-pages-api
+  name: Planable Pages API
+  description: The Pages API from Planable — 4 operation(s) for pages.
+  humanURL: https://planable.io/
+  baseURL: https://app.planable.io/api
+  tags:
+  - Pages
+  properties:
+  - type: OpenAPI
+    url: openapi/planable-pages-api-openapi.yml
+  - type: Documentation
+    url: https://help.planable.io/hc/en-us/
+  - type: ChangeLog
+    url: https://changelog.planable.io/
+  - type: StatusPage
+    url: https://status.planable.io/public-api
+- aid: planable:planable-posts-api
+  name: Planable Posts API
+  description: The Posts API from Planable — 8 operation(s) for posts.
+  humanURL: https://planable.io/
+  baseURL: https://app.planable.io/api
+  tags:
+  - Posts
+  properties:
+  - type: OpenAPI
+    url: openapi/planable-posts-api-openapi.yml
+  - type: Documentation
+    url: https://help.planable.io/hc/en-us/
+  - type: ChangeLog
+    url: https://changelog.planable.io/
+  - type: StatusPage
+    url: https://status.planable.io/public-api
+- aid: planable:planable-stories-api
+  name: Planable Stories API
+  description: The Stories API from Planable — 1 operation(s) for stories.
+  humanURL: https://planable.io/
+  baseURL: https://app.planable.io/api
+  tags:
+  - Stories
+  properties:
+  - type: OpenAPI
+    url: openapi/planable-stories-api-openapi.yml
+  - type: Documentation
+    url: https://help.planable.io/hc/en-us/
+  - type: ChangeLog
+    url: https://changelog.planable.io/
+  - type: StatusPage
+    url: https://status.planable.io/public-api
+- aid: planable:planable-system-api
+  name: Planable System API
+  description: The System API from Planable — 1 operation(s) for system.
+  humanURL: https://planable.io/
+  baseURL: https://app.planable.io/api
+  tags:
+  - System
+  properties:
+  - type: OpenAPI
+    url: openapi/planable-system-api-openapi.yml
+  - type: Documentation
+    url: https://help.planable.io/hc/en-us/
+  - type: ChangeLog
+    url: https://changelog.planable.io/
+  - type: StatusPage
+    url: https://status.planable.io/public-api
+- aid: planable:planable-workspaces-api
+  name: Planable Workspaces API
+  description: The Workspaces API from Planable — 2 operation(s) for workspaces.
+  humanURL: https://planable.io/
+  baseURL: https://app.planable.io/api
+  tags:
+  - Workspaces
+  properties:
+  - type: OpenAPI
+    url: openapi/planable-workspaces-api-openapi.yml
+  - type: Documentation
+    url: https://help.planable.io/hc/en-us/
+  - type: ChangeLog
+    url: https://changelog.planable.io/
+  - type: StatusPage
+    url: https://status.planable.io/public-api
 common:
   - type: AgenticAccess
     url: agentic-access/planable-agentic-access.yml
