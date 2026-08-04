@@ -1,0 +1,28 @@
+{
+  "provider": "planable",
+  "sources": [
+    "planable-campaigns-api-openapi.yml",
+    "planable-labels-api-openapi.yml",
+    "planable-media-api-openapi.yml",
+    "planable-pages-api-openapi.yml",
+    "planable-posts-api-openapi.yml",
+    "planable-stories-api-openapi.yml",
+    "planable-system-api-openapi.yml",
+    "planable-workspaces-api-openapi.yml"
+  ],
+  "outputs": [
+    "planable-campaigns-api-openapi.yml",
+    "planable-labels-api-openapi.yml",
+    "planable-media-api-openapi.yml",
+    "planable-pages-api-openapi.yml",
+    "planable-posts-api-openapi.yml",
+    "planable-stories-api-openapi.yml",
+    "planable-system-api-openapi.yml",
+    "planable-workspaces-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
