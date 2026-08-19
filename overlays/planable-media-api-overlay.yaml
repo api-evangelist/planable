@@ -1,0 +1,47 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements — Planable Media API
+  version: 1.0.0
+extends: openapi/planable-media-api-openapi.yml
+x-generated: '2026-08-13'
+x-method: generated
+x-source: openapi/_original/planable-openapi.json
+x-note: Non-destructive enhancement of Planable's published contract. Planable declares no operationId on any of
+  its 51 operations, which forces every generator and MCP tool-forge to synthesize names. This overlay assigns deterministic
+  verb+path operationIds and documents the runtime semantics Planable states in prose but does not encode in the
+  spec. The operationIds are API EVANGELIST's, not Planable's — do not cite them as published. The original spec
+  is never mutated.
+actions:
+- target: $.paths['/media'].get
+  description: Assign a stable operationId for GET /media — the published spec declares none.
+  update:
+    operationId: getMedia
+- target: $.paths['/media'].post
+  description: Assign a stable operationId for POST /media — the published spec declares none.
+  update:
+    operationId: createMedia
+- target: $.paths['/media/{id}'].get
+  description: Assign a stable operationId for GET /media/{id} — the published spec declares none.
+  update:
+    operationId: getMediaById
+- target: $.info
+  description: Record the runtime semantics Planable publishes in its developer guide but omits from the spec.
+  update:
+    x-rate-limits:
+      read: 600 requests/minute per token
+      write: 120 requests/minute per token
+      algorithm: Redis-backed sliding window
+      headers:
+      - X-RateLimit-Limit
+      - X-RateLimit-Remaining
+      - X-RateLimit-Reset
+      retry_after: false
+      source: https://planable.io/guides/planable-public-api/
+    x-error-catalog: errors/planable-problem-types.yml
+    x-conventions: conventions/planable-conventions.yml
+    x-idempotency:
+      header: null
+      mechanism: natural-key semantic idempotency on 4 operations
+      detail: conventions/planable-conventions.yml
+    x-plan-gate: API token generation requires a Pro or Enterprise plan
+    x-docs: https://api.planable.io/api/v1/docs

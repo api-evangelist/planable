@@ -1,0 +1,115 @@
+generated: '2026-08-13'
+method: searched
+source: https://github.com/Planable/smm-skills
+note: >-
+  These are Planable's OWN Agent Skills, saved verbatim from the provider's public repository at
+  commit 56c9fab58cf9d8d5f9633b66ccdad672f5999d80 (2026-06-25). API Evangelist authored none of
+  them. The repo doubles as a Claude Code plugin marketplace (`planable-smm` v1.1.0, MIT) whose
+  .mcp.json auto-registers the remote MCP server at https://mcp.planable.io/mcp, so installing the
+  plugin wires the skills and the agent surface in one step. Six of the twelve additionally require
+  the SE Ranking MCP server; those are marked ecosystem: true.
+publisher:
+  name: Planable
+  repository: https://github.com/Planable/smm-skills
+  plugin: planable-smm
+  plugin_version: 1.1.0
+  license: MIT
+  spec: Anthropic Agent Skills (frontmatter + progressive-disclosure body)
+  install:
+    claude_code:
+      - /plugin marketplace add Planable/smm-skills
+      - /plugin install planable-smm@planable
+    claude_ai: Attach individual SKILL.md files to a Project and connect the Planable MCP server separately.
+  mirror_html: https://planable.io/guides/planable-mcp-connector-claude/
+requires:
+  planable_mcp: https://mcp.planable.io/mcp
+  seranking_mcp: https://seranking.com/api/integrations/mcp/
+skills:
+  - name: draft-post-batch
+    file: planable-draft-post-batch.md
+    produces: Platform-adapted draft posts created directly in Planable from a brief, with preview before commit and validation flags.
+    triggers: ["draft posts", "write 5 LinkedIn posts", "create a post batch"]
+    mcp_tools: [list_workspaces, list_pages, list_labels, create_label, create_post, create_grouped_post]
+    requires_planable_mcp: true
+    ecosystem: false
+  - name: pending-approvals-roundup
+    file: planable-pending-approvals-roundup.md
+    produces: One roundup of every post awaiting sign-off across all client workspaces, with 48h-deadline posts and publishing errors called out.
+    triggers: ["what's pending approval", "approval queue", "what needs sign-off"]
+    mcp_tools: [list_workspaces, list_posts, approve_post]
+    requires_planable_mcp: true
+    ecosystem: false
+  - name: monthly-performance-summary
+    file: planable-monthly-performance-summary.md
+    produces: Client-ready HTML report from Planable analytics or any CSV export — KPI cards, per-platform breakdowns, top 5 posts.
+    triggers: ["monthly report", "performance summary", "client report"]
+    mcp_tools: [list_workspaces, list_pages, get_page_metrics, get_post_metrics, refresh_page_metrics]
+    requires_planable_mcp: false
+    csv_fallback: true
+    ecosystem: false
+  - name: content-calendar-audit
+    file: planable-content-calendar-audit.md
+    produces: This-week schedule mapped by day with approval status, draft/missing-date callouts and gap detection.
+    triggers: ["what's going out this week", "calendar audit", "weekly planning"]
+    mcp_tools: [list_workspaces, list_pages, list_posts]
+    requires_planable_mcp: true
+    ecosystem: false
+  - name: cross-client-metrics-overview
+    file: planable-cross-client-metrics-overview.md
+    produces: Comparative table across every client workspace ranked by engagement rate, impressions or volume.
+    triggers: ["compare clients", "agency overview", "cross-workspace metrics"]
+    mcp_tools: [list_workspaces, get_workspace_details, get_page_metrics_summary]
+    requires_planable_mcp: true
+    ecosystem: false
+  - name: content-pattern-intelligence
+    file: planable-content-pattern-intelligence.md
+    produces: Named recurring content patterns per performance lens with real post examples and hypotheses to test next.
+    triggers: ["what's working", "content patterns", "what should I test next"]
+    mcp_tools: [list_posts, get_post_metrics_summary]
+    requires_planable_mcp: false
+    csv_fallback: true
+    ecosystem: false
+  - name: seo-gaps-to-social-campaign
+    file: planable-seo-gaps-to-social-campaign.md
+    produces: Themed social campaign drafted in Planable from SE Ranking keyword gaps, competitor wins and ranking losses.
+    triggers: ["turn our SEO data into posts", "build a social campaign from search demand"]
+    requires_planable_mcp: true
+    ecosystem: true
+  - name: ai-search-gaps-to-social-campaign
+    file: planable-ai-search-gaps-to-social-campaign.md
+    produces: AI-visibility snapshot across ChatGPT, Perplexity, Gemini and AI Overview, plus social drafts targeting the missing narratives.
+    triggers: ["improve our AI visibility with social", "AEO/GEO content plan"]
+    requires_planable_mcp: true
+    ecosystem: true
+  - name: site-audit-to-social-distribution
+    file: planable-site-audit-to-social-distribution.md
+    produces: Prioritised SEO fix list, rewritten page copy drafted in a Planable Universal page for approval, and a social distribution batch.
+    triggers: ["audit the site and help us fix weak pages", "coordinate a content refresh"]
+    mcp_tools: [create_post, update_post, create_comment]
+    requires_planable_mcp: true
+    ecosystem: true
+  - name: local-gmb-visibility
+    file: planable-local-gmb-visibility.md
+    produces: City-level rank-tracking setup, a city-by-city ranking snapshot, and Google Business Profile + local social drafts in Planable.
+    triggers: ["track our rankings in [city]", "create Google Business Profile posts"]
+    requires_planable_mcp: true
+    ecosystem: true
+  - name: client-onboarding-proposal
+    file: planable-client-onboarding-proposal.md
+    produces: Data-backed onboarding proposal pairing an SE Ranking SEO + AI audit with the client's current Planable social baseline.
+    triggers: ["build an onboarding proposal for [client]", "scope a SEO + AI + social engagement"]
+    requires_planable_mcp: true
+    ecosystem: true
+  - name: seo-ai-social-report
+    file: planable-seo-ai-social-report.md
+    produces: One cross-channel performance report — text conclusions plus a self-contained interactive HTML report.
+    triggers: ["combined SEO + AI + social report", "cross-channel dashboard for last month"]
+    requires_planable_mcp: true
+    ecosystem: true
+count: 12
+x-evidence:
+  fetched: '2026-08-13'
+  url: https://github.com/Planable/smm-skills
+  http_status: 200
+  commit: 56c9fab58cf9d8d5f9633b66ccdad672f5999d80
+  commit_date: '2026-06-25'

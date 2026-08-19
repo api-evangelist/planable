@@ -1,28 +1,30 @@
 {
   "provider": "planable",
-  "sources": [
-    "planable-campaigns-api-openapi.yml",
-    "planable-labels-api-openapi.yml",
-    "planable-media-api-openapi.yml",
-    "planable-pages-api-openapi.yml",
-    "planable-posts-api-openapi.yml",
-    "planable-stories-api-openapi.yml",
-    "planable-system-api-openapi.yml",
-    "planable-workspaces-api-openapi.yml"
-  ],
+  "source": "https://api.planable.io/api/v1/openapi.json",
   "outputs": [
-    "planable-campaigns-api-openapi.yml",
-    "planable-labels-api-openapi.yml",
-    "planable-media-api-openapi.yml",
-    "planable-pages-api-openapi.yml",
-    "planable-posts-api-openapi.yml",
-    "planable-stories-api-openapi.yml",
-    "planable-system-api-openapi.yml",
-    "planable-workspaces-api-openapi.yml"
+    "openapi/planable-campaigns-api-openapi.yml",
+    "openapi/planable-competitors-api-openapi.yml",
+    "openapi/planable-labels-api-openapi.yml",
+    "openapi/planable-media-api-openapi.yml",
+    "openapi/planable-members-api-openapi.yml",
+    "openapi/planable-pages-api-openapi.yml",
+    "openapi/planable-posts-api-openapi.yml",
+    "openapi/planable-social-listening-api-openapi.yml",
+    "openapi/planable-stories-api-openapi.yml",
+    "openapi/planable-system-api-openapi.yml",
+    "openapi/planable-workspaces-api-openapi.yml"
   ],
-  "archived": [],
-  "errors": [],
-  "warnings": [],
-  "notes": [],
-  "skipped": []
+  "ops": {
+    "Campaigns": 5,
+    "Competitors": 6,
+    "Labels": 2,
+    "Media": 3,
+    "Members": 1,
+    "Pages": 4,
+    "Posts": 18,
+    "Social Listening": 7,
+    "Stories": 1,
+    "System": 1,
+    "Workspaces": 3
+  }
 }

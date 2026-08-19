@@ -1,0 +1,142 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Planable Public Campaigns Pages API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Trigger page metrics sync",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.planable.io/api/v1/pages/:id/sync",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Triggers a fresh analytics metrics sync for a page."
+        },
+        {
+          "info": {
+            "name": "Get page metrics sync status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.planable.io/api/v1/pages/:id/sync-status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns whether a page metrics sync is in progress and when metrics last synced."
+        },
+        {
+          "info": {
+            "name": "List pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.planable.io/api/v1/pages",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns pages (social channels) the token has access to, with pagination."
+        },
+        {
+          "info": {
+            "name": "Get page metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.planable.io/api/v1/pages/:id/metrics",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns paginated raw page metrics snapshots for a date range."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

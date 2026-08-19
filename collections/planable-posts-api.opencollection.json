@@ -1,0 +1,319 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Planable Public Campaigns Posts API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Posts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.planable.io/api/v1/posts",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "campaignId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by campaign ID, or `no-campaign` for posts not assigned to any campaign"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns posts for a workspace with pagination. Each item includes the same post detail fields as GET /posts/{id}."
+        },
+        {
+          "info": {
+            "name": "Create a new post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.planable.io/api/v1/posts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a post in the specified workspace and page. Use `pageId` for a single post or `pageIds` to create grouped cross-page posts. Set `notify` to `false` to suppress external notifications (email, in-app push) for this post creation; internal activity feed entries are always recorded. The `media` field: Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs."
+        },
+        {
+          "info": {
+            "name": "Get post detail",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.planable.io/api/v1/posts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a single post by ID including media URLs."
+        },
+        {
+          "info": {
+            "name": "Update a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.planable.io/api/v1/posts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates a post. Published posts are immutable and will return 400. The `media` field: Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs. Pass an empty array to clear media. Stories support a single, non-GIF media item; submitting multiple media URLs or a GIF for a story returns 400. Set `archived` to `true` to archive a post or `false` to restore it; archiving removes any active schedule."
+        },
+        {
+          "info": {
+            "name": "Delete a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.planable.io/api/v1/posts/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a post in a workspace accessible to the calling token."
+        },
+        {
+          "info": {
+            "name": "Get post metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.planable.io/api/v1/posts/:id/metrics",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns the latest metrics snapshot for a published post."
+        },
+        {
+          "info": {
+            "name": "Trigger post metrics sync",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.planable.io/api/v1/posts/:id/sync",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Triggers a fresh metrics sync for a published post."
+        },
+        {
+          "info": {
+            "name": "Get post metrics sync status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.planable.io/api/v1/posts/:id/sync-status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns whether a post metrics sync is in progress and when metrics last synced."
+        },
+        {
+          "info": {
+            "name": "Reorder posts in the grid",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.planable.io/api/v1/posts/reorder",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets zero-based grid positions for posts using the order of `postIds`. The first ID receives `gridPosition: 0`, the second receives `gridPosition: 1`, and so on."
+        },
+        {
+          "info": {
+            "name": "Get total posts count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.planable.io/api/v1/posts/count",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns the total number of posts across all workspaces the token has access to."
+        },
+        {
+          "info": {
+            "name": "List comments on a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.planable.io/api/v1/posts/:id/comments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "teamOnly",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns comments for a post with pagination."
+        },
+        {
+          "info": {
+            "name": "Add a comment to a post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.planable.io/api/v1/posts/:id/comments",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new comment on a post."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,72 @@
+generated: '2026-08-13'
+method: searched
+source: https://planable.io/guides/planable-public-api/
+api: Planable Public API v1
+
+versioning:
+  scheme: url-path
+  current_version: v1
+  spec_version: 1.0.0
+  base: https://api.planable.io/api/v1
+  published_statement: '"The API is versioned, all endpoints live under /api/v1"'
+  older_versions_served: none
+  note: >-
+    A changelog entry headlined "MCP and API v2" announces new capability areas (campaigns,
+    custom views, competitor analytics) but no /api/v2 path is served and info.version is still
+    1.0.0. Treat "v2" there as a product-release label, not an API version.
+
+deprecation:
+  policy_published: false
+  detail: >-
+    Planable publishes no deprecation or sunset policy, no notice period, and no migration
+    commitment for the Public API. The spec declares `deprecated: true` on zero of its 51
+    operations, and neither the Deprecation nor the Sunset header (RFC 8594) appears anywhere
+    in the contract or the docs. This is a real gap, not an omission on our side.
+  deprecated_operations: []
+  sunset_header: not implemented
+  deprecation_header: not implemented
+
+status_page:
+  url: https://status.planable.io/
+  api_component: https://status.planable.io/public-api
+  http_status: 200
+  component_name: Our Public API
+  note: A dedicated status component exists for the Public API specifically, separate from the app.
+
+changelog:
+  url: https://changelog.planable.io/
+  dated: false
+  detail: changelog/planable-changelog.yml
+  note: >-
+    Entries are ordered newest-first and labelled New / Improvement, but the public changelog
+    renders no publication date on the entry list — an agent cannot compute recency from it.
+
+sla:
+  published: false
+  note: No public uptime SLA or support-response commitment is published for the Public API. Planable directs enterprise-level questions to support.
+
+token_lifecycle:
+  expiry_options: [30 days, 60 days, 90 days, 6 months, 1 year, Never]
+  max_active_per_company: 10
+  rotation: manual — generate new, update the tool, revoke the old
+  automated_rotation: false
+  revocation_effect: immediate and irreversible
+  note: Plan changes do not revoke existing tokens; only new-token generation is gated to Pro/Enterprise.
+
+mcp_session_lifecycle:
+  inactivity_expiry: 8 hours (auto-refresh)
+  authorization_validity: 180 days
+  reauthorization: required after 180 days
+  revocation: https://mcp.planable.io/oauth/revoke, and from Planable account settings
+
+x-evidence:
+  fetched: '2026-08-13'
+  probes:
+    - url: https://status.planable.io/
+      http_status: 200
+    - url: https://status.planable.io/public-api
+      http_status: 200
+    - url: https://changelog.planable.io/
+      http_status: 200
+    - url: https://api.planable.io/api/v1/openapi.json
+      http_status: 200

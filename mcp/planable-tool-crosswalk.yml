@@ -1,0 +1,232 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  mcp/planable-mcp.yml (tool names read verbatim from Planable's own published Agent Skills)
+  bound against openapi/_original/planable-openapi.json (Planable Public API v1, 51 operations)
+note: >-
+  The published OpenAPI declares NO operationId on any of its 51 operations, so the `rest:` rows
+  below identify operations by "METHOD /path" — the only stable identifier the provider publishes.
+  overlays/ assigns candidate operationIds as an API Evangelist enhancement; those are ours, not
+  Planable's, and are listed under `overlay_operation_id` where one exists.
+  The live MCP tools/list is OAuth-gated (401 invalid_token), so bindings are by name and
+  documented semantics rather than by observed inputSchema — confidence is set accordingly.
+
+surfaces:
+  openapi:
+    file: openapi/_original/planable-openapi.json
+    servers: https://api.planable.io/api/v1
+    operations: 51
+    gated: false
+    note: Spec is anonymously readable; calling it requires a pln_ bearer token (Pro/Enterprise plans).
+  mcp:
+    url: https://mcp.planable.io/mcp
+    gated: true
+    note: OAuth 2.0 protected resource; tools/list returns 401 without a token.
+  graphql:
+    present: false
+
+crosswalk:
+  - tool: list_workspaces
+    category: account-structure
+    rest: ["GET /workspaces"]
+    binding: direct
+    confidence: high
+  - tool: get_workspace_details
+    category: account-structure
+    rest: ["GET /workspaces"]
+    binding: partial
+    confidence: medium
+    note: >-
+      REST exposes only a workspace list. The MCP tool additionally reports which add-ons
+      (Analytics, Social Inbox) are active on a workspace — no public REST operation returns that.
+  - tool: list_pages
+    category: account-structure
+    rest: ["GET /pages"]
+    binding: direct
+    confidence: high
+  - tool: list_labels
+    category: account-structure
+    rest: ["GET /labels"]
+    binding: direct
+    confidence: high
+  - tool: create_label
+    category: content
+    rest: ["POST /labels"]
+    binding: direct
+    confidence: high
+  - tool: list_posts
+    category: content
+    rest: ["GET /posts", "GET /posts/count"]
+    binding: direct
+    confidence: high
+    note: >-
+      The skills call list_posts with an approvalStatus filter
+      (PENDING_MY_APPROVAL / NOT_APPROVED / PARTIAL_APPROVED / REQUESTED_BY_ME).
+      GET /posts publishes a `status` query parameter; the approval-status filter is not
+      visible in the public spec, so that dimension may be MCP-only.
+  - tool: create_post
+    category: content
+    rest: ["POST /posts"]
+    binding: direct
+    confidence: high
+  - tool: create_grouped_post
+    category: content
+    rest: ["POST /posts"]
+    binding: composite
+    confidence: high
+    note: >-
+      Planable's own API guide states a grouped cross-platform post is created by passing
+      multiple `pageIds` to the single create operation, so this tool is a shaped call on
+      POST /posts rather than a distinct endpoint.
+  - tool: update_post
+    category: content
+    rest: ["PATCH /posts/{id}"]
+    binding: direct
+    confidence: high
+  - tool: create_comment
+    category: collaboration
+    rest: ["POST /posts/{id}/comments"]
+    binding: direct
+    confidence: high
+  - tool: approve_post
+    category: approvals
+    rest: []
+    binding: none
+    confidence: high
+    note: >-
+      No public REST operation approves a post. The closest published operation is
+      POST /posts/{id}/request-approval, which SENDS a post for approval — the opposite
+      direction. Approval is an MCP-only capability in the current contracts.
+  - tool: get_page_metrics
+    category: analytics
+    rest: ["GET /pages/{id}/metrics"]
+    binding: direct
+    confidence: high
+  - tool: get_page_metrics_summary
+    category: analytics
+    rest: ["GET /pages/{id}/metrics"]
+    binding: composite
+    confidence: medium
+    note: Documented as "aggregated metrics across all pages in a workspace" — a fan-out over the per-page operation.
+  - tool: get_post_metrics
+    category: analytics
+    rest: ["GET /posts/{id}/metrics"]
+    binding: direct
+    confidence: high
+  - tool: get_post_metrics_summary
+    category: analytics
+    rest: ["GET /posts/{id}/metrics"]
+    binding: composite
+    confidence: medium
+  - tool: refresh_page_metrics
+    category: analytics
+    rest: ["POST /pages/{id}/sync", "GET /pages/{id}/sync-status"]
+    binding: composite
+    confidence: high
+    note: The REST pattern is trigger-then-poll; the tool presents it as one refresh action.
+
+mcp_only:
+  - tool: approve_post
+    reason: No public REST approve operation exists; REST can only request approval.
+  - tool: (reject / disapprove)
+    reason: >-
+      Documented in the MCP capability map ("Reject and disapprove posts that need revisions")
+      with no corresponding public REST operation and no tool name published in the skills.
+  - tool: (list companies)
+    reason: >-
+      "List all companies and workspaces you belong to" is a documented MCP capability;
+      the public REST API exposes no /companies collection.
+  - tool: (list workspace members)
+    reason: >-
+      GET /members exists in REST, but no member-listing tool name appears in the published
+      skills — the capability is documented for MCP without a verified tool name.
+
+rest_only:
+  - rest: "GET /ping"
+    reason: Health check; no agent-facing tool.
+  - rest: "POST /workspaces"
+    reason: Workspace creation is REST-only — the MCP guide states the agent cannot change account or workspace configuration.
+  - rest: "DELETE /workspaces/{id}"
+    reason: Same as above; destructive account-lifecycle operation withheld from the agent surface.
+  - rest: "DELETE /posts/{id}"
+    reason: No delete tool published in the skills or the capability map.
+  - rest: "POST /posts/{id}/share"
+    reason: Public share links have no published MCP tool.
+  - rest: "DELETE /posts/{id}/share"
+    reason: Same as above.
+  - rest: "PATCH /posts/reorder"
+    reason: Grid reordering has no published MCP tool.
+  - rest: "POST /posts/{id}/request-approval"
+    reason: REST sends a post for approval; the MCP surface acts on approvals instead of requesting them.
+  - rest: "PATCH /posts/{id}/comments/{commentId}"
+    reason: Comment edit has no published tool.
+  - rest: "DELETE /posts/{id}/comments/{commentId}"
+    reason: Comment delete has no published tool.
+  - rest: "POST /posts/{id}/comments/{commentId}/reactions"
+    reason: Reactions have no published tool.
+  - rest: "GET /campaigns"
+    reason: >-
+      The 2026 changelog entry "MCP and API v2, including campaigns, custom views, and
+      competitors" says campaigns reached BOTH surfaces, but no campaign tool name appears
+      in the published skills, so no binding can be asserted.
+  - rest: "POST /campaigns"
+    reason: See above.
+  - rest: "GET /campaigns/{id}"
+    reason: See above.
+  - rest: "PATCH /campaigns/{id}"
+    reason: See above.
+  - rest: "DELETE /campaigns/{id}"
+    reason: See above.
+  - rest: "GET /members"
+    reason: Member listing is documented as an MCP capability but no tool name is published.
+  - rest: "GET /media"
+    reason: Media-library tools are documented in the capability map but no tool names appear in the skills.
+  - rest: "POST /media"
+    reason: See above.
+  - rest: "GET /media/{id}"
+    reason: See above.
+  - rest: "GET /pages/{id}/competitors"
+    reason: Competitor analytics reached MCP per the changelog, but no tool names are published.
+  - rest: "POST /pages/{id}/competitors"
+    reason: See above.
+  - rest: "GET /pages/{id}/competitors/comparison"
+    reason: See above.
+  - rest: "GET /pages/{id}/competitors/metrics"
+    reason: See above.
+  - rest: "GET /pages/{id}/competitors/top-posts"
+    reason: See above.
+  - rest: "DELETE /pages/{id}/competitors/{scrapedPageId}"
+    reason: See above.
+  - rest: "GET /keywords"
+    reason: Social-listening keyword tracking has no published MCP tool.
+  - rest: "POST /keywords"
+    reason: See above.
+  - rest: "DELETE /keywords/{keywordId}"
+    reason: See above.
+  - rest: "GET /keywords/{keywordId}/mentions"
+    reason: See above.
+  - rest: "GET /keywords/{keywordId}/metrics"
+    reason: See above.
+  - rest: "GET /keywords/{keywordId}/metrics/summary"
+    reason: See above.
+  - rest: "GET /keywords/{keywordId}/sync-status"
+    reason: See above.
+  - rest: "POST /stories"
+    reason: Story creation has no published MCP tool.
+  - rest: "POST /posts/{id}/sync"
+    reason: Covered indirectly by refresh_page_metrics at the page level only.
+  - rest: "GET /posts/{id}/sync-status"
+    reason: See above.
+  - rest: "GET /posts/{id}/comments"
+    reason: Reading comments is a documented MCP capability but no tool name is published.
+
+coverage:
+  mcp_tools_verified: 16
+  mcp_tools_bound_to_rest: 15
+  mcp_only_tools: 1
+  rest_operations_total: 51
+  rest_operations_bound: 16
+  rest_only_operations: 37
+  note: >-
+    Bound REST operations are counted once even where several tools map onto them
+    (create_post and create_grouped_post both bind POST /posts).

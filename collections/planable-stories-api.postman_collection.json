@@ -1,0 +1,446 @@
+{
+  "item": [
+    {
+      "id": "7c987812-830a-4b5d-bf88-6a8611592f1a",
+      "name": "Stories",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b21ef000-a43b-4a85-b335-1cf53b75d274",
+          "name": "Create an Instagram story",
+          "request": {
+            "name": "Create an Instagram story",
+            "description": {
+              "content": "Creates a single-media Instagram story. GIFs and non-Instagram pages are not supported. Set `notify` to `false` to suppress external notifications; internal activity feed entries are always recorded.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"media\": \"<uri>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"notify\": true,\n  \"internalNote\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f0ea2215-71ef-4980-97c6-18f3a9427f93",
+              "name": "Story created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"media\": \"<uri>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"notify\": true,\n  \"internalNote\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"workspaceId\": \"string\",\n    \"pageId\": \"string\",\n    \"type\": \"string\",\n    \"classification\": \"story\",\n    \"media\": \"https://hXbhyCEtnUnlFjcoJ.hpjtkpXAX8uLtSMM.INkH\",\n    \"scheduledAt\": \"2012-04-16T23:33:19.207Z\",\n    \"scheduledSet\": true,\n    \"status\": \"string\",\n    \"approved\": false,\n    \"createdAt\": \"1997-07-24T10:55:49.166Z\",\n    \"approvedBy\": [\n      {\n        \"userId\": \"string\",\n        \"approvedAt\": \"1993-09-17T13:59:18.469Z\"\n      },\n      {\n        \"userId\": \"string\",\n        \"approvedAt\": \"2003-03-02T20:35:42.296Z\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "670c7980-48b0-48e0-98be-39a043364ae4",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"media\": \"<uri>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"notify\": true,\n  \"internalNote\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4555da38-c285-40b6-b20b-b82df605d9d6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"media\": \"<uri>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"notify\": true,\n  \"internalNote\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "977d7a0a-19fb-482a-b931-17644e3198b6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"media\": \"<uri>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"notify\": true,\n  \"internalNote\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb105310-db83-4735-adfc-46188206de4f",
+              "name": "Workspace or page not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"media\": \"<uri>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"notify\": true,\n  \"internalNote\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4fcfdd13-8a90-4fd6-8834-9d2570966d92",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"media\": \"<uri>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"notify\": true,\n  \"internalNote\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59d9af41-489f-4576-8f77-a26e06a86bf7",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"media\": \"<uri>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"notify\": true,\n  \"internalNote\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"NOT_FOUND\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.planable.io/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "41456cb1-3cfd-4cc4-ae05-463ae7dd62fe",
+    "name": "Planable Public Campaigns Stories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Planable companies, workspaces, pages, posts and more.",
+      "type": "text/plain"
+    }
+  }
+}

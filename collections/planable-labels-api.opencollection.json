@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Planable Public Campaigns Labels API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Labels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List labels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.planable.io/api/v1/labels",
+            "params": [
+              {
+                "name": "workspaceId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns all labels for a workspace."
+        },
+        {
+          "info": {
+            "name": "Create a label",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.planable.io/api/v1/labels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new label in a workspace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

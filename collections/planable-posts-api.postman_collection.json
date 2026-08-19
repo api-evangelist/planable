@@ -1,0 +1,4900 @@
+{
+  "item": [
+    {
+      "id": "7559d507-f6aa-4daf-a3d9-e57c20cb1f8d",
+      "name": "Posts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a4cf5c7b-232b-49de-a124-92e867f6d442",
+          "name": "List posts",
+          "request": {
+            "name": "List posts",
+            "description": {
+              "content": "Returns posts for a workspace with pagination. Each item includes the same post detail fields as GET /posts/{id}.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "workspaceId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "pageId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "campaignId",
+                  "value": "<string>",
+                  "description": "Filter by campaign ID, or `no-campaign` for posts not assigned to any campaign"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f12e97db-0f6b-4228-b970-dc7f3863941f",
+              "name": "List of post details with pagination",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspaceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"workspaceId\": \"string\",\n      \"pageId\": \"string\",\n      \"type\": \"string\",\n      \"classification\": \"string\",\n      \"plainText\": \"string\",\n      \"createdAt\": \"1981-06-23T00:51:02.057Z\",\n      \"campaignId\": \"string\",\n      \"media\": [\n        \"http://LewCPJkdZWTpBXyoTA.nclhCskgojuLZIJa6DeSi5W\",\n        \"http://CXWuq.tfgteIsBwA7LTcxQKPhE8yqST,\"\n      ],\n      \"scheduledAt\": \"2017-04-27T15:53:19.973Z\",\n      \"status\": \"string\",\n      \"approved\": true,\n      \"approval\": {\n        \"status\": \"NOT_APPLICABLE\",\n        \"approved\": false,\n        \"type\": \"NONE\",\n        \"completedLevels\": 7972,\n        \"totalLevels\": 7702,\n        \"levels\": [\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"approved\": false,\n            \"approvedBy\": [\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"1955-09-07T10:49:29.887Z\",\n                \"levelId\": \"string\"\n              },\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"2021-08-11T18:04:49.981Z\",\n                \"levelId\": \"string\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"approved\": false,\n            \"approvedBy\": [\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"2000-12-27T20:04:32.056Z\",\n                \"levelId\": \"string\"\n              },\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"1962-07-05T01:19:50.134Z\",\n                \"levelId\": \"string\"\n              }\n            ]\n          }\n        ],\n        \"currentLevelId\": \"string\"\n      },\n      \"published\": false,\n      \"scheduledSet\": false,\n      \"teamOnly\": true,\n      \"archived\": true,\n      \"commentsCounter\": 1426.0411596889278,\n      \"notesCounter\": 3315.069325740948,\n      \"gridPosition\": 2407.3850963250798,\n      \"approvedBy\": [\n        {\n          \"userId\": \"string\",\n          \"approvedAt\": \"2014-10-18T15:19:24.302Z\",\n          \"levelId\": \"string\"\n        },\n        {\n          \"userId\": \"string\",\n          \"approvedAt\": \"2014-03-05T01:56:10.112Z\",\n          \"levelId\": \"string\"\n        }\n      ],\n      \"modifiedAt\": \"1966-06-09T07:37:35.553Z\",\n      \"mediaType\": \"string\",\n      \"labels\": [\n        {\n          \"uuid\": \"string\",\n          \"text\": \"string\",\n          \"color\": \"string\"\n        },\n        {\n          \"uuid\": \"string\",\n          \"text\": \"string\",\n          \"color\": \"string\"\n        }\n      ],\n      \"publicShareLink\": \"http://zYFHPDrqIBTHgTFJUmzLbDKh.shbbI0+YD4jNsecPU9DtC93J.0Puvasw5vBH8zjRYy4gVN5bek6JLw2OPGb\",\n      \"publishedPostLink\": \"http://vkww.rkyvVC+vIo7gtzrQc6aU0b.bSiari\",\n      \"groupId\": \"string\",\n      \"groupPageIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"groupSync\": true,\n      \"pinterest\": {\n        \"boardId\": \"string\",\n        \"boardName\": \"string\",\n        \"title\": \"string\",\n        \"link\": \"string\",\n        \"description\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"workspaceId\": \"string\",\n      \"pageId\": \"string\",\n      \"type\": \"string\",\n      \"classification\": \"string\",\n      \"plainText\": \"string\",\n      \"createdAt\": \"1961-07-15T14:39:01.804Z\",\n      \"campaignId\": \"string\",\n      \"media\": [\n        \"http://DCUuREgr.rzycE53p0VvADW,5RfOTkMHC\",\n        \"https://NuWYmtYBhNVjncBJEhEsS.xolhyTB7i8k-xhY7JXjroE7TPqUoDgwJROspfpgakTWDI\"\n      ],\n      \"scheduledAt\": \"2025-11-18T23:57:29.501Z\",\n      \"status\": \"string\",\n      \"approved\": false,\n      \"approval\": {\n        \"status\": \"PARTIALLY_APPROVED\",\n        \"approved\": true,\n        \"type\": \"OPTIONAL\",\n        \"completedLevels\": 5768,\n        \"totalLevels\": 3813,\n        \"levels\": [\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"approved\": true,\n            \"approvedBy\": [\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"1984-04-05T19:30:20.505Z\",\n                \"levelId\": \"string\"\n              },\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"1975-02-11T15:53:26.826Z\",\n                \"levelId\": \"string\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"approved\": false,\n            \"approvedBy\": [\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"1991-05-06T15:34:14.111Z\",\n                \"levelId\": \"string\"\n              },\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"1968-07-08T06:17:53.048Z\",\n                \"levelId\": \"string\"\n              }\n            ]\n          }\n        ],\n        \"currentLevelId\": \"string\"\n      },\n      \"published\": true,\n      \"scheduledSet\": true,\n      \"teamOnly\": true,\n      \"archived\": true,\n      \"commentsCounter\": 8343.900008432001,\n      \"notesCounter\": 1818.924316411482,\n      \"gridPosition\": 7727.137953479447,\n      \"approvedBy\": [\n        {\n          \"userId\": \"string\",\n          \"approvedAt\": \"2020-05-29T14:37:14.295Z\",\n          \"levelId\": \"string\"\n        },\n        {\n          \"userId\": \"string\",\n          \"approvedAt\": \"1993-12-17T23:40:34.317Z\",\n          \"levelId\": \"string\"\n        }\n      ],\n      \"modifiedAt\": \"1966-12-13T19:09:25.256Z\",\n      \"mediaType\": \"string\",\n      \"labels\": [\n        {\n          \"uuid\": \"string\",\n          \"text\": \"string\",\n          \"color\": \"string\"\n        },\n        {\n          \"uuid\": \"string\",\n          \"text\": \"string\",\n          \"color\": \"string\"\n        }\n      ],\n      \"publicShareLink\": \"http://zUsJVcGEEABvZjFf.bkxdEv,D7.WjlciXJrbkvG5MvlEleN8GmWPmdQjTZUmbPWrLajS\",\n      \"publishedPostLink\": \"http://grTw.viwhfdD96Fd+4\",\n      \"groupId\": \"string\",\n      \"groupPageIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"groupSync\": false,\n      \"pinterest\": {\n        \"boardId\": \"string\",\n        \"boardName\": \"string\",\n        \"title\": \"string\",\n        \"link\": \"string\",\n        \"description\": \"string\"\n      }\n    }\n  ],\n  \"pagination\": {\n    \"offset\": 6392.56992285209,\n    \"limit\": 2641.081699625446,\n    \"hasMore\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90293994-5aae-472c-8c8c-d37e198674f1",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspaceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c514511a-f6e9-44b6-a092-eeb47b1cfd1f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspaceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e67c4343-73cb-454b-ba33-d935cc58dce5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspaceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ca54223-a2fc-4582-ab10-85f97cc3804a",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspaceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "53fcb869-6e96-44f5-aa9c-9ea6c1354454",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspaceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "pageId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "campaignId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63062a92-0ea2-4cf8-9d74-f4d955a01003",
+          "name": "Create a new post",
+          "request": {
+            "name": "Create a new post",
+            "description": {
+              "content": "Creates a post in the specified workspace and page. Use `pageId` for a single post or `pageIds` to create grouped cross-page posts. Set `notify` to `false` to suppress external notifications (email, in-app push) for this post creation; internal activity feed entries are always recorded. The `media` field: Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"pageIds\": [\n    \"<string>\"\n  ],\n  \"text\": \"\",\n  \"gridPosition\": \"<integer>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"firstComment\": \"<string>\",\n  \"internalNote\": \"<string>\",\n  \"youtubeTitle\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"notify\": true,\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"campaignId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b1e1f75a-0474-474b-b6f0-79042605147f",
+              "name": "Post created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"pageIds\": [\n    \"<string>\"\n  ],\n  \"text\": \"\",\n  \"gridPosition\": \"<integer>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"firstComment\": \"<string>\",\n  \"internalNote\": \"<string>\",\n  \"youtubeTitle\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"notify\": true,\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"posts\": [\n    {\n      \"id\": \"string\",\n      \"workspaceId\": \"string\",\n      \"pageId\": \"string\",\n      \"type\": \"string\",\n      \"classification\": \"string\",\n      \"plainText\": \"string\",\n      \"createdAt\": \"1997-04-07T21:46:34.765Z\",\n      \"campaignId\": \"string\",\n      \"media\": [\n        \"https://bqhPLewiPkQjdEINOuvnEKad.hekae3wT4awHN.0XhGX-iIZvZuL+KJltwZ5Xkv0Axv7dFpl\",\n        \"http://McHGjJXJaxFTyV.zepwG-dVrLW.bGyy\"\n      ],\n      \"scheduledAt\": \"2009-05-28T19:27:18.042Z\",\n      \"status\": \"string\",\n      \"approved\": false,\n      \"approval\": {\n        \"status\": \"PARTIALLY_APPROVED\",\n        \"approved\": false,\n        \"type\": \"OPTIONAL\",\n        \"completedLevels\": 3049,\n        \"totalLevels\": 822,\n        \"levels\": [\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"approved\": false,\n            \"approvedBy\": [\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"2017-11-12T11:50:50.244Z\",\n                \"levelId\": \"string\"\n              },\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"1995-06-28T03:45:37.722Z\",\n                \"levelId\": \"string\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"approved\": true,\n            \"approvedBy\": [\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"2022-03-11T19:09:36.683Z\",\n                \"levelId\": \"string\"\n              },\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"1960-04-08T02:07:28.009Z\",\n                \"levelId\": \"string\"\n              }\n            ]\n          }\n        ],\n        \"currentLevelId\": \"string\"\n      },\n      \"published\": false,\n      \"scheduledSet\": true,\n      \"teamOnly\": false,\n      \"archived\": true,\n      \"commentsCounter\": 2451.536552299293,\n      \"notesCounter\": 7773.110825202284,\n      \"gridPosition\": 9506.818911403507,\n      \"approvedBy\": [\n        {\n          \"userId\": \"string\",\n          \"approvedAt\": \"1974-03-08T11:01:19.788Z\",\n          \"levelId\": \"string\"\n        },\n        {\n          \"userId\": \"string\",\n          \"approvedAt\": \"1952-09-08T19:10:13.360Z\",\n          \"levelId\": \"string\"\n        }\n      ],\n      \"modifiedAt\": \"1948-11-07T23:49:39.618Z\",\n      \"mediaType\": \"string\",\n      \"labels\": [\n        {\n          \"uuid\": \"string\",\n          \"text\": \"string\",\n          \"color\": \"string\"\n        },\n        {\n          \"uuid\": \"string\",\n          \"text\": \"string\",\n          \"color\": \"string\"\n        }\n      ],\n      \"publicShareLink\": \"http://ktJKhatyoxw.hhdgN0n4iXUU2VJ9gL9N8b7UJJCyf5g,gkT\",\n      \"publishedPostLink\": \"http://hkyLfNqXJ.tfCR9HZYR9,7SJke1vZz3xmzCelfTzWFRD5\",\n      \"groupId\": \"string\",\n      \"groupPageIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"groupSync\": true,\n      \"pinterest\": {\n        \"boardId\": \"string\",\n        \"boardName\": \"string\",\n        \"title\": \"string\",\n        \"link\": \"string\",\n        \"description\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"workspaceId\": \"string\",\n      \"pageId\": \"string\",\n      \"type\": \"string\",\n      \"classification\": \"string\",\n      \"plainText\": \"string\",\n      \"createdAt\": \"1956-05-27T19:18:14.641Z\",\n      \"campaignId\": \"string\",\n      \"media\": [\n        \"https://LqvpISlNlBVCZAzcDdznTav.kueoizIMHl7xj9xfuyOfm\",\n        \"https://PtUmqBJKAkgrC.wafpHuHl\"\n      ],\n      \"scheduledAt\": \"2002-12-04T10:26:16.500Z\",\n      \"status\": \"string\",\n      \"approved\": true,\n      \"approval\": {\n        \"status\": \"PENDING\",\n        \"approved\": false,\n        \"type\": \"MULTIPLE\",\n        \"completedLevels\": 6398,\n        \"totalLevels\": 6053,\n        \"levels\": [\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"approved\": true,\n            \"approvedBy\": [\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"1948-02-25T00:44:13.073Z\",\n                \"levelId\": \"string\"\n              },\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"2025-07-19T05:06:32.718Z\",\n                \"levelId\": \"string\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"label\": \"string\",\n            \"approved\": false,\n            \"approvedBy\": [\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"2015-06-03T16:27:38.473Z\",\n                \"levelId\": \"string\"\n              },\n              {\n                \"userId\": \"string\",\n                \"approvedAt\": \"1976-02-13T01:40:23.662Z\",\n                \"levelId\": \"string\"\n              }\n            ]\n          }\n        ],\n        \"currentLevelId\": \"string\"\n      },\n      \"published\": true,\n      \"scheduledSet\": true,\n      \"teamOnly\": false,\n      \"archived\": true,\n      \"commentsCounter\": 5410.514505450743,\n      \"notesCounter\": 4837.8529996785655,\n      \"gridPosition\": 6421.144319732252,\n      \"approvedBy\": [\n        {\n          \"userId\": \"string\",\n          \"approvedAt\": \"1984-10-20T00:00:33.906Z\",\n          \"levelId\": \"string\"\n        },\n        {\n          \"userId\": \"string\",\n          \"approvedAt\": \"1995-12-20T13:04:45.868Z\",\n          \"levelId\": \"string\"\n        }\n      ],\n      \"modifiedAt\": \"2014-06-29T21:16:05.147Z\",\n      \"mediaType\": \"string\",\n      \"labels\": [\n        {\n          \"uuid\": \"string\",\n          \"text\": \"string\",\n          \"color\": \"string\"\n        },\n        {\n          \"uuid\": \"string\",\n          \"text\": \"string\",\n          \"color\": \"string\"\n        }\n      ],\n      \"publicShareLink\": \"http://ffKIzdalbmHeQdTt.pndfGhHZQT4zRVgbpl6J90T\",\n      \"publishedPostLink\": \"https://krwXaZKGcbINh.idtZNWTUQ1zc9BE6hBnIymUz3-dUKOrey+VDOe8sgBMyBX6pMhWlOTG\",\n      \"groupId\": \"string\",\n      \"groupPageIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"groupSync\": false,\n      \"pinterest\": {\n        \"boardId\": \"string\",\n        \"boardName\": \"string\",\n        \"title\": \"string\",\n        \"link\": \"string\",\n        \"description\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11af3de2-4305-43d8-b4e0-73dd0c44df17",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"pageIds\": [\n    \"<string>\"\n  ],\n  \"text\": \"\",\n  \"gridPosition\": \"<integer>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"firstComment\": \"<string>\",\n  \"internalNote\": \"<string>\",\n  \"youtubeTitle\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"notify\": true,\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3de223c0-65e7-4a20-89ed-6bbe1fc552ec",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"pageIds\": [\n    \"<string>\"\n  ],\n  \"text\": \"\",\n  \"gridPosition\": \"<integer>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"firstComment\": \"<string>\",\n  \"internalNote\": \"<string>\",\n  \"youtubeTitle\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"notify\": true,\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbaecf79-aa5f-4200-be6f-3af78825a35b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"pageIds\": [\n    \"<string>\"\n  ],\n  \"text\": \"\",\n  \"gridPosition\": \"<integer>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"firstComment\": \"<string>\",\n  \"internalNote\": \"<string>\",\n  \"youtubeTitle\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"notify\": true,\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f8ff3c3b-08da-4864-91c2-a1f72c2b6ee8",
+              "name": "Workspace or page not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"pageIds\": [\n    \"<string>\"\n  ],\n  \"text\": \"\",\n  \"gridPosition\": \"<integer>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"firstComment\": \"<string>\",\n  \"internalNote\": \"<string>\",\n  \"youtubeTitle\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"notify\": true,\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a115e93e-9cef-483a-8c54-c2c4e35bfefd",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"pageIds\": [\n    \"<string>\"\n  ],\n  \"text\": \"\",\n  \"gridPosition\": \"<integer>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"firstComment\": \"<string>\",\n  \"internalNote\": \"<string>\",\n  \"youtubeTitle\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"notify\": true,\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca4ba452-e708-438f-a2ec-9a4a0b105f89",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"pageId\": \"<string>\",\n  \"pageIds\": [\n    \"<string>\"\n  ],\n  \"text\": \"\",\n  \"gridPosition\": \"<integer>\",\n  \"scheduledAt\": \"<dateTime>\",\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"publishAtScheduledDate\": false,\n  \"firstComment\": \"<string>\",\n  \"internalNote\": \"<string>\",\n  \"youtubeTitle\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"notify\": true,\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d48e8e5-94d1-4bdf-95da-e221d416da8d",
+          "name": "Get post detail",
+          "request": {
+            "name": "Get post detail",
+            "description": {
+              "content": "Returns a single post by ID including media URLs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0aa43bc0-1a7f-440a-babe-e817ec418e80",
+              "name": "Post detail with media",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"workspaceId\": \"string\",\n    \"pageId\": \"string\",\n    \"type\": \"string\",\n    \"classification\": \"string\",\n    \"plainText\": \"string\",\n    \"createdAt\": \"1987-10-15T02:14:02.319Z\",\n    \"campaignId\": \"string\",\n    \"media\": [\n      \"http://tuViBaXhgivlqXoDBEenrZALVwGQCfit.wbrKBlFLMrOtFUsiIz3qJE1Pwe\",\n      \"https://aQMUehuofHX.pdeA6EBl,l3N54b6VS2SJ5kG\"\n    ],\n    \"scheduledAt\": \"1985-10-21T13:00:47.927Z\",\n    \"status\": \"string\",\n    \"approved\": true,\n    \"approval\": {\n      \"status\": \"FULLY_APPROVED\",\n      \"approved\": true,\n      \"type\": \"NONE\",\n      \"completedLevels\": 8107,\n      \"totalLevels\": 2184,\n      \"levels\": [\n        {\n          \"id\": \"string\",\n          \"label\": \"string\",\n          \"approved\": true,\n          \"approvedBy\": [\n            {\n              \"userId\": \"string\",\n              \"approvedAt\": \"2002-10-02T05:52:17.087Z\",\n              \"levelId\": \"string\"\n            },\n            {\n              \"userId\": \"string\",\n              \"approvedAt\": \"1972-11-04T08:44:32.044Z\",\n              \"levelId\": \"string\"\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"label\": \"string\",\n          \"approved\": true,\n          \"approvedBy\": [\n            {\n              \"userId\": \"string\",\n              \"approvedAt\": \"2013-04-27T01:02:33.181Z\",\n              \"levelId\": \"string\"\n            },\n            {\n              \"userId\": \"string\",\n              \"approvedAt\": \"1954-08-04T15:49:10.354Z\",\n              \"levelId\": \"string\"\n            }\n          ]\n        }\n      ],\n      \"currentLevelId\": \"string\"\n    },\n    \"published\": true,\n    \"scheduledSet\": true,\n    \"teamOnly\": true,\n    \"archived\": true,\n    \"commentsCounter\": 4997.162551550538,\n    \"notesCounter\": 5819.024953567294,\n    \"gridPosition\": 5557.2597298937935,\n    \"approvedBy\": [\n      {\n        \"userId\": \"string\",\n        \"approvedAt\": \"1974-03-22T13:39:05.835Z\",\n        \"levelId\": \"string\"\n      },\n      {\n        \"userId\": \"string\",\n        \"approvedAt\": \"2004-07-16T02:16:53.968Z\",\n        \"levelId\": \"string\"\n      }\n    ],\n    \"modifiedAt\": \"1964-01-25T07:59:44.241Z\",\n    \"mediaType\": \"string\",\n    \"labels\": [\n      {\n        \"uuid\": \"string\",\n        \"text\": \"string\",\n        \"color\": \"string\"\n      },\n      {\n        \"uuid\": \"string\",\n        \"text\": \"string\",\n        \"color\": \"string\"\n      }\n    ],\n    \"publicShareLink\": \"http://xTgF.yaC+7qgowXklTh.-LH9EtF1uVNgMVfSt+pj\",\n    \"publishedPostLink\": \"https://Uys.zkwp5PVKP32vyZn1e,4CApYOPcgI6ARaQr+Qvwnt-\",\n    \"groupId\": \"string\",\n    \"groupPageIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"groupSync\": false,\n    \"pinterest\": {\n      \"boardId\": \"string\",\n      \"boardName\": \"string\",\n      \"title\": \"string\",\n      \"link\": \"string\",\n      \"description\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d22c063a-e0b9-4eb0-a1a5-9c31a2c13c22",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "574052c3-6f36-446b-aecf-514c7b9df96c",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "196a211e-c8a9-4320-972f-8e9eec2a05a0",
+              "name": "Post not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8a274a51-3511-4b37-a535-439c428a6f3b",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b5c9772-ec5f-4366-af97-e4b35884fd47",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55f1a5e6-de0a-4af3-81c1-69fb53611b53",
+          "name": "Delete a post",
+          "request": {
+            "name": "Delete a post",
+            "description": {
+              "content": "Deletes a post in a workspace accessible to the calling token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "14f80faf-83fe-4559-9efd-8198bc34b291",
+              "name": "Post deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b8572a5-bce1-492b-bc9b-4acb93ca7e92",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "05ad014e-950f-49c8-853b-bcb19d5130a5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "606f93fc-b849-49e9-8908-6fe2c9f0c88a",
+              "name": "Post not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "adddba30-e7ec-46f2-8a9a-6241bcfa581e",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49095861-b3b3-43ff-807e-e08590c62f45",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56613e9e-09d5-412b-acb1-182c115d7e7d",
+          "name": "Update a post",
+          "request": {
+            "name": "Update a post",
+            "description": {
+              "content": "Updates a post. Published posts are immutable and will return 400. The `media` field: Up to 20 public image or video URLs, each max 100MB. Files are downloaded server-side from the provided URLs. Pass an empty array to clear media. Stories support a single, non-GIF media item; submitting multiple media URLs or a GIF for a story returns 400. Set `archived` to `true` to archive a post or `false` to restore it; archiving removes any active schedule.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"<string>\",\n  \"scheduledAt\": \"<string,null-date-time>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"media\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"publishAtScheduledDate\": \"<boolean>\",\n  \"archived\": \"<boolean>\",\n  \"campaignId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00c65675-0166-4fec-bab2-c06f71c41b8e",
+              "name": "Updated post detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"scheduledAt\": \"<string,null-date-time>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"media\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"publishAtScheduledDate\": \"<boolean>\",\n  \"archived\": \"<boolean>\",\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"workspaceId\": \"string\",\n    \"pageId\": \"string\",\n    \"type\": \"string\",\n    \"classification\": \"string\",\n    \"plainText\": \"string\",\n    \"createdAt\": \"1987-10-15T02:14:02.319Z\",\n    \"campaignId\": \"string\",\n    \"media\": [\n      \"http://tuViBaXhgivlqXoDBEenrZALVwGQCfit.wbrKBlFLMrOtFUsiIz3qJE1Pwe\",\n      \"https://aQMUehuofHX.pdeA6EBl,l3N54b6VS2SJ5kG\"\n    ],\n    \"scheduledAt\": \"1985-10-21T13:00:47.927Z\",\n    \"status\": \"string\",\n    \"approved\": true,\n    \"approval\": {\n      \"status\": \"FULLY_APPROVED\",\n      \"approved\": true,\n      \"type\": \"NONE\",\n      \"completedLevels\": 8107,\n      \"totalLevels\": 2184,\n      \"levels\": [\n        {\n          \"id\": \"string\",\n          \"label\": \"string\",\n          \"approved\": true,\n          \"approvedBy\": [\n            {\n              \"userId\": \"string\",\n              \"approvedAt\": \"2002-10-02T05:52:17.087Z\",\n              \"levelId\": \"string\"\n            },\n            {\n              \"userId\": \"string\",\n              \"approvedAt\": \"1972-11-04T08:44:32.044Z\",\n              \"levelId\": \"string\"\n            }\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"label\": \"string\",\n          \"approved\": true,\n          \"approvedBy\": [\n            {\n              \"userId\": \"string\",\n              \"approvedAt\": \"2013-04-27T01:02:33.181Z\",\n              \"levelId\": \"string\"\n            },\n            {\n              \"userId\": \"string\",\n              \"approvedAt\": \"1954-08-04T15:49:10.354Z\",\n              \"levelId\": \"string\"\n            }\n          ]\n        }\n      ],\n      \"currentLevelId\": \"string\"\n    },\n    \"published\": true,\n    \"scheduledSet\": true,\n    \"teamOnly\": true,\n    \"archived\": true,\n    \"commentsCounter\": 4997.162551550538,\n    \"notesCounter\": 5819.024953567294,\n    \"gridPosition\": 5557.2597298937935,\n    \"approvedBy\": [\n      {\n        \"userId\": \"string\",\n        \"approvedAt\": \"1974-03-22T13:39:05.835Z\",\n        \"levelId\": \"string\"\n      },\n      {\n        \"userId\": \"string\",\n        \"approvedAt\": \"2004-07-16T02:16:53.968Z\",\n        \"levelId\": \"string\"\n      }\n    ],\n    \"modifiedAt\": \"1964-01-25T07:59:44.241Z\",\n    \"mediaType\": \"string\",\n    \"labels\": [\n      {\n        \"uuid\": \"string\",\n        \"text\": \"string\",\n        \"color\": \"string\"\n      },\n      {\n        \"uuid\": \"string\",\n        \"text\": \"string\",\n        \"color\": \"string\"\n      }\n    ],\n    \"publicShareLink\": \"http://xTgF.yaC+7qgowXklTh.-LH9EtF1uVNgMVfSt+pj\",\n    \"publishedPostLink\": \"https://Uys.zkwp5PVKP32vyZn1e,4CApYOPcgI6ARaQr+Qvwnt-\",\n    \"groupId\": \"string\",\n    \"groupPageIds\": [\n      \"string\",\n      \"string\"\n    ],\n    \"groupSync\": false,\n    \"pinterest\": {\n      \"boardId\": \"string\",\n      \"boardName\": \"string\",\n      \"title\": \"string\",\n      \"link\": \"string\",\n      \"description\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64923298-c49b-4a24-9aa4-ddddb8e493c2",
+              "name": "Validation error or post is already published",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"scheduledAt\": \"<string,null-date-time>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"media\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"publishAtScheduledDate\": \"<boolean>\",\n  \"archived\": \"<boolean>\",\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ec567544-ebc2-4d20-bb44-84d1e0a7b052",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"scheduledAt\": \"<string,null-date-time>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"media\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"publishAtScheduledDate\": \"<boolean>\",\n  \"archived\": \"<boolean>\",\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5a64aab-b31a-4ab1-9024-f1f614a9b762",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"scheduledAt\": \"<string,null-date-time>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"media\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"publishAtScheduledDate\": \"<boolean>\",\n  \"archived\": \"<boolean>\",\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4892196a-0707-43bc-9224-24ca926382d1",
+              "name": "Post not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"scheduledAt\": \"<string,null-date-time>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"media\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"publishAtScheduledDate\": \"<boolean>\",\n  \"archived\": \"<boolean>\",\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0dc3ab83-3c76-447a-b5e2-625c7901b9e2",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"scheduledAt\": \"<string,null-date-time>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"media\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"publishAtScheduledDate\": \"<boolean>\",\n  \"archived\": \"<boolean>\",\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a729ad1c-16dd-479c-811a-982279f83279",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"scheduledAt\": \"<string,null-date-time>\",\n  \"labels\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"media\": [\n    \"<uri>\",\n    \"<uri>\"\n  ],\n  \"teamOnly\": \"<boolean>\",\n  \"approved\": \"<boolean>\",\n  \"approvedBy\": \"<string>\",\n  \"linkedinPdfTitle\": \"<string>\",\n  \"linkedinVideoTitle\": \"<string>\",\n  \"pinterest\": {\n    \"boardId\": \"<string>\",\n    \"title\": \"<string>\",\n    \"link\": \"<uri>\",\n    \"description\": \"<string>\"\n  },\n  \"publishAtScheduledDate\": \"<boolean>\",\n  \"archived\": \"<boolean>\",\n  \"campaignId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcd632ff-4c42-48ca-9cdb-fa720936afc3",
+          "name": "Get post metrics",
+          "request": {
+            "name": "Get post metrics",
+            "description": {
+              "content": "Returns the latest metrics snapshot for a published post.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posts",
+                ":id",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ee649c71-1787-48bb-b02d-95058e902eab",
+              "name": "Latest metrics snapshot for the post",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"postId\": \"string\",\n    \"pageId\": \"string\",\n    \"pageType\": \"string\",\n    \"fetchedAt\": \"2002-08-30T07:04:50.936Z\",\n    \"impressions\": 5034.927390896833,\n    \"engagement\": 2557.8458507868163,\n    \"reactions\": 1541.850400755639,\n    \"facebook\": {},\n    \"instagram\": {},\n    \"linkedin\": {},\n    \"tiktok\": {},\n    \"threads\": {},\n    \"youtube\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f04f062-da53-4cc0-9bdc-c3757c6aa770",
+              "name": "Post is not published",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9b05e1ed-6ee5-41bf-8cf2-800d815a6ef4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5ddfc21-1d4d-48b9-ba11-4986ca3dd8b7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d694148-a877-4953-abb9-180db8222055",
+              "name": "Post not found or metrics missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ddb2e73f-aad4-4a1e-917b-60e20eb26cc9",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe7c74ae-070e-4a85-a601-343ee81159ac",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70d67397-187f-4898-9b82-646ad7eff6b7",
+          "name": "Trigger post metrics sync",
+          "request": {
+            "name": "Trigger post metrics sync",
+            "description": {
+              "content": "Triggers a fresh metrics sync for a published post.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posts",
+                ":id",
+                "sync"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ba482d6e-5024-4164-b7f4-2ad55ec78d62",
+              "name": "Post metrics sync queued or deduplicated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"postId\": \"string\",\n    \"started\": true,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3850118-6dc4-4f69-b495-bafd4869c3a4",
+              "name": "Post is not published",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b3fca96-4831-4c4a-98a6-ff3720bfe6fc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "332e38b8-2b7f-469e-95d6-d24206096ba2",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dc6661af-d0a2-43a5-a3ed-ea8bad4eebc4",
+              "name": "Post not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b188ab39-cadf-4436-893c-962aaad5cfb9",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b2da6e5-8cb3-4673-8f6c-f991c2b0dab2",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92ab9edf-fdb6-44f0-8e63-8564bf80a7d1",
+          "name": "Get post metrics sync status",
+          "request": {
+            "name": "Get post metrics sync status",
+            "description": {
+              "content": "Returns whether a post metrics sync is in progress and when metrics last synced.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posts",
+                ":id",
+                "sync-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "02a70533-84b0-4ee8-a372-39929d2f7d43",
+              "name": "Post metrics sync status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "sync-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"postId\": \"string\",\n    \"syncInProgress\": false,\n    \"lastSyncedAt\": \"1966-09-22T03:04:33.909Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88e82354-c8d2-40bf-943f-5302ad604302",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "sync-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "734df148-619d-4691-abcd-22eb5579a6fc",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "sync-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f2c82232-6106-4748-8654-deaacb9129aa",
+              "name": "Post not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "sync-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f40b3ac7-6090-41e6-b4c7-61bb5946535c",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "sync-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6aaf63e9-b393-471d-a1f2-c51ab1458ce1",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "sync-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e11e8aef-02e0-4950-9a20-7e1025c41167",
+          "name": "Reorder posts in the grid",
+          "request": {
+            "name": "Reorder posts in the grid",
+            "description": {
+              "content": "Sets zero-based grid positions for posts using the order of `postIds`. The first ID receives `gridPosition: 0`, the second receives `gridPosition: 1`, and so on.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posts",
+                "reorder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"postIds\": [\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "dcc4fc43-42dc-4f5c-906e-4b0cfdb07dd0",
+              "name": "Posts reordered",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    "reorder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"postIds\": [\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"posts\": [\n      {\n        \"id\": \"string\",\n        \"gridPosition\": 9137.934387767296\n      },\n      {\n        \"id\": \"string\",\n        \"gridPosition\": 1516.889600936666\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "340d8622-04bb-4434-970b-112a3a25b4b4",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    "reorder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"postIds\": [\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "023923f7-e524-443f-81ec-5867ba272d34",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    "reorder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"postIds\": [\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd573e9b-b59b-423c-98d5-3eb4d16459e6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    "reorder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"postIds\": [\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c793bfcc-24fb-464b-83a4-6f22faf5d841",
+              "name": "Workspace or post not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    "reorder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"postIds\": [\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "36e5b3b6-cf3a-428a-88ee-2e5a961f23fc",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    "reorder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"postIds\": [\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c2083f1-61ee-49c3-a1bc-8860da3dac86",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    "reorder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"workspaceId\": \"<string>\",\n  \"postIds\": [\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14b2f99d-24ea-4982-9620-1a1993c05684",
+          "name": "Get total posts count",
+          "request": {
+            "name": "Get total posts count",
+            "description": {
+              "content": "Returns the total number of posts across all workspaces the token has access to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posts",
+                "count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2e302766-1db0-41ea-9772-92d112a1ebb5",
+              "name": "Total posts count and per-workspace breakdown",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"total\": 3735.970981196016,\n    \"workspaces\": [\n      {\n        \"workspaceId\": \"string\",\n        \"count\": 6988.899647030825\n      },\n      {\n        \"workspaceId\": \"string\",\n        \"count\": 970.8015030136452\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62c25c31-ed13-463a-a0bc-55984f7143b7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8416d9e6-011b-456e-89af-06f2b0d4b01b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98fb14ee-6c2a-4a43-98e1-d31fd8280e7b",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "326aed82-a348-4f99-a959-1bd840aa4c78",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    "count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5662e27-d8c6-4df3-9c03-26dffc4d7a24",
+          "name": "List comments on a post",
+          "request": {
+            "name": "List comments on a post",
+            "description": {
+              "content": "Returns comments for a post with pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posts",
+                ":id",
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "teamOnly",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "64277bfc-bf90-4679-bd2e-2cc2866291b7",
+              "name": "List of comments with pagination",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "teamOnly",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"postId\": \"string\",\n      \"text\": \"string\",\n      \"authorId\": \"string\",\n      \"teamOnly\": true,\n      \"createdAt\": \"1965-10-17T22:04:55.445Z\"\n    },\n    {\n      \"id\": \"string\",\n      \"postId\": \"string\",\n      \"text\": \"string\",\n      \"authorId\": \"string\",\n      \"teamOnly\": false,\n      \"createdAt\": \"2013-02-25T01:27:50.122Z\"\n    }\n  ],\n  \"pagination\": {\n    \"offset\": 1116.5117608285168,\n    \"limit\": 5088.993623259493,\n    \"hasMore\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "961655b2-8553-49e2-956f-a49c9589a61d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "teamOnly",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "012aef56-6b0f-49b8-b64f-aa84228dd12d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "teamOnly",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c428233e-d52a-435c-be4c-bef222dff460",
+              "name": "Post not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "teamOnly",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "876647fd-4be1-46ab-8746-19a188e2df19",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "teamOnly",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b4b4b24-44cf-4cf8-b4ad-a393ee0af06d",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "teamOnly",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9273930e-e1e2-4df7-89af-b01b219a1fe9",
+          "name": "Add a comment to a post",
+          "request": {
+            "name": "Add a comment to a post",
+            "description": {
+              "content": "Creates a new comment on a post.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "posts",
+                ":id",
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"<string>\",\n  \"teamOnly\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e5a312f4-a37a-41f9-9df1-0d44eec7854f",
+              "name": "Comment created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"teamOnly\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"postId\": \"string\",\n    \"text\": \"string\",\n    \"authorId\": \"string\",\n    \"teamOnly\": false,\n    \"createdAt\": \"1970-07-19T20:15:57.860Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb940b8e-b8e5-4e43-997e-479c1ce61072",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"teamOnly\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b80e58e1-09fb-44fb-a90c-d511d356a99f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"teamOnly\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed0010c2-7ca0-4466-aff2-def64526b5c7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"teamOnly\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e21c1d1-9604-4baf-8a8f-3ddaa66665c6",
+              "name": "Post not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"teamOnly\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2a82f57c-6e95-43ea-a5d4-14dd1ca88da6",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"teamOnly\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5729003-7d93-41e4-a155-d5cfef258be5",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "posts",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"teamOnly\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"METHOD_NOT_ALLOWED\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.planable.io/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "618d13cc-d385-4399-9ada-ae0f90b378b1",
+    "name": "Planable Public Campaigns Posts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Planable companies, workspaces, pages, posts and more.",
+      "type": "text/plain"
+    }
+  }
+}

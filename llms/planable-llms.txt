@@ -1,0 +1,98 @@
+# Planable
+
+> Planable is a collaboration-first social media management platform for agencies, multi-location
+> brands, multi-brand companies and in-house marketing teams. Content is created, planned, reviewed,
+> approved, scheduled, published and analyzed in one shared workspace across nine social channels.
+> Planable exposes three programmable surfaces: a REST Public API (v1), a remote MCP server, and a
+> published set of Agent Skills.
+
+generated: 2026-08-13
+method: generated
+source: apis.yml + repo artifacts + planable.io/ai-instructions/ (Planable's own AI-facing page)
+note: Planable serves no /llms.txt (HTTP 404 on planable.io, SPA shell on api/app/mcp hosts). This
+  file is assembled by API Evangelist from Planable's published contracts and documentation. Planable
+  DOES publish an equivalent AI-facing document as HTML at https://planable.io/ai-instructions/.
+
+## API surfaces
+
+- [REST Public API v1](https://api.planable.io/api/v1): 51 operations over workspaces, pages, posts,
+  comments, campaigns, labels, media, members, stories, competitor analytics and social listening.
+  Bearer token auth (`Authorization: Bearer pln_...`). Available on Pro and Enterprise plans.
+- [OpenAPI 3.1 document](https://api.planable.io/api/v1/openapi.json): the authoritative machine-readable contract.
+- [Interactive API reference](https://api.planable.io/api/v1/docs): Scalar-rendered reference, run requests live.
+- [MCP server](https://mcp.planable.io/mcp): remote, OAuth 2.0 protected, available on all plans.
+  Works with Claude, ChatGPT and Gemini.
+- [Agent Skills](https://github.com/Planable/smm-skills): 12 published Claude Agent Skills, MIT licensed,
+  installable as the `planable-smm` Claude Code plugin.
+
+## Getting started
+
+- [Public API guide](https://planable.io/guides/planable-public-api/): tokens, scopes, rate limits, error shapes.
+- [MCP guide](https://planable.io/guides/planable-mcp/): what the connector does and how to connect it.
+- [Claude + Planable guide](https://planable.io/guides/planable-mcp-connector-claude/): capability map and the six core skills.
+- [Connect the MCP (help center)](https://help.planable.io/hc/en-us/articles/27538577098780-How-to-connect-Planable-MCP-to-your-AI-tools)
+- [Connect and use the Public API (help center)](https://help.planable.io/hc/en-us/articles/27638359236508-How-to-connect-and-use-the-Planable-Public-API)
+
+## Authentication
+
+- REST: opaque bearer tokens prefixed `pln_`, minted in Company settings -> API tokens by a company
+  Owner or Administrator. Two scopes: `read` and `write` (write implies read). Tokens can be restricted
+  to specific workspaces and given an expiry from 30 days to Never. Maximum 10 active tokens per company.
+- MCP: OAuth 2.0 authorization code + PKCE (S256) with dynamic client registration at
+  https://mcp.planable.io/oauth/register. Six scopes: read, approve, edit, publish, analyze, engage.
+  Sessions expire after 8 hours of inactivity (auto-refresh); authorization lasts 180 days.
+
+## Runtime semantics an agent needs
+
+- Base URL: `https://api.planable.io/api/v1`. Versioned by URL path; only v1 is served.
+- `workspaceId` is a required query parameter on most collection operations — workspace is the scoping key.
+- Pagination: `limit` (default 20, max 100) + `offset`; one operation uses `cursor` with `pagination.nextCursor`.
+- Rate limits per token: 600 GET/minute, 120 write/minute, Redis sliding window. Every response carries
+  `X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset`. No `Retry-After`. Exhaustion is 429 / `RATE_LIMITED`.
+- Errors are vendor JSON, not RFC 9457: `{"error":{"code","message","requestId"}}` with a closed 10-value
+  code enum: VALIDATION_ERROR, UNAUTHORIZED, FORBIDDEN, NOT_FOUND, METHOD_NOT_ALLOWED, RATE_LIMITED,
+  POST_ALREADY_PUBLISHED, PUBLISHING_IN_PROGRESS, WORKSPACE_LIMIT_REACHED, INTERNAL.
+- No Idempotency-Key header. Four operations publish natural-key idempotent semantics: POST and DELETE
+  /posts/{id}/share, POST /pages/{id}/competitors, POST /keywords. Treat every other write as non-idempotent.
+- Published posts are immutable — editing one returns POST_ALREADY_PUBLISHED.
+- Posts created via API or MCP land as DRAFTS and pass through the normal approval flow. If a workspace
+  has auto-publish-on-approval enabled, an API-created post publishes once approved.
+- Grouped cross-platform posts are created by passing multiple `pageIds` to a single POST /posts.
+- Metrics and social-listening syncs are trigger-then-poll, not webhook-driven. There are no webhooks.
+- The spec declares no operationId on any operation; identify operations by METHOD + path.
+
+## Channels supported
+
+Facebook, Instagram, X (Twitter), LinkedIn, TikTok, YouTube, Pinterest, Threads, Google Business Profile,
+plus Universal Content for any other format.
+
+## Plans and limits
+
+- [Pricing](https://planable.io/pricing/): Free (50 lifetime posts), Basic, Pro, Enterprise.
+  Analytics and Social Inbox are paid add-ons purchased per workspace.
+- Public API token generation requires Pro or Enterprise. MCP is available on all plans.
+- Analytics operations and analytics MCP tools require the Analytics add-on on the workspace.
+- Post volume caps by plan: Basic 60/workspace/month, Pro 150/workspace/month, Enterprise unlimited.
+  Posts created via the API count against these caps.
+
+## Operational
+
+- [Status page](https://status.planable.io/) with a dedicated [Public API component](https://status.planable.io/public-api).
+- [Changelog](https://changelog.planable.io/) — product and API changes, undated entries.
+- No published deprecation or sunset policy; no Sunset/Deprecation headers; no operation is marked deprecated.
+- No SLA published for the Public API.
+
+## Company
+
+- [Website](https://planable.io/) · [Blog](https://planable.io/blog/) · [Help center](https://help.planable.io/hc/en-us)
+- [AI instructions](https://planable.io/ai-instructions/) — Planable's own guidance for LLMs.
+- [Terms](https://planable.io/terms/) · [Data Processing Agreement](https://planable.io/data-processing-agreement/) · [Sub-processors](https://planable.io/processors/)
+- [GitHub](https://github.com/Planable) · [LinkedIn](https://www.linkedin.com/company/planableapp/) · [X](https://x.com/planableapp)
+- Founded 2016. Key personnel: Xenia Muntean (CEO), Vlad Caluș, Nicolae Gudumac.
+
+## Optional
+
+- [Zapier integration](https://zapier.com/apps/planable) — no-code alternative, beta, all plans.
+- Canva, Slack and iCal/calendar sync integrations.
+- No GraphQL surface. No gRPC. No AsyncAPI. No A2A agent card. No first-party SDK in any package registry —
+  Planable directs developers to generate a client from the OpenAPI document.

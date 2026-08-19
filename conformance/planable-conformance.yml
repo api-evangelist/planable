@@ -1,0 +1,149 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/_original/planable-openapi.json, well-known/planable-oauth-authorization-server.json
+docs: https://planable.io/guides/planable-public-api/
+api: Planable Public API v1 + Planable MCP
+note: >-
+  Each entry states whether Planable conforms and cites the evidence. Absence is recorded as
+  conforms:false with the reason, not omitted — an honest negative is the useful signal here.
+
+standards:
+  - id: openapi-3.1
+    name: OpenAPI 3.1
+    conforms: true
+    evidence: >-
+      https://api.planable.io/api/v1/openapi.json declares openapi 3.1.0 and parses; 51 operations
+      across 11 tags, all tagged, all secured, 200/400/401/403/404/429/500 responses declared.
+    gaps:
+      - No operationId on ANY of the 51 operations — clients and generators must synthesize names.
+      - Only one named component schema (ErrorResponse); every resource shape is inline, so nothing is reusable by $ref.
+      - No `tags:` root array (tag names appear on operations only, with no descriptions).
+      - No examples in-spec.
+  - id: oauth2
+    name: OAuth 2.0 (RFC 6749)
+    conforms: true
+    scope: MCP surface only
+    evidence: >-
+      https://mcp.planable.io/ publishes authorization_code + refresh_token grants with a token
+      endpoint, revocation endpoint and dynamic client registration.
+    note: The REST Public API does NOT use OAuth — it uses opaque pln_ bearer tokens minted in the UI.
+  - id: rfc8414
+    name: OAuth 2.0 Authorization Server Metadata
+    conforms: true
+    evidence: 'GET /.well-known/oauth-authorization-server -> 200 application/json with issuer, authorization_endpoint, token_endpoint, scopes_supported.'
+  - id: rfc9728
+    name: OAuth 2.0 Protected Resource Metadata
+    conforms: true
+    evidence: 'GET /.well-known/oauth-protected-resource/mcp -> 200 with resource, authorization_servers, scopes_supported. The 401 also returns a correct WWW-Authenticate: Bearer challenge.'
+  - id: rfc7591
+    name: OAuth 2.0 Dynamic Client Registration
+    conforms: true
+    evidence: registration_endpoint https://mcp.planable.io/oauth/register is advertised in the AS metadata.
+  - id: rfc7636
+    name: PKCE
+    conforms: true
+    evidence: code_challenge_methods_supported ["S256"].
+  - id: mcp
+    name: Model Context Protocol
+    conforms: true
+    evidence: >-
+      Remote HTTP transport at https://mcp.planable.io/mcp; JSON-RPC 2.0 errors observed
+      ("SSE not supported in stateless mode" on GET /mcp); registered as type:http in the
+      provider's own .mcp.json.
+    note: Stateless mode — the server declines SSE.
+  - id: agent-skills
+    name: Anthropic Agent Skills
+    conforms: true
+    evidence: >-
+      12 SKILL.md files at github.com/Planable/smm-skills with conforming YAML frontmatter
+      (name + description) and progressive-disclosure bodies, packaged as a Claude Code plugin
+      marketplace (.claude-plugin/marketplace.json, plugin.json v1.1.0).
+  - id: rfc9457
+    name: Problem Details for HTTP APIs
+    conforms: false
+    evidence: Errors are vendor JSON `{"error":{"code","message","requestId"}}` served as application/json, not application/problem+json.
+    note: The error contract is nonetheless closed and exhaustive — see errors/planable-problem-types.yml.
+  - id: idempotency-key
+    name: Idempotency-Key header (draft-ietf-httpapi-idempotency-key)
+    conforms: false
+    evidence: No Idempotency-Key header is accepted anywhere in the spec.
+    note: Four operations publish natural-key idempotent semantics instead — see conventions/planable-conventions.yml.
+  - id: rfc8594
+    name: Sunset / Deprecation headers
+    conforms: false
+    evidence: No Sunset or Deprecation header appears in the spec or docs; no operation is marked deprecated.
+  - id: rate-limit-headers
+    name: RateLimit header fields (X-RateLimit-* de-facto)
+    conforms: true
+    variant: legacy X-RateLimit-* (not the IETF RateLimit-* draft)
+    evidence: 'Observed on an anonymous 401: x-ratelimit-limit: 60, x-ratelimit-remaining: 59, x-ratelimit-reset: 1786637534.'
+    gaps:
+      - No Retry-After on 429.
+  - id: rfc9116
+    name: security.txt
+    conforms: false
+    evidence: '/.well-known/security.txt returns 404 on planable.io and the SPA shell (HTML) on api/app/mcp.planable.io.'
+  - id: a2a
+    name: A2A Agent Card
+    conforms: false
+    evidence: '/.well-known/agent-card.json and /.well-known/agent.json return 404 on planable.io and an HTML SPA shell on api/app/mcp.planable.io — no agent card is served.'
+  - id: asyncapi
+    name: AsyncAPI / event surface
+    conforms: false
+    evidence: >-
+      No webhooks, no event catalog, no AsyncAPI. Asynchronous work is exposed as trigger-then-poll
+      (POST /pages/{id}/sync -> GET /pages/{id}/sync-status). Not penalizable — there is no event product.
+  - id: graphql
+    name: GraphQL
+    conforms: false
+    evidence: No /graphql surface is published or referenced anywhere.
+  - id: pagination
+    name: Documented pagination
+    conforms: true
+    evidence: limit/offset on collection operations (limit default 20, max 100); cursor + `pagination.nextCursor` on competitor top-posts.
+  - id: tls
+    name: TLS 1.3 + HSTS
+    conforms: true
+    evidence: security/planable-domain-security.yml — TLS 1.3 with HSTS max-age 31536000 on planable.io, app.planable.io and api.planable.io.
+  - id: dnssec
+    name: DNSSEC
+    conforms: false
+    evidence: security/planable-domain-security.yml records dnssec false for planable.io.
+  - id: dmarc-enforcement
+    name: DMARC enforcement
+    conforms: partial
+    evidence: DMARC record present with policy `none` (monitor only, no enforcement); SPF present; CAA present.
+
+compliance_programs:
+  published: false
+  trust_center: none found
+  certifications_named: []
+  probes:
+    - url: https://trust.planable.io/
+      status: 000
+      note: does not resolve
+    - url: https://planable.io/security-and-compliance/
+      status: 404
+    - url: https://planable.io/trust
+      status: 404
+    - url: https://planable.io/gdpr/
+      status: 404
+  legal_documents_published:
+    - name: Terms
+      url: https://planable.io/terms/
+      status: 200
+    - name: Data Processing Agreement
+      url: https://planable.io/data-processing-agreement/
+      status: 200
+    - name: Sub-processors
+      url: https://planable.io/processors/
+      status: 200
+  note: >-
+    Planable publishes a DPA and a named sub-processor list — real GDPR-shaped artifacts — but no
+    trust center and no named certification (SOC 2 / ISO 27001 / PCI / HIPAA / FedRAMP) was found
+    on any probed URL. No Compliance pointer is emitted, because none is earned.
+
+summary:
+  conforms: 12
+  does_not_conform: 7
+  partial: 1

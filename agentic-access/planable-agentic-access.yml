@@ -1,21 +1,269 @@
-generated: '2026-07-15'
+generated: '2026-08-13'
 method: generated
-source: openapi/planable-openapi.json
+source: openapi/planable-campaigns-api-openapi.yml, openapi/planable-competitors-api-openapi.yml,
+  openapi/planable-labels-api-openapi.yml, openapi/planable-media-api-openapi.yml, openapi/planable-members-api-openapi.yml,
+  openapi/planable-pages-api-openapi.yml, openapi/planable-posts-api-openapi.yml, openapi/planable-social-listening-api-openapi.yml,
+  openapi/planable-stories-api-openapi.yml, openapi/planable-system-api-openapi.yml, openapi/planable-workspaces-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 31
+  operations: 51
   by_action_class:
-    connected: 16
-    acting: 15
+    connected: 26
+    acting: 25
   by_consequence:
-    read: 16
-    write: 14
-    physical: 1
-  human_in_the_loop_required: 0
+    read: 26
+    write: 20
+    safety-critical: 3
+    physical: 2
+  human_in_the_loop_required: 3
 operations:
-- path: /ping
+- path: /campaigns
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /campaigns
+  method: post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /campaigns/{id}
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /campaigns/{id}
+  method: patch
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /campaigns/{id}
+  method: delete
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /pages/{id}/competitors
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /pages/{id}/competitors
+  method: post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /pages/{id}/competitors/comparison
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /pages/{id}/competitors/metrics
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /pages/{id}/competitors/top-posts
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /pages/{id}/competitors/{scrapedPageId}
+  method: delete
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    scope:
+    - write
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /labels
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /labels
+  method: post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /media
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /media
+  method: post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /media/{id}
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /members
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /pages/{id}/sync
+  method: post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /pages/{id}/sync-status
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /pages
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /pages/{id}/metrics
   method: get
   x-agentic-access:
     action-class: connected
@@ -126,8 +374,61 @@ operations:
     token:
       max-ttl: 3600
     audit: none
+- path: /posts/{id}/share
+  method: post
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    scope:
+    - write
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posts/{id}/share
+  method: delete
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    scope:
+    - write
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
 - path: /posts/reorder
   method: patch
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    scope:
+    - write
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /posts/{id}/request-approval
+  method: post
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -154,7 +455,7 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /campaigns
+- path: /posts/{id}/comments
   method: get
   x-agentic-access:
     action-class: connected
@@ -163,7 +464,7 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /campaigns
+- path: /posts/{id}/comments
   method: post
   x-agentic-access:
     action-class: acting
@@ -180,16 +481,7 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /campaigns/{id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /campaigns/{id}
+- path: /posts/{id}/comments/{commentId}
   method: patch
   x-agentic-access:
     action-class: acting
@@ -206,7 +498,7 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /campaigns/{id}
+- path: /posts/{id}/comments/{commentId}
   method: delete
   x-agentic-access:
     action-class: acting
@@ -223,16 +515,7 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /labels
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /labels
+- path: /posts/{id}/comments/{commentId}/reactions
   method: post
   x-agentic-access:
     action-class: acting
@@ -249,7 +532,7 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /media
+- path: /keywords
   method: get
   x-agentic-access:
     action-class: connected
@@ -258,7 +541,7 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /media
+- path: /keywords
   method: post
   x-agentic-access:
     action-class: acting
@@ -275,33 +558,24 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /media/{id}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /pages/{id}/sync
-  method: post
+- path: /keywords/{keywordId}
+  method: delete
   x-agentic-access:
     action-class: acting
-    consequence: write
+    consequence: safety-critical
     subject: required
     scope:
     - write
     audience: null
     token:
-      max-ttl: 900
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
     escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
+      human-in-the-loop: required
     audit: required
-- path: /pages/{id}/sync-status
+- path: /keywords/{keywordId}/mentions
   method: get
   x-agentic-access:
     action-class: connected
@@ -310,7 +584,7 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /pages
+- path: /keywords/{keywordId}/metrics/summary
   method: get
   x-agentic-access:
     action-class: connected
@@ -319,7 +593,16 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /pages/{id}/metrics
+- path: /keywords/{keywordId}/metrics
+  method: get
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /keywords/{keywordId}/sync-status
   method: get
   x-agentic-access:
     action-class: connected
@@ -345,7 +628,7 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /posts/{id}/comments
+- path: /ping
   method: get
   x-agentic-access:
     action-class: connected
@@ -354,23 +637,6 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /posts/{id}/comments
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    scope:
-    - write
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /workspaces
   method: get
   x-agentic-access:

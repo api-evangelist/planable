@@ -1,0 +1,177 @@
+generated: '2026-08-13'
+method: searched
+status: published
+source: https://planable.io/guides/planable-mcp/
+name: Planable MCP
+description: >-
+  Planable's official remote MCP server. It gives any MCP-capable AI client (Claude, ChatGPT,
+  Gemini) read and write access to the signed-in user's Planable account — companies,
+  workspaces, connected social pages, posts, comments, approvals, media library and analytics.
+  Content created through the server always lands as a DRAFT and still passes through
+  Planable's normal approval and scheduling flow; the server cannot publish directly.
+
+deployment:
+  mode: remote
+  endpoint: https://mcp.planable.io/mcp
+  auth: oauth
+  verified: probed
+  note: >-
+    POST to the endpoint returns HTTP 401 with `WWW-Authenticate: Bearer error="invalid_token"`,
+    which is the correct OAuth-protected-resource challenge — the endpoint is live and gated,
+    not absent. No stdio/npx package exists: the vendor's own Claude Code plugin
+    (Planable/smm-skills) registers this HTTP URL via .mcp.json rather than shipping a local server.
+
+authorization:
+  type: oauth2
+  metadata: well-known/planable-oauth-authorization-server.json
+  protected_resource: well-known/planable-oauth-protected-resource.json
+  issuer: https://mcp.planable.io/
+  authorization_endpoint: https://mcp.planable.io/oauth/authorize
+  token_endpoint: https://mcp.planable.io/oauth/token
+  revocation_endpoint: https://mcp.planable.io/oauth/revoke
+  registration_endpoint: https://mcp.planable.io/oauth/register
+  dynamic_client_registration: true
+  pkce: S256
+  grant_types: [authorization_code, refresh_token]
+  scopes: [read, approve, edit, publish, analyze, engage]
+  session:
+    inactivity_expiry: 8 hours (auto-refresh)
+    authorization_validity: 180 days
+    per_user: true
+    note: Each team member authorizes individually; the agent inherits that person's Planable role and workspace permissions, nothing more.
+
+availability:
+  plans: all Planable plans (the README in Planable/smm-skills states Team plan or higher; the product guide and changelog say all plans — recorded as published, unreconciled)
+  addons_required:
+    - name: Analytics
+      applies_to: all analytics/metrics tools
+    - name: Social Inbox
+      applies_to: comment and DM surfaces
+  clients_supported: [Claude Desktop, Claude web, Claude Code, ChatGPT, Gemini]
+
+install:
+  claude_code_plugin:
+    marketplace: /plugin marketplace add Planable/smm-skills
+    install: /plugin install planable-smm@planable
+    note: Installing the plugin auto-registers the remote MCP server via .mcp.json — no `claude mcp add` step.
+  manual_connector:
+    steps:
+      - Open the AI tool's connector / integrations settings
+      - Add https://mcp.planable.io/mcp as a custom connector named Planable
+      - Click Connect and sign in with a Planable account to authorize
+    docs: https://help.planable.io/hc/en-us/articles/27538577098780-How-to-connect-Planable-MCP-to-your-AI-tools
+
+tools:
+  introspection: gated
+  introspection_note: >-
+    POST {"jsonrpc":"2.0","method":"tools/list"} to https://mcp.planable.io/mcp returns 401
+    invalid_token, so live inputSchema capture requires an authenticated OAuth token. The tool
+    NAMES below are not guessed — they are read verbatim out of Planable's own published
+    Agent Skills (github.com/Planable/smm-skills), which call them by name in their step
+    instructions. Input schemas still require authenticated introspection.
+  verified_names:
+    - name: list_workspaces
+      source: skills/planable-pending-approvals-roundup.md
+    - name: get_workspace_details
+      source: skills/planable-cross-client-metrics-overview.md
+    - name: list_pages
+      source: skills/planable-draft-post-batch.md
+    - name: list_posts
+      source: skills/planable-content-calendar-audit.md
+    - name: create_post
+      source: skills/planable-draft-post-batch.md
+    - name: create_grouped_post
+      source: skills/planable-draft-post-batch.md
+    - name: update_post
+      source: skills/planable-site-audit-to-social-distribution.md
+    - name: approve_post
+      source: skills/planable-pending-approvals-roundup.md
+    - name: create_comment
+      source: skills/planable-site-audit-to-social-distribution.md
+    - name: list_labels
+      source: skills/planable-draft-post-batch.md
+    - name: create_label
+      source: skills/planable-draft-post-batch.md
+    - name: get_page_metrics
+      source: skills/planable-monthly-performance-summary.md
+    - name: get_page_metrics_summary
+      source: skills/planable-cross-client-metrics-overview.md
+    - name: get_post_metrics
+      source: skills/planable-monthly-performance-summary.md
+    - name: get_post_metrics_summary
+      source: skills/planable-content-pattern-intelligence.md
+    - name: refresh_page_metrics
+      source: skills/planable-monthly-performance-summary.md
+  documented_capabilities:
+    source: https://planable.io/guides/planable-mcp/
+    groups:
+      - group: Browse account structure
+        capabilities:
+          - List all companies and workspaces the user belongs to
+          - Check which add-ons (Analytics, Social Inbox) are active on each workspace
+          - List social pages connected within any workspace
+          - List workspace members and their roles
+          - List available post labels
+          - Get post counts per workspace
+      - group: Read and review content
+        capabilities:
+          - List posts filterable by status, approval state and date range
+          - Read full post content — text, media, labels, approval history
+          - Read internal team notes and external client comments on a post
+          - Surface posts going live without approval, posts with publishing errors, drafts with no date
+      - group: Create and edit content
+        capabilities:
+          - Create a draft post on a single platform page
+          - Create a synced group post across multiple platforms at once
+          - Update existing draft posts (text, schedule, labels, media, visibility)
+          - Attach media by public URL (up to 10 items per post) or upload to the workspace library
+          - Add a first comment on platforms that support it
+          - Add internal team notes at creation time
+          - Create new labels for the workspace
+      - group: Handle approvals
+        capabilities:
+          - Approve posts, including multi-level approval flows
+          - Reject / disapprove posts that need revisions
+          - Leave internal notes or public-facing comments explaining feedback
+      - group: Media library
+        capabilities:
+          - List media assets in the workspace library
+          - Get details on a media item (type, dimensions, processing status)
+          - Upload new media from a public URL
+      - group: Analytics
+        requires_addon: Analytics
+        capabilities:
+          - Per-page metrics — audience, impressions, engagement, engagement rate, platform-specific
+          - Aggregated metrics across all pages in a workspace
+          - Per-post metrics — impressions, views, likes, comments, shares
+          - Aggregated post-level summaries
+          - Trigger a metrics refresh from source platforms before pulling a report
+
+guardrails:
+  - The agent inherits the authorizing user's Planable permissions exactly — it cannot approve where the user cannot approve.
+  - All agent-created content lands as a draft; publishing requires the normal approval + scheduling flow.
+  - The agent cannot change account settings, billing or workspace configuration.
+  - Analytics calls fail on workspaces without the Analytics add-on; the server reports add-on state before attempting them.
+
+related:
+  skills: skills/_index.yml
+  crosswalk: mcp/planable-tool-crosswalk.yml
+  rest_api: openapi/_original/planable-openapi.json
+
+x-evidence:
+  fetched: '2026-08-13'
+  probes:
+    - url: https://mcp.planable.io/mcp
+      method: POST
+      http_status: 401
+      body: '{"error":"invalid_token","error_description":"Missing Authorization header"}'
+      www_authenticate: 'Bearer error="invalid_token", error_description="Missing Authorization header"'
+    - url: https://api.planable.io/.well-known/oauth-authorization-server
+      http_status: 200
+      content_type: application/json
+    - url: https://api.planable.io/.well-known/oauth-protected-resource/mcp
+      http_status: 200
+      content_type: application/json
+    - url: https://github.com/Planable/smm-skills/blob/main/.mcp.json
+      http_status: 200
+      note: '{"mcpServers":{"planable":{"type":"http","url":"https://mcp.planable.io/mcp"}}}'

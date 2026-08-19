@@ -1,0 +1,1761 @@
+{
+  "item": [
+    {
+      "id": "fd16f08a-4c57-4959-8ffd-72aedd370e91",
+      "name": "Pages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "46833c60-b140-4280-aee2-e405ec545b19",
+          "name": "Trigger page metrics sync",
+          "request": {
+            "name": "Trigger page metrics sync",
+            "description": {
+              "content": "Triggers a fresh analytics metrics sync for a page.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pages",
+                ":id",
+                "sync"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "aeffbfb5-2805-4dc9-83e2-aef32e7e5e66",
+              "name": "Page metrics sync queued or deduplicated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"pageId\": \"string\",\n    \"started\": false,\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "525de8ab-d293-4304-a983-e3122c1d2d31",
+              "name": "Page type does not support analytics sync",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8ac1369e-cc01-424c-ab4e-f97aefd96891",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"PUBLISHING_IN_PROGRESS\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8f0cb63-8f45-4372-ba7b-a057847aa7ce",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "48cee220-f9a1-484f-bdcb-c1adaca174e4",
+              "name": "Page not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d477858f-3c8d-4dce-9e39-f3e02eef8cf2",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"PUBLISHING_IN_PROGRESS\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c31c82fb-494e-4c22-9606-a825c4ba119f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "sync"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"PUBLISHING_IN_PROGRESS\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b75cf2f-b0f7-4594-aad2-0d6653372b68",
+          "name": "Get page metrics sync status",
+          "request": {
+            "name": "Get page metrics sync status",
+            "description": {
+              "content": "Returns whether a page metrics sync is in progress and when metrics last synced.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pages",
+                ":id",
+                "sync-status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3cc350aa-9ee3-411c-8bca-726b986c632e",
+              "name": "Page metrics sync status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "sync-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"pageId\": \"string\",\n    \"syncInProgress\": false,\n    \"lastSyncedAt\": \"1999-08-09T22:46:07.112Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b19ebd8b-d232-47d9-abe0-c686f608ff68",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "sync-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"PUBLISHING_IN_PROGRESS\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6db7ea9a-9057-4bab-96f9-5213e38bf9c1",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "sync-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e5a6b2b0-e6d0-413e-b6ae-a5d73731438a",
+              "name": "Page not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "sync-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ec27bf36-5e08-4162-b7f7-1c296e9cbd79",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "sync-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"PUBLISHING_IN_PROGRESS\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "801f88e1-e9d5-41a9-86d0-38cf77b7ee51",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "sync-status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"PUBLISHING_IN_PROGRESS\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8ab625e-4168-4590-ae79-0441aa244bcf",
+          "name": "List pages",
+          "request": {
+            "name": "List pages",
+            "description": {
+              "content": "Returns pages (social channels) the token has access to, with pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "workspaceId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6a1b7f88-f4dd-46b1-9552-5974b4c8c638",
+              "name": "List of pages with pagination",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspaceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"platform\": \"string\",\n      \"workspaceId\": \"string\",\n      \"createdAt\": \"2017-03-06T06:41:59.457Z\",\n      \"isConnected\": false,\n      \"profilePicture\": \"string\",\n      \"link\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"platform\": \"string\",\n      \"workspaceId\": \"string\",\n      \"createdAt\": \"2026-05-01T18:51:44.054Z\",\n      \"isConnected\": false,\n      \"profilePicture\": \"string\",\n      \"link\": \"string\"\n    }\n  ],\n  \"pagination\": {\n    \"offset\": 908.39936323315,\n    \"limit\": 4627.946106161168,\n    \"hasMore\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aec2f55a-cb7a-400f-954d-31510e680f92",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspaceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bba7b656-35c1-4116-97f5-8381f81c7429",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspaceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"PUBLISHING_IN_PROGRESS\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c247ef5-901d-4acd-bff3-1202c21587cf",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspaceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"PUBLISHING_IN_PROGRESS\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "843a44c4-fb60-40de-bc20-9018d64b56f3",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspaceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"PUBLISHING_IN_PROGRESS\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cedb30a4-e70d-4347-8138-846002af3b5a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "workspaceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"PUBLISHING_IN_PROGRESS\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac67ed75-f20f-4ef5-a567-c64d47043b28",
+          "name": "Get page metrics",
+          "request": {
+            "name": "Get page metrics",
+            "description": {
+              "content": "Returns paginated raw page metrics snapshots for a date range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "pages",
+                ":id",
+                "metrics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "30"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b83a71a8-a417-4771-b97c-e94bf0d44ec6",
+              "name": "Paginated page metrics snapshots",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"pageId\": \"string\",\n      \"pageType\": \"string\",\n      \"fetchedAt\": \"1992-11-15T17:10:16.815Z\",\n      \"partial\": false,\n      \"facebook\": {\n        \"followers\": 9356.922606250842,\n        \"gainedFollowers\": 1160.1148964490772,\n        \"posts\": 2523.3833964330333,\n        \"engagement\": 9570.59436075237,\n        \"reactions\": 3251.507883783148,\n        \"pageViews\": 2475.9110028454547,\n        \"unFollows\": 1563.8666134469447,\n        \"views\": 6571.411853342647,\n        \"totalFollowers\": 9011.438435370539\n      },\n      \"instagram\": {\n        \"gainedFollowers\": 8008.360852941865,\n        \"unFollows\": 6109.87041227204,\n        \"reach\": 8490.082771337027,\n        \"posts\": 4921.107073012002,\n        \"engagement\": 2047.4115710306362,\n        \"totalFollowers\": 9977.526140025408,\n        \"followersIncomplete\": false,\n        \"impressions\": 9355.487730229159,\n        \"views\": 7121.943647973534,\n        \"accountsReachBreakdown\": {\n          \"followers\": 2850.647993742991,\n          \"nonFollowers\": 4475.329448156194,\n          \"total\": 2019.4085036823806\n        },\n        \"profileViews\": 4373.129795538511,\n        \"engagementBreakdown\": {\n          \"post\": 5568.635613688756,\n          \"reel\": 7259.982208186198,\n          \"ad\": 2707.4788008304163,\n          \"story\": 499.60851299091667,\n          \"carousel\": 8631.816006506568\n        },\n        \"reachBreakdown\": {\n          \"post\": {\n            \"total\": 7160.122934095824,\n            \"followers\": 3599.008817931447,\n            \"nonFollowers\": 9727.187563326197\n          },\n          \"reel\": {\n            \"total\": 9427.581331869433,\n            \"followers\": 8181.616484899307,\n            \"nonFollowers\": 8406.036965167521\n          },\n          \"story\": {\n            \"total\": 23.272984202489244,\n            \"followers\": 2437.8791325410198,\n            \"nonFollowers\": 1609.64084768206\n          }\n        }\n      },\n      \"linkedin\": {\n        \"followers\": 6802.966957057627,\n        \"impressions\": 7081.310046049296,\n        \"totalFollowers\": 4735.252554946626,\n        \"engagement\": 4195.979931416678,\n        \"pageInsights\": 2108.6957072060254,\n        \"pageViews\": 5666.33050339036,\n        \"posts\": 4578.092800528018,\n        \"reshares\": 358.35424583960827,\n        \"reactions\": 4498.172991129976,\n        \"comments\": 723.7161830538907,\n        \"shareStats\": {\n          \"uniqueImpressionsCount\": 3426.717555058151,\n          \"clickCount\": 9847.94222669691,\n          \"engagement\": 5569.225773639423,\n          \"likeCount\": 3102.2888579228734,\n          \"commentCount\": 7347.033074963725,\n          \"shareCount\": 456.8006867283914,\n          \"impressionCount\": 7910.033766494389,\n          \"commentMentionsCount\": 3670.7992676005465,\n          \"shareMentionsCount\": 9828.382858973366\n        }\n      },\n      \"tiktok\": {\n        \"profile_views\": 7552.63520013542,\n        \"video_views\": 5630.5475443086525,\n        \"likes\": 6971.534307231378,\n        \"comments\": 3385.4996516139568,\n        \"shares\": 8715.682304058462,\n        \"followers_count\": 2947.3233301891887,\n        \"engagement\": 2371.7168883719896,\n        \"videos\": 3836.4024666257433\n      },\n      \"threads\": {\n        \"views\": 4119.792660420938,\n        \"likes\": 2398.778964677224,\n        \"replies\": 7475.288304314892,\n        \"reposts\": 5515.005531478991,\n        \"quotes\": 2963.8903301605355\n      },\n      \"googleMyBusiness\": {\n        \"posts\": 7419.254731133615,\n        \"callClicks\": 1509.2184365410133,\n        \"websiteClicks\": 7893.820909592898,\n        \"impressions\": 6671.903815855456,\n        \"engagement\": 8267.454791927681,\n        \"businessConversations\": 9936.798004919418,\n        \"businessImpressionsMobileSearch\": 9424.709571950674,\n        \"businessImpressionsDesktopMaps\": 3846.5211772856046,\n        \"businessImpressionsDesktopSearch\": 7637.172644195685,\n        \"businessImpressionsMobileMaps\": 9752.907202140375,\n        \"businessDirectionRequests\": 1720.0517840514262,\n        \"businessBookings\": 6575.876693538691,\n        \"businessFoodOrders\": 6730.1459702968195\n      },\n      \"youtube\": {\n        \"subscribers\": 5229.328521310309,\n        \"subscribersGained\": 9419.198168512778,\n        \"subscribersLost\": 1783.784864384411,\n        \"videos\": 4599.521001595074,\n        \"views\": 4453.094211126874,\n        \"estimatedMinutesWatched\": 1949.1767980454356,\n        \"comments\": 5643.010146831207,\n        \"likes\": 1575.8805512610363,\n        \"dislikes\": 6334.097871223548,\n        \"shares\": 663.1903700078634,\n        \"engagement\": 7129.610429633429,\n        \"averageViewDuration\": 6288.627304437246,\n        \"totalSubscribers\": 2005.9181763235702\n      }\n    },\n    {\n      \"pageId\": \"string\",\n      \"pageType\": \"string\",\n      \"fetchedAt\": \"1977-02-02T03:19:33.417Z\",\n      \"partial\": true,\n      \"facebook\": {\n        \"followers\": 2055.5771703282057,\n        \"gainedFollowers\": 1876.4183585281025,\n        \"posts\": 790.0064514537752,\n        \"engagement\": 7489.677269578127,\n        \"reactions\": 5148.446389235355,\n        \"pageViews\": 2785.373142796358,\n        \"unFollows\": 6130.9082054777655,\n        \"views\": 2220.11745784737,\n        \"totalFollowers\": 9055.24536363722\n      },\n      \"instagram\": {\n        \"gainedFollowers\": 1364.7844564751156,\n        \"unFollows\": 7838.203031212015,\n        \"reach\": 2456.4276095221426,\n        \"posts\": 6673.739814573877,\n        \"engagement\": 1071.16824736325,\n        \"totalFollowers\": 8781.73586073763,\n        \"followersIncomplete\": true,\n        \"impressions\": 6618.632300440964,\n        \"views\": 5700.818927685616,\n        \"accountsReachBreakdown\": {\n          \"followers\": 8232.519835788351,\n          \"nonFollowers\": 1146.9541398426798,\n          \"total\": 2290.095872868351\n        },\n        \"profileViews\": 8854.197251642147,\n        \"engagementBreakdown\": {\n          \"post\": 6667.396526160311,\n          \"reel\": 8754.293621586072,\n          \"ad\": 17.66022825649527,\n          \"story\": 2081.449863064252,\n          \"carousel\": 6749.591303875249\n        },\n        \"reachBreakdown\": {\n          \"post\": {\n            \"total\": 5925.223994740258,\n            \"followers\": 7124.433887652547,\n            \"nonFollowers\": 1751.4265523073125\n          },\n          \"reel\": {\n            \"total\": 9282.53225634091,\n            \"followers\": 2245.783144183303,\n            \"nonFollowers\": 8893.038054330707\n          },\n          \"story\": {\n            \"total\": 4232.882871990992,\n            \"followers\": 26.893200111393067,\n            \"nonFollowers\": 3528.2507350314518\n          }\n        }\n      },\n      \"linkedin\": {\n        \"followers\": 2555.4957293311163,\n        \"impressions\": 5251.744680268551,\n        \"totalFollowers\": 1719.3375581805492,\n        \"engagement\": 274.5133778588693,\n        \"pageInsights\": 2844.1196101639853,\n        \"pageViews\": 608.2553964137538,\n        \"posts\": 2387.406064193294,\n        \"reshares\": 3209.2763795028113,\n        \"reactions\": 5393.1821869870455,\n        \"comments\": 6509.83304432395,\n        \"shareStats\": {\n          \"uniqueImpressionsCount\": 5258.76696569698,\n          \"clickCount\": 4904.852663014801,\n          \"engagement\": 4128.62109824668,\n          \"likeCount\": 1871.8018858051632,\n          \"commentCount\": 5345.6943660283805,\n          \"shareCount\": 4985.875081486897,\n          \"impressionCount\": 2086.5296149993937,\n          \"commentMentionsCount\": 2311.2884159226987,\n          \"shareMentionsCount\": 3967.431510807027\n        }\n      },\n      \"tiktok\": {\n        \"profile_views\": 4815.97901055623,\n        \"video_views\": 6303.046649151907,\n        \"likes\": 2888.644845352769,\n        \"comments\": 7310.989307169001,\n        \"shares\": 6899.322137081,\n        \"followers_count\": 4110.503664695406,\n        \"engagement\": 7905.982333922326,\n        \"videos\": 2372.935103735042\n      },\n      \"threads\": {\n        \"views\": 9538.157730778606,\n        \"likes\": 5697.1361645069865,\n        \"replies\": 3869.9554409007596,\n        \"reposts\": 2409.040679208525,\n        \"quotes\": 3733.7811027487687\n      },\n      \"googleMyBusiness\": {\n        \"posts\": 9215.492761392465,\n        \"callClicks\": 7177.452848672513,\n        \"websiteClicks\": 9086.06327595538,\n        \"impressions\": 7191.254333500704,\n        \"engagement\": 4635.441048060436,\n        \"businessConversations\": 5922.583222212574,\n        \"businessImpressionsMobileSearch\": 7407.009385455531,\n        \"businessImpressionsDesktopMaps\": 5750.1489605042125,\n        \"businessImpressionsDesktopSearch\": 5185.56859942916,\n        \"businessImpressionsMobileMaps\": 8604.125220623286,\n        \"businessDirectionRequests\": 8646.149583010894,\n        \"businessBookings\": 2414.60765909975,\n        \"businessFoodOrders\": 2387.5183399578236\n      },\n      \"youtube\": {\n        \"subscribers\": 4683.2960193679555,\n        \"subscribersGained\": 52.35196615816506,\n        \"subscribersLost\": 6689.517580520383,\n        \"videos\": 3859.8159462618496,\n        \"views\": 716.8637363123165,\n        \"estimatedMinutesWatched\": 6713.730947476012,\n        \"comments\": 8300.51263637607,\n        \"likes\": 6466.819661404668,\n        \"dislikes\": 1778.3597987801968,\n        \"shares\": 2323.4257069081345,\n        \"engagement\": 9443.95701014696,\n        \"averageViewDuration\": 5368.049718725385,\n        \"totalSubscribers\": 7768.568086509379\n      }\n    }\n  ],\n  \"pagination\": {\n    \"offset\": 7217.7337267745625,\n    \"limit\": 5573.629896769305,\n    \"hasMore\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "68afd935-a805-456c-b8c5-625a753a86e5",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c77da430-dd8b-4581-bd5e-bd6eb7dc4446",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"PUBLISHING_IN_PROGRESS\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "118c1225-1b23-436d-9dcd-c2615780830a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "64d4fd8b-befa-4881-937d-306b8f4d2705",
+              "name": "Page not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0fbdca5-4cf5-4c86-936b-4d4951d17730",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"PUBLISHING_IN_PROGRESS\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec8eb9a2-c951-42c5-b255-d3c24cf129d1",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pages",
+                    ":id",
+                    "metrics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "30"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"PUBLISHING_IN_PROGRESS\",\n    \"message\": \"string\",\n    \"requestId\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.planable.io/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "08276958-3e40-4230-b70f-63cbeeeb31e2",
+    "name": "Planable Public Campaigns Pages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Planable companies, workspaces, pages, posts and more.",
+      "type": "text/plain"
+    }
+  }
+}

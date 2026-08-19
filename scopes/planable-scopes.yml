@@ -1,0 +1,79 @@
+generated: '2026-08-13'
+method: probed
+source: https://api.planable.io/.well-known/oauth-authorization-server
+docs: https://planable.io/guides/planable-public-api/
+note: >-
+  Planable runs TWO distinct authorization models and they do not share a scope vocabulary.
+  The REST Public API uses opaque `pln_` bearer tokens with a two-value scope (read / write) chosen
+  in the UI at token-creation time — no OAuth flow, no scope parameter, so derive-oauth-scopes.py
+  correctly found no oauth2 securityScheme in the OpenAPI. The MCP server is a real OAuth 2.0
+  protected resource and publishes six scopes in its RFC 8414 metadata. Both are recorded below.
+
+surfaces:
+  - surface: mcp
+    model: oauth2
+    issuer: https://mcp.planable.io/
+    resource: https://mcp.planable.io/mcp
+    metadata_file: well-known/planable-oauth-authorization-server.json
+    protected_resource_file: well-known/planable-oauth-protected-resource.json
+    grant_types: [authorization_code, refresh_token]
+    pkce: S256
+    dynamic_client_registration: https://mcp.planable.io/oauth/register
+    scopes:
+      - name: read
+        description: >-
+          Read account structure and content — companies, workspaces, connected pages, members,
+          labels, posts, comments and media. (Description derived from Planable's published MCP
+          capability map; the metadata document lists scope names only.)
+        published_description: false
+      - name: approve
+        description: Act on the approval workflow — approve, reject and disapprove posts, including multi-level flows.
+        published_description: false
+      - name: edit
+        description: Create and update draft content — posts, grouped posts, labels, internal notes, comments.
+        published_description: false
+      - name: publish
+        description: >-
+          Publishing-adjacent actions. Planable states plainly that agent-created content always
+          lands as a draft and cannot bypass the approval and scheduling flow, so this scope does
+          not grant direct publication.
+        published_description: false
+      - name: analyze
+        description: Pull page-level and post-level metrics and trigger metric refreshes. Requires the workspace Analytics add-on.
+        published_description: false
+      - name: engage
+        description: Comment and inbox-side engagement surfaces. Requires the workspace Social Inbox add-on.
+        published_description: false
+  - surface: rest
+    model: bearer-token
+    token_prefix: pln_
+    header: 'Authorization: Bearer pln_...'
+    scopes:
+      - name: read
+        description: Fetch workspaces, pages, posts, media, labels and analytics. Cannot create or modify anything.
+        published_description: true
+      - name: write
+        description: Create and update content. Write implies read.
+        published_description: true
+    additional_access_dimension:
+      name: workspace access
+      description: >-
+        Independent of scope, a token is scoped to all company workspaces or to an explicit subset
+        chosen at creation. Planable frames this as blast-radius control.
+    token_policy:
+      who_can_create: Company Owners and Administrators only (not delegatable)
+      max_active_tokens_per_company: 10
+      expiry_options: [30 days, 60 days, 90 days, 6 months, 1 year, Never]
+      rotation: manual — generate new, update the tool, revoke the old; no automated rotation in v1
+      revocation: immediate; revoked tokens are removed and cannot be restored
+      visibility: all Owners/Admins see all company tokens; there is no per-user token isolation
+
+x-evidence:
+  fetched: '2026-08-13'
+  probes:
+    - url: https://api.planable.io/.well-known/oauth-authorization-server
+      http_status: 200
+    - url: https://api.planable.io/.well-known/oauth-protected-resource/mcp
+      http_status: 200
+    - url: https://planable.io/guides/planable-public-api/
+      http_status: 200

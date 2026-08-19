@@ -1,0 +1,107 @@
+generated: '2026-08-13'
+method: searched
+source: https://changelog.planable.io/
+name: Planable Changelog
+url: https://changelog.planable.io/
+scheme: product-changelog
+format: html
+machine_readable: false
+dated: false
+note: >-
+  Planable runs a public product changelog labelled New / Improvement and ordered newest-first,
+  but the entry list renders no publication date, so `date:` is null on every row below rather
+  than guessed. There is no feed, no JSON, and no separate API-only changelog — API and MCP
+  changes are announced alongside product features. Entries are recorded in the order the page
+  serves them (most recent first) as of the fetch date.
+current_version: v1
+versioning: url-path (/api/v1)
+
+entries:
+  - title: 'Competitor analytics: now with YouTube, TikTok, and LinkedIn'
+    date: null
+    label: New
+    breaking: false
+    api_relevant: true
+    highlights:
+      - Competitor benchmarking extended from Instagram/Facebook to YouTube, TikTok and LinkedIn.
+      - Comparison table, trend chart and competitor top-post feed per network.
+      - Requires the Analytics add-on.
+    maps_to_operations:
+      - GET /pages/{id}/competitors
+      - GET /pages/{id}/competitors/comparison
+      - GET /pages/{id}/competitors/metrics
+      - GET /pages/{id}/competitors/top-posts
+  - title: 'MCP and API v2, including campaigns, custom views, and competitors in Analytics'
+    date: null
+    label: Improvement
+    breaking: false
+    api_relevant: true
+    highlights:
+      - Campaigns — create, view, edit, delete; add or remove posts.
+      - Custom views — create, view, edit, delete.
+      - Competitor analytics — add/remove competitors, compare, trends, top posts (Analytics add-on).
+      - 'Stated availability: "The MCP is available on every plan. The Public API is available on Pro and Enterprise."'
+    note: >-
+      Headlined "API v2" but no /api/v2 base is served and info.version remains 1.0.0 — the
+      capability additions landed inside v1. Campaign operations are present in the live spec;
+      custom views are not exposed as a REST resource.
+  - title: AI content labeling for Instagram
+    date: null
+    label: New
+    breaking: false
+    api_relevant: false
+  - title: Schedule and publish Facebook stories
+    date: null
+    label: New
+    breaking: false
+    api_relevant: true
+    note: The REST surface exposes POST /stories; the spec describes it as single or multi-frame story creation.
+  - title: Schedule and publish videos on Google Business Profile
+    date: null
+    label: New
+    breaking: false
+    api_relevant: false
+  - title: AI-Generated ALT Text
+    date: null
+    label: Improvement
+    breaking: false
+    api_relevant: false
+  - title: Manual mobile publishing for LinkedIn
+    date: null
+    label: New
+    breaking: false
+    api_relevant: false
+  - title: Competitor analytics
+    date: null
+    label: New
+    breaking: false
+    api_relevant: true
+    highlights:
+      - Track up to 5 Facebook/Instagram competitors per page; daily sync; CSV export.
+  - title: Brand context in your workspace settings
+    date: null
+    label: New
+    breaking: false
+    api_relevant: false
+  - title: 'Planable MCP: connect your AI assistant'
+    date: null
+    label: New
+    breaking: false
+    api_relevant: true
+    permalink: https://changelog.planable.io/planable-mcp-connect-your-ai-assistant-338492
+    highlights:
+      - Remote MCP connector announced at https://mcp.planable.io/mcp.
+      - Agent-created posts are always drafts; publishing and approvals stay in Planable.
+      - Available on all plans.
+  - title: Public API
+    date: null
+    label: New
+    breaking: false
+    api_relevant: true
+    permalink: https://changelog.planable.io/public-api-338493
+
+breaking_changes_recorded: 0
+x-evidence:
+  fetched: '2026-08-13'
+  url: https://changelog.planable.io/
+  http_status: 200

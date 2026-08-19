@@ -1,0 +1,110 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements — Planable Posts API
+  version: 1.0.0
+extends: openapi/planable-posts-api-openapi.yml
+x-generated: '2026-08-13'
+x-method: generated
+x-source: openapi/_original/planable-openapi.json
+x-note: Non-destructive enhancement of Planable's published contract. Planable declares no operationId on any of
+  its 51 operations, which forces every generator and MCP tool-forge to synthesize names. This overlay assigns deterministic
+  verb+path operationIds and documents the runtime semantics Planable states in prose but does not encode in the
+  spec. The operationIds are API EVANGELIST's, not Planable's — do not cite them as published. The original spec
+  is never mutated.
+actions:
+- target: $.paths['/posts'].get
+  description: Assign a stable operationId for GET /posts — the published spec declares none.
+  update:
+    operationId: getPosts
+- target: $.paths['/posts'].post
+  description: Assign a stable operationId for POST /posts — the published spec declares none.
+  update:
+    operationId: createPosts
+- target: $.paths['/posts/{id}'].get
+  description: Assign a stable operationId for GET /posts/{id} — the published spec declares none.
+  update:
+    operationId: getPostsById
+- target: $.paths['/posts/{id}'].delete
+  description: Assign a stable operationId for DELETE /posts/{id} — the published spec declares none.
+  update:
+    operationId: deletePostsById
+- target: $.paths['/posts/{id}'].patch
+  description: Assign a stable operationId for PATCH /posts/{id} — the published spec declares none.
+  update:
+    operationId: updatePostsById
+- target: $.paths['/posts/{id}/metrics'].get
+  description: Assign a stable operationId for GET /posts/{id}/metrics — the published spec declares none.
+  update:
+    operationId: getPostsByIdMetrics
+- target: $.paths['/posts/{id}/sync'].post
+  description: Assign a stable operationId for POST /posts/{id}/sync — the published spec declares none.
+  update:
+    operationId: createPostsByIdSync
+- target: $.paths['/posts/{id}/sync-status'].get
+  description: Assign a stable operationId for GET /posts/{id}/sync-status — the published spec declares none.
+  update:
+    operationId: getPostsByIdSyncStatus
+- target: $.paths['/posts/{id}/share'].post
+  description: Assign a stable operationId for POST /posts/{id}/share — the published spec declares none.
+  update:
+    operationId: createPostsByIdShare
+- target: $.paths['/posts/{id}/share'].delete
+  description: Assign a stable operationId for DELETE /posts/{id}/share — the published spec declares none.
+  update:
+    operationId: deletePostsByIdShare
+- target: $.paths['/posts/reorder'].patch
+  description: Assign a stable operationId for PATCH /posts/reorder — the published spec declares none.
+  update:
+    operationId: updatePostsReorder
+- target: $.paths['/posts/{id}/request-approval'].post
+  description: Assign a stable operationId for POST /posts/{id}/request-approval — the published spec declares none.
+  update:
+    operationId: createPostsByIdRequestApproval
+- target: $.paths['/posts/count'].get
+  description: Assign a stable operationId for GET /posts/count — the published spec declares none.
+  update:
+    operationId: getPostsCount
+- target: $.paths['/posts/{id}/comments'].get
+  description: Assign a stable operationId for GET /posts/{id}/comments — the published spec declares none.
+  update:
+    operationId: getPostsByIdComments
+- target: $.paths['/posts/{id}/comments'].post
+  description: Assign a stable operationId for POST /posts/{id}/comments — the published spec declares none.
+  update:
+    operationId: createPostsByIdComments
+- target: $.paths['/posts/{id}/comments/{commentId}'].patch
+  description: Assign a stable operationId for PATCH /posts/{id}/comments/{commentId} — the published spec declares
+    none.
+  update:
+    operationId: updatePostsByIdCommentsByCommentId
+- target: $.paths['/posts/{id}/comments/{commentId}'].delete
+  description: Assign a stable operationId for DELETE /posts/{id}/comments/{commentId} — the published spec declares
+    none.
+  update:
+    operationId: deletePostsByIdCommentsByCommentId
+- target: $.paths['/posts/{id}/comments/{commentId}/reactions'].post
+  description: Assign a stable operationId for POST /posts/{id}/comments/{commentId}/reactions — the published spec
+    declares none.
+  update:
+    operationId: createPostsByIdCommentsByCommentIdReactions
+- target: $.info
+  description: Record the runtime semantics Planable publishes in its developer guide but omits from the spec.
+  update:
+    x-rate-limits:
+      read: 600 requests/minute per token
+      write: 120 requests/minute per token
+      algorithm: Redis-backed sliding window
+      headers:
+      - X-RateLimit-Limit
+      - X-RateLimit-Remaining
+      - X-RateLimit-Reset
+      retry_after: false
+      source: https://planable.io/guides/planable-public-api/
+    x-error-catalog: errors/planable-problem-types.yml
+    x-conventions: conventions/planable-conventions.yml
+    x-idempotency:
+      header: null
+      mechanism: natural-key semantic idempotency on 4 operations
+      detail: conventions/planable-conventions.yml
+    x-plan-gate: API token generation requires a Pro or Enterprise plan
+    x-docs: https://api.planable.io/api/v1/docs

@@ -1,0 +1,134 @@
+generated: '2026-08-13'
+method: probed
+source: live GET probes of every apis.yml + OpenAPI servers[] host
+note: >-
+  api.planable.io, app.planable.io and mcp.planable.io are served by a Meteor single-page
+  application whose catch-all answers HTTP 200 with a 38KB HTML shell for ANY unmatched path.
+  Only the two OAuth metadata documents below returned a real machine-readable document
+  (content-type application/json); every other 200 on those hosts is the SPA shell and is
+  recorded as a miss. planable.io (WordPress) returns honest 404s.
+hosts:
+  - host: https://api.planable.io
+    documents:
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: application/json
+        real_document: true
+        file: planable-oauth-authorization-server.json
+        note: RFC 8414 metadata for the Planable MCP authorization server (issuer https://mcp.planable.io/).
+      - path: /.well-known/oauth-protected-resource/mcp
+        status: 200
+        content_type: application/json
+        real_document: true
+        file: planable-oauth-protected-resource.json
+        note: RFC 9728 protected-resource metadata for the MCP endpoint https://mcp.planable.io/mcp.
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        content_type: text/html
+        real_document: false
+        note: SPA shell, not a document. The real metadata is served at the /mcp sub-path above.
+      - path: /.well-known/security.txt
+        status: 200
+        content_type: text/html
+        real_document: false
+        note: SPA shell — no RFC 9116 document is served.
+      - path: /.well-known/openid-configuration
+        status: 200
+        content_type: text/html
+        real_document: false
+      - path: /.well-known/api-catalog
+        status: 200
+        content_type: text/html
+        real_document: false
+      - path: /.well-known/ai-plugin.json
+        status: 200
+        content_type: text/html
+        real_document: false
+      - path: /.well-known/agent-card.json
+        status: 200
+        content_type: text/html
+        real_document: false
+      - path: /.well-known/agent.json
+        status: 200
+        content_type: text/html
+        real_document: false
+      - path: /llms.txt
+        status: 200
+        content_type: text/html
+        real_document: false
+  - host: https://mcp.planable.io
+    documents:
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: application/json
+        real_document: true
+        note: Identical body to the api.planable.io copy; same file saved once.
+      - path: /.well-known/agent-card.json
+        status: 200
+        content_type: text/html
+        real_document: false
+      - path: /.well-known/agent.json
+        status: 200
+        content_type: text/html
+        real_document: false
+      - path: /.well-known/security.txt
+        status: 200
+        content_type: text/html
+        real_document: false
+  - host: https://app.planable.io
+    documents:
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: application/json
+        real_document: true
+      - path: /.well-known/security.txt
+        status: 200
+        content_type: text/html
+        real_document: false
+      - path: /.well-known/agent-card.json
+        status: 200
+        content_type: text/html
+        real_document: false
+  - host: https://planable.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+      - path: /security.txt
+        status: 404
+  - host: https://help.planable.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+  - host: https://changelog.planable.io
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+summary:
+  real_documents: 2
+  security_txt: false
+  openid_configuration: false
+  api_catalog: false
+  agent_card: false
+  ai_plugin: false

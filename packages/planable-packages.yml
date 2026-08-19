@@ -1,0 +1,67 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  npm registry search, pypi.org, rubygems.org, crates.io and Planable's own developer guide
+  (https://planable.io/guides/planable-public-api/) + GitHub org github.com/Planable
+summary:
+  official_sdk_count: 0
+  official_package_count: 1
+  finding: >-
+    Planable ships NO first-party client library in any language registry. Its own API guide
+    hands the developer a bearer token, the base URL and the OpenAPI 3.1 document at
+    /api/v1/openapi.json, explicitly framing generation/import ("imports directly into Postman,
+    Insomnia, or any API client") as the integration path instead of an SDK. The one first-party
+    distributed package is an agent artifact, not an HTTP client: the `planable-smm` Claude Code
+    plugin published from the provider's own GitHub org.
+packages:
+  - language: markdown
+    kind: agent-skills-plugin
+    registry: github
+    name: planable-smm
+    repository: https://github.com/Planable/smm-skills
+    url: https://github.com/Planable/smm-skills
+    install: "/plugin marketplace add Planable/smm-skills && /plugin install planable-smm@planable"
+    official: true
+    version: 1.1.0
+    published: '2026-06-25'
+    published_source: repository HEAD commit 56c9fab58cf9d8d5f9633b66ccdad672f5999d80
+    license: MIT
+    note: >-
+      Claude Code plugin marketplace carrying 12 Agent Skills plus a .mcp.json that auto-registers
+      the remote MCP server https://mcp.planable.io/mcp. Distributed by git reference, not by a
+      package registry, so there is no registry metadata endpoint to read a version from — the
+      version is read from .claude-plugin/plugin.json and the date from the HEAD commit.
+registry_probes:
+  - registry: npm
+    query: planable
+    result: no first-party package
+    detail: >-
+      The only match is `metascraper-planable` (microlink.hq, 3.3.6, 2018-01-29) — a third-party
+      metadata scraper rule, not a Planable client.
+    version: null
+  - registry: pypi
+    names_checked: [planable, planable-api, planable-sdk]
+    status: 404
+    version: null
+  - registry: rubygems
+    names_checked: [planable]
+    status: 404
+    version: null
+  - registry: crates.io
+    names_checked: [planable]
+    status: 403
+    version: null
+    note: crates.io returned 403 to the unauthenticated probe; absence is unconfirmed there.
+  - registry: packagist
+    checked: false
+    version: null
+    note: Not probed — no PHP surface is referenced anywhere in Planable's docs.
+alternatives_documented_by_provider:
+  - name: OpenAPI 3.1 document
+    url: https://api.planable.io/api/v1/openapi.json
+    note: Provider-recommended path — import into Postman/Insomnia or generate a client.
+  - name: Interactive reference (Scalar)
+    url: https://api.planable.io/api/v1/docs
+  - name: Zapier integration
+    url: https://zapier.com/apps/planable
+    note: No-code alternative Planable names alongside the API and MCP; beta.

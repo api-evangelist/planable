@@ -1,0 +1,106 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/_original/planable-openapi.json
+docs: https://planable.io/guides/planable-public-api/
+api: Planable Public API v1
+format: vendor-json
+rfc9457: false
+note: >-
+  Planable does not use application/problem+json. It publishes a single closed enum of ten error
+  codes inside components.schemas.ErrorResponse and returns the same envelope on every failure,
+  which is a stronger contract than most vendor JSON error surfaces — an agent can switch on
+  error.code exhaustively. Titles below are Planable's own status descriptions from the spec;
+  remediation is derived from the operation descriptions and the developer guide, and is marked
+  as such.
+
+envelope:
+  content_type: application/json
+  schema: '#/components/schemas/ErrorResponse'
+  shape:
+    error:
+      code: string (enum, required)
+      message: string (required)
+      requestId: string (required)
+      details: array (shown in the developer guide's worked example; not in the published schema)
+  example: |
+    {
+      "error": {
+        "code": "VALIDATION_ERROR",
+        "message": "workspaceId is required",
+        "details": []
+      }
+    }
+  live_example: |
+    {"error":{"code":"UNAUTHORIZED","message":"Missing Authorization header","requestId":"5970ae6c-2487-4715-9ed5-9bf85139b5ff"}}
+
+status_coverage:
+  '400': 31 operations
+  '401': 51 operations
+  '403': 51 operations
+  '404': 37 operations
+  '429': 51 operations
+  '500': 51 operations
+  note: 401, 403, 429 and 500 are declared on every single operation — uniform, no gaps.
+
+problem_types:
+  - code: VALIDATION_ERROR
+    status: 400
+    title: Validation error
+    remediation: Fix the request body or query parameters; `message` names the offending field (e.g. "workspaceId is required"). Derived from the developer guide.
+    remediation_source: derived
+  - code: UNAUTHORIZED
+    status: 401
+    title: Unauthorized
+    remediation: 'Send the Authorization: Bearer pln_... header. The token may also be expired or revoked — mint a new one in Company settings -> API tokens.'
+    remediation_source: derived
+  - code: FORBIDDEN
+    status: 403
+    title: Forbidden
+    remediation: The token's scope or workspace restriction blocks this call — a read token attempting a write, or a token not granted the target workspace. Re-mint with the needed scope/workspace.
+    remediation_source: derived
+  - code: NOT_FOUND
+    status: 404
+    title: Not found
+    remediation: The id does not exist or is outside the token's workspace grant. Verify with the matching list operation first.
+    remediation_source: derived
+  - code: METHOD_NOT_ALLOWED
+    status: 405
+    title: Method not allowed
+    remediation: The path exists but not for this HTTP method. Check the operation table in openapi/_original/planable-openapi.json.
+    remediation_source: derived
+    note: Declared in the enum but no operation declares a 405 response.
+  - code: RATE_LIMITED
+    status: 429
+    title: Rate limit exceeded
+    remediation: Back off until the epoch second in X-RateLimit-Reset. Published limits are 600 GET/min and 120 write/min per token.
+    remediation_source: searched
+    retryable: true
+  - code: POST_ALREADY_PUBLISHED
+    status: 400
+    title: Post already published
+    remediation: Published posts are immutable. Create a new post instead of editing a published one.
+    remediation_source: searched
+    retryable: false
+  - code: PUBLISHING_IN_PROGRESS
+    status: 400
+    title: Publishing in progress
+    remediation: The post is mid-publish; do not retry the edit. Poll the post until it settles, then decide.
+    remediation_source: derived
+    retryable: false
+  - code: WORKSPACE_LIMIT_REACHED
+    status: 400
+    title: Workspace limit reached
+    remediation: The company has hit its plan's workspace allowance. Upgrade the plan or delete an unused workspace (DELETE /workspaces/{id}).
+    remediation_source: derived
+    retryable: false
+  - code: INTERNAL
+    status: 500
+    title: Internal server error
+    remediation: Retry with backoff on reads. On a create, do NOT blind-retry — there is no idempotency key; list and reconcile first. Quote error.requestId to support.
+    remediation_source: derived
+    retryable: conditional
+
+agent_notes:
+  - The code enum is closed and complete — an agent can build an exhaustive switch with no default-guess branch.
+  - Three codes (POST_ALREADY_PUBLISHED, PUBLISHING_IN_PROGRESS, WORKSPACE_LIMIT_REACHED) are terminal business states, not transient faults; retrying them will never succeed.
+  - requestId is required on every error and is the only correlation handle Planable publishes.

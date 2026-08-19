@@ -1,3 +1,7 @@
+generated: '2026-08-13'
+method: searched
+source: https://planable.io/pricing/
+plan_count: 4
 name: Planable Plans and Pricing
 description: Pricing plans for Planable, a social media collaboration platform for agencies, freelancers, and marketing teams.
 url: https://planable.io/pricing/
@@ -35,7 +39,7 @@ plans:
         period: per workspace per month
         description: Cross-channel performance reporting, page-level insights, post metrics, audience analysis, optimal posting time recommendations
       - name: Social Inbox
-        price: $9
+        price: $7.50
         period: per workspace per month
         description: Unified comment and DM management with AI-generated reply suggestions and sentiment filtering
 
@@ -59,7 +63,7 @@ plans:
         period: per workspace per month
         description: Cross-channel performance reporting, page-level insights, post metrics, audience analysis, optimal posting time recommendations
       - name: Social Inbox
-        price: $9
+        price: $7.50
         period: per workspace per month
         description: Unified comment and DM management with AI-generated reply suggestions and sentiment filtering
 
@@ -88,3 +92,7 @@ notes:
   - Supports 9 platforms: Facebook, Instagram, LinkedIn, X (Twitter), YouTube, TikTok, Pinterest, Google Business Profile, Threads
   - Annual billing saves approximately 17% versus monthly billing
   - API access available to owners and administrators on all paid plans
+  - 'Corrected 2026-08-13 against the live pricing page: the Social Inbox add-on is $7.50/workspace/month (previously recorded as $9).'
+  - 'Public API TOKEN GENERATION is gated to Pro and Enterprise (stated in the OpenAPI info.description and the developer guide); the MCP connector is available on all plans.'
+  - 'Published-post storage: 13 months on Basic and Pro, 24 months on Enterprise.'
+  - 'Posts created through the API or MCP count against the plan post quota.'

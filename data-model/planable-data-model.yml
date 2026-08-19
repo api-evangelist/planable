@@ -1,0 +1,213 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/_original/planable-openapi.json
+docs: https://api.planable.io/api/v1/docs
+api: Planable Public API v1
+note: >-
+  Derived from id-reference fields in the published request/response schemas. The spec declares
+  only ONE named component schema (ErrorResponse) — every resource is an inline anonymous object,
+  so there are no $ref edges to walk and the graph below is reconstructed from field names and
+  path hierarchy. Ids are opaque strings; no type prefixes are published.
+
+id_convention:
+  type: string
+  format: opaque (no published prefix scheme)
+  note: >-
+    Unlike prefixed-id APIs, a Planable id carries no type marker, so an agent cannot tell a
+    postId from a pageId by inspection. Always carry ids with their field name.
+
+entities:
+  - name: Company
+    description: Top-level billing and identity boundary. Owns workspaces, API tokens and plan entitlements.
+    rest_collection: none (no /companies operation is published)
+    fields_referencing_it: [companyId]
+    note: Referenced by GET /ping and by workspaces, but not itself addressable over REST. It IS listable over MCP.
+  - name: Workspace
+    description: A client/brand container holding pages, posts, media, labels, members and campaigns.
+    rest_collection: /workspaces
+    operations: ["GET /workspaces", "POST /workspaces", "DELETE /workspaces/{id}"]
+    id_field: id
+    fields: [id, companyId, approversIds]
+  - name: Page
+    description: A connected social channel (Facebook, Instagram, LinkedIn, X, TikTok, YouTube, Pinterest, Threads, Google Business Profile) inside a workspace.
+    rest_collection: /pages
+    operations: ["GET /pages", "GET /pages/{id}/metrics", "POST /pages/{id}/sync", "GET /pages/{id}/sync-status"]
+    id_field: id
+    fields: [id, pageId, workspaceId]
+  - name: Post
+    description: The core content unit. Draft, scheduled or published; single-page or grouped across pages.
+    rest_collection: /posts
+    operations:
+      - "GET /posts"
+      - "POST /posts"
+      - "GET /posts/{id}"
+      - "PATCH /posts/{id}"
+      - "DELETE /posts/{id}"
+      - "GET /posts/count"
+      - "PATCH /posts/reorder"
+      - "GET /posts/{id}/metrics"
+      - "POST /posts/{id}/sync"
+      - "GET /posts/{id}/sync-status"
+      - "POST /posts/{id}/share"
+      - "DELETE /posts/{id}/share"
+      - "POST /posts/{id}/request-approval"
+    id_field: id
+    fields: [id, workspaceId, pageId, pageIds, groupId, groupPageIds, campaignId, authorId, approverIds, currentLevelId, levelId]
+    immutable_once: published
+  - name: Comment
+    description: Internal team note or client-facing comment on a post, with reactions and threading.
+    rest_collection: /posts/{id}/comments
+    operations:
+      - "GET /posts/{id}/comments"
+      - "POST /posts/{id}/comments"
+      - "PATCH /posts/{id}/comments/{commentId}"
+      - "DELETE /posts/{id}/comments/{commentId}"
+      - "POST /posts/{id}/comments/{commentId}/reactions"
+    id_field: commentId
+    fields: [commentId, postId, userId, replyToCommentId, emojiId, notifiedUserIds, teamOnly]
+  - name: Campaign
+    description: A named grouping of posts within a workspace.
+    rest_collection: /campaigns
+    operations: ["GET /campaigns", "POST /campaigns", "GET /campaigns/{id}", "PATCH /campaigns/{id}", "DELETE /campaigns/{id}"]
+    id_field: id
+    fields: [id, workspaceId]
+  - name: Label
+    description: A colored tag applied to posts for filtering and reporting.
+    rest_collection: /labels
+    operations: ["GET /labels", "POST /labels"]
+    id_field: id
+    fields: [id, workspaceId, name, color]
+  - name: Media
+    description: An asset in the workspace media library, uploaded from a public URL.
+    rest_collection: /media
+    operations: ["GET /media", "POST /media", "GET /media/{id}"]
+    id_field: id
+    fields: [id, workspaceId]
+  - name: Member
+    description: A user's membership of a workspace, with role and approval-level assignment.
+    rest_collection: /members
+    operations: ["GET /members"]
+    id_field: id
+    fields: [id, approvalLevelIds]
+  - name: Story
+    description: An Instagram/Facebook story, single-frame or multi-frame.
+    rest_collection: /stories
+    operations: ["POST /stories"]
+    fields: [workspaceId, pageId, mediaId, postIds, userId]
+  - name: TrackedCompetitor
+    description: A competitor social page benchmarked against one of your pages. Capped at 5 per page.
+    rest_collection: /pages/{id}/competitors
+    operations:
+      - "GET /pages/{id}/competitors"
+      - "POST /pages/{id}/competitors"
+      - "DELETE /pages/{id}/competitors/{scrapedPageId}"
+      - "GET /pages/{id}/competitors/comparison"
+      - "GET /pages/{id}/competitors/metrics"
+      - "GET /pages/{id}/competitors/top-posts"
+    id_field: trackedCompetitorId
+    fields: [trackedCompetitorId, scrapedPageId, id]
+  - name: Keyword
+    description: A tracked social-listening keyword (brand or topic) scoped to a workspace.
+    rest_collection: /keywords
+    operations:
+      - "GET /keywords"
+      - "POST /keywords"
+      - "DELETE /keywords/{keywordId}"
+      - "GET /keywords/{keywordId}/mentions"
+      - "GET /keywords/{keywordId}/metrics"
+      - "GET /keywords/{keywordId}/metrics/summary"
+      - "GET /keywords/{keywordId}/sync-status"
+    id_field: keywordId
+    fields: [keywordId, workspaceId, keyword, type]
+    type_enum: [brand, topic]
+  - name: Mention
+    description: A social post matching a tracked keyword. Cursor-paginated.
+    rest_collection: /keywords/{keywordId}/mentions
+    parent: Keyword
+
+relationships:
+  - from: Company
+    to: Workspace
+    type: has_many
+    via: companyId
+  - from: Workspace
+    to: Page
+    type: has_many
+    via: workspaceId
+  - from: Workspace
+    to: Post
+    type: has_many
+    via: workspaceId
+  - from: Workspace
+    to: Campaign
+    type: has_many
+    via: workspaceId
+  - from: Workspace
+    to: Label
+    type: has_many
+    via: workspaceId
+  - from: Workspace
+    to: Media
+    type: has_many
+    via: workspaceId
+  - from: Workspace
+    to: Keyword
+    type: has_many
+    via: workspaceId
+  - from: Workspace
+    to: Member
+    type: has_many
+    via: workspaceId
+  - from: Post
+    to: Page
+    type: belongs_to
+    via: pageId
+  - from: Post
+    to: Page
+    type: has_many
+    via: pageIds
+    note: A grouped cross-platform post fans out to several pages and shares one groupId.
+  - from: Post
+    to: Campaign
+    type: belongs_to
+    via: campaignId
+    optional: true
+  - from: Post
+    to: Comment
+    type: has_many
+    via: postId
+  - from: Post
+    to: Media
+    type: has_many
+    via: media attachments (up to 10)
+  - from: Post
+    to: Label
+    type: has_many
+    via: label assignment
+  - from: Comment
+    to: Comment
+    type: belongs_to
+    via: replyToCommentId
+    optional: true
+  - from: Page
+    to: TrackedCompetitor
+    type: has_many
+    via: path parent /pages/{id}/competitors
+    cap: 5
+  - from: Keyword
+    to: Mention
+    type: has_many
+    via: path parent /keywords/{keywordId}/mentions
+  - from: Story
+    to: Page
+    type: belongs_to
+    via: pageId
+  - from: Story
+    to: Media
+    type: has_many
+    via: mediaId
+
+traversal_notes:
+  - Almost every collection requires `workspaceId` as a query parameter — workspace is the mandatory scoping key, not an optional filter.
+  - There is no /companies operation, so an agent starting cold over REST must begin at GET /workspaces. Over MCP, list_workspaces plays the same role.
+  - Metrics for pages and posts are separate sub-resources, and both follow trigger-then-poll sync.
