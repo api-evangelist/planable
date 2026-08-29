@@ -8,6 +8,19 @@ description: 'Planable is a collaboration-first social media management platform
   OAuth-protected MCP server at https://mcp.planable.io/mcp for Claude, ChatGPT and Gemini; and twelve MIT-licensed Agent
   Skills published as a Claude Code plugin. Agent- and API-created content always lands as a draft and passes through Planable''s
   normal approval workflow.'
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
