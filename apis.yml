@@ -347,6 +347,9 @@ apis:
   - type: SourceCode
     url: https://github.com/Planable/smm-skills
 common:
+- type: CapabilityMap
+  url: capabilities/planable-capability-edges.yml
+  name: Planable Business Capability Map
 - type: OpenAPI
   url: openapi/_original/planable-openapi.json
 - type: MCPServer

@@ -1,0 +1,66 @@
+slug: planable
+provider: Planable
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Competitors
+  spec_file: planable-competitors-api-openapi.yml
+  capability_id: BC-400.30
+  capability_id_l1: BC-400
+  capability_name: Market Intelligence Management
+  confidence: 0.85
+  evidence: GET /pages/{id}/competitors/comparison Compare your page against its competitors; Follower
+    & engagement trend for your page and its competitors
+  reason: Tracking and benchmarking competitor social pages is competitive intelligence within market
+    intelligence management.
+- tag: Posts
+  spec_file: planable-posts-api-openapi.yml
+  capability_id: BC-400.70
+  capability_id_l1: BC-400
+  capability_name: Content Marketing Management
+  confidence: 0.8
+  evidence: POST /posts Create a new post; POST /posts/{id}/request-approval Send a post for approval;
+    GET /posts/{id}/metrics Get post metrics
+  reason: Core surface for authoring, approving, scheduling and measuring social content — content marketing
+    production and distribution (closely adjacent to digital marketing/social publishing).
+- tag: Social Listening
+  spec_file: planable-social-listening-api-openapi.yml
+  capability_id: BC-400.30
+  capability_id_l1: BC-400
+  capability_name: Market Intelligence Management
+  confidence: 0.8
+  evidence: POST /keywords Track a keyword; GET /keywords/{keywordId}/mentions List mentions for a tracked
+    keyword
+  reason: Keyword tracking and brand mention monitoring is social listening — market/customer insight
+    gathering under Market Intelligence Management.
+- tag: Campaigns
+  spec_file: planable-campaigns-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: POST /campaigns Create a campaign — social media management platform used to create, plan,
+    collaborate on, approve, schedule, publish and analyze content
+  reason: Campaigns in a social media publishing tool group scheduled social content; this is digital/social
+    marketing campaign management. Sub-capability choice between Digital Marketing and Content Marketing
+    is somewhat ambiguous, hence moderate confidence.
+- tag: Pages
+  spec_file: planable-pages-api-openapi.yml
+  capability_id: BC-400.60
+  capability_id_l1: BC-400
+  capability_name: Digital Marketing Management
+  confidence: 0.7
+  evidence: GET /pages/{id}/metrics Get page metrics; POST /pages/{id}/sync Trigger page metrics sync
+  reason: Pages are connected social media accounts (Facebook, Instagram, LinkedIn...) with performance
+    metrics; managing and measuring these channels is digital/social marketing management. Metrics-sync
+    plumbing tempers confidence.
