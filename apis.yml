@@ -300,6 +300,8 @@ apis:
   humanURL: https://planable.io/guides/planable-public-api/
   baseURL: https://api.planable.io/api/v1
   tags:
+  - Workspace
+  tags_raw:
   - Workspaces
   properties:
   - type: OpenAPI
