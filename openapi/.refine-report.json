@@ -1,30 +1,51 @@
 {
   "provider": "planable",
-  "source": "https://api.planable.io/api/v1/openapi.json",
-  "outputs": [
-    "openapi/planable-campaigns-api-openapi.yml",
-    "openapi/planable-competitors-api-openapi.yml",
-    "openapi/planable-labels-api-openapi.yml",
-    "openapi/planable-media-api-openapi.yml",
-    "openapi/planable-members-api-openapi.yml",
-    "openapi/planable-pages-api-openapi.yml",
-    "openapi/planable-posts-api-openapi.yml",
-    "openapi/planable-social-listening-api-openapi.yml",
-    "openapi/planable-stories-api-openapi.yml",
-    "openapi/planable-system-api-openapi.yml",
-    "openapi/planable-workspaces-api-openapi.yml"
+  "sources": [
+    "_original/planable-openapi.json"
   ],
-  "ops": {
-    "Campaigns": 5,
-    "Competitors": 6,
-    "Labels": 2,
-    "Media": 3,
-    "Members": 1,
-    "Pages": 4,
-    "Posts": 18,
-    "Social Listening": 7,
-    "Stories": 1,
-    "System": 1,
-    "Workspaces": 3
-  }
+  "outputs": [
+    "planable-campaigns-api-openapi.yml",
+    "planable-competitors-api-openapi.yml",
+    "planable-labels-api-openapi.yml",
+    "planable-media-api-openapi.yml",
+    "planable-members-api-openapi.yml",
+    "planable-pages-api-openapi.yml",
+    "planable-posts-api-openapi.yml",
+    "planable-social-listening-api-openapi.yml",
+    "planable-stories-api-openapi.yml",
+    "planable-system-api-openapi.yml",
+    "planable-workspaces-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "planable-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "planable-openapi.json: declared missing tag: Campaigns",
+    "planable-openapi.json: declared missing tag: Competitors",
+    "planable-openapi.json: declared missing tag: Labels",
+    "planable-openapi.json: declared missing tag: Media",
+    "planable-openapi.json: declared missing tag: Members",
+    "planable-openapi.json: declared missing tag: Pages",
+    "planable-openapi.json: declared missing tag: Posts",
+    "planable-openapi.json: declared missing tag: Social Listening",
+    "planable-openapi.json: declared missing tag: Stories",
+    "planable-openapi.json: declared missing tag: System",
+    "planable-openapi.json: declared missing tag: Workspaces",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "planable-campaigns-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "planable-competitors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "planable-labels-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "planable-media-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "planable-members-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "planable-pages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "planable-posts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "planable-social-listening-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "planable-stories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "planable-system-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "planable-workspaces-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
