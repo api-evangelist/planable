@@ -40,7 +40,7 @@ created: '2026-06-13'
 modified: '2026-08-13'
 specificationVersion: '0.23'
 tags:
-- Social-Media
+- Social Media
 - Content Collaboration
 - Approval Workflows
 - Social Media Management
@@ -63,6 +63,7 @@ tags_raw:
 - MCP
 - AI Agents
 - Agent Skills
+- Social-Media
 apis:
 - aid: planable:planable-campaigns-api
   name: Planable Campaigns API
