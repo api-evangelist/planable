@@ -96,3 +96,40 @@ notes:
   - 'Public API TOKEN GENERATION is gated to Pro and Enterprise (stated in the OpenAPI info.description and the developer guide); the MCP connector is available on all plans.'
   - 'Published-post storage: 13 months on Basic and Pro, 24 months on Enterprise.'
   - 'Posts created through the API or MCP count against the plan post quota.'
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - negotiated
+  - subscription
+  units: []
+  plans:
+  - name: Free
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods:
+    - one-time
+  - name: Basic
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - other
+  - name: Pro
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - other
+  - name: Enterprise
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods:
+    - term
